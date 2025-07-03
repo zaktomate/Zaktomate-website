@@ -10,7 +10,7 @@
     "build:css": "npx tailwindcss -i ./src/css/input.css -o ./dist/css/output.css --minify",
     "build": "npm run build:css && npm run build:html && npm run copy:js",
     "start:services": "start dist/services.html",
-    "copy:js": "xcopy /E /I scripts dist"
+    "copy:js": "cp -r scripts dist"
   },
   "keywords": [],
   "author": "",
