@@ -43,15 +43,15 @@
         input.value = "";
 
         try {
-          const res = await fetch("hhttps://zakbot-zaktomate.onrender.com/api/chat", {
+          const res = await fetch("https://zakbot-zaktomate.onrender.com/api/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: userText }),
           });
           const data = await res.json();
           addMessage("zakbot", data.reply || "Sorry, I couldn’t understand that.");
-        } catch {
-          addMessage("zakbot", "Error connecting to Zakbot.");
+        } catch (err) {
+          addMessage("zakbot", "Maf koren vai, server off");
         }
       });
 
