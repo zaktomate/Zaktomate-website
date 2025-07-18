@@ -43,7 +43,7 @@
         input.value = "";
 
         try {
-          const res = await fetch("https://zakbot-zaktomate.onrender.com/api/chat", {
+          const res = await fetch("https://zakbot.zaktomate.com/api/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: userText }),
