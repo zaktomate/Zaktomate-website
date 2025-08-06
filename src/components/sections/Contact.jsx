@@ -6,7 +6,7 @@ const Contact = () => {
   const colors = getColorClasses('zakbot-blue');
 
   return (
-    <section id="contact" className="py-20 bg-white/50 dark:bg-gray-950 backdrop-blur-sm">
+    <section id="contact" className="min-h-screen py-20 bg-white/50 dark:bg-gray-950 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

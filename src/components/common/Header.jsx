@@ -12,7 +12,7 @@ const Header = ({ activeSection, setActiveSection }) => {
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'services', label: 'Services' },
-    { id: 'zakbot', label: 'Zakbot' },
+    { id: 'zakbot-demo', label: 'Zakbot' },
     { id: 'pricing', label: 'Pricing' },
     { id: 'about', label: 'About' },
     { id: 'contact', label: 'Contact' },

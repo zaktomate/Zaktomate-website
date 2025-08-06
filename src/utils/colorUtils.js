@@ -33,6 +33,36 @@ export const getColorClasses = (color) => {
       buttonLight: 'bg-zakbot-purple-light',
       bgLight: 'bg-purple-50 dark:bg-purple-900/20',
       borderLight: 'border-purple-200 dark:border-purple-800'
+    },
+    'zakbot-yellow': {
+      bg: 'bg-yellow-500 bg-opacity-10',
+      text: 'text-yellow-500',
+      border: 'border-yellow-500',
+      button: 'bg-yellow-500',
+      buttonHover: 'hover:bg-yellow-400',
+      buttonLight: 'bg-yellow-400',
+      bgLight: 'bg-yellow-50 dark:bg-yellow-900/20',
+      borderLight: 'border-yellow-200 dark:border-yellow-800'
+    },
+    'zakbot-rose': {
+      bg: 'bg-rose-500 bg-opacity-10',
+      text: 'text-rose-500',
+      border: 'border-rose-500',
+      button: 'bg-rose-500',
+      buttonHover: 'hover:bg-rose-400',
+      buttonLight: 'bg-rose-400',
+      bgLight: 'bg-rose-50 dark:bg-rose-900/20',
+      borderLight: 'border-rose-200 dark:border-rose-800'
+    },
+    'zakbot-indigo': {
+      bg: 'bg-indigo-500 bg-opacity-10',
+      text: 'text-indigo-500',
+      border: 'border-indigo-500',
+      button: 'bg-indigo-500',
+      buttonHover: 'hover:bg-indigo-400',
+      buttonLight: 'bg-indigo-400',
+      bgLight: 'bg-indigo-50 dark:bg-indigo-900/20',
+      borderLight: 'border-indigo-200 dark:border-indigo-800'
     }
   };
   return colorMap[color] || colorMap['zakbot-teal'];

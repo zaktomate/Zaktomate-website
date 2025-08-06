@@ -1,11 +1,95 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-scroll';
-import { FaBrain, FaBolt, FaShieldAlt } from 'react-icons/fa';
+import { FaBrain, FaBolt, FaShieldAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import Card from '../common/Card';
 import { getColorClasses, getTextColor } from '../../utils/colorUtils';
 
 const Services = () => {
+  const [allowAutoScroll, setAllowAutoScroll] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Prevent automatic scrolling for the first 3 seconds
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAllowAutoScroll(true);
+      console.log('🔍 DEBUG: Services auto-scroll now allowed');
+    }, 3000);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Detailed services data from services.html
+  const detailedServices = {
+    liveNow: [
+      {
+        title: "Zakdeck – AI Slide & Content Engine",
+        description: "Turn outlines, textbook photos, or lecture notes into ready-to-use presentation decks.",
+        useCases: "Lesson plans, pitch decks, workshop slides",
+        status: "Live Now",
+        color: "zakbot-blue"
+      },
+      {
+        title: "Zakbot – AI Chatbot for Customer Engagement",
+        description: "Deploy your AI chatbot to answer queries, generate leads, and provide support.",
+        channels: "Website, Messenger, WhatsApp",
+        useCases: "Student helpdesk, lead generation, product support",
+        status: "Live Now",
+        color: "zakbot-teal"
+      }
+    ],
+    onDemand: [
+      {
+        title: "AI Exam Typing & Formatting",
+        description: "Convert handwritten or image-based questions into clean MCQs or exams",
+        formats: "Google Docs, Word, PDF",
+        useCases: "Mock exams, past papers, daily assessments",
+        color: "zakbot-purple"
+      },
+      {
+        title: "AI Blog & Content Writing",
+        description: "Generate SEO blogs, FAQs, and copy in your custom tone",
+        useCases: "Institutional blogs, promo content",
+        color: "zakbot-blue"
+      },
+      {
+        title: "Workflow Automation & Custom Integrations",
+        description: "Automate admin tasks and integrate with Google Workspace, Zapier, Notion",
+        useCases: "Attendance, lead routing, LMS triggers",
+        color: "zakbot-teal"
+      },
+      {
+        title: "AI Social Media Content Packs",
+        description: "Monthly bundles of captions, carousel ideas, and visuals",
+        platforms: "Facebook, Instagram, LinkedIn",
+        useCases: "Daily academic engagement",
+        color: "zakbot-purple"
+      },
+      {
+        title: "Lecture Notes & Summaries Generator",
+        description: "Convert full lectures into organized, summarized handouts",
+        useCases: "Course materials, revisions",
+        color: "zakbot-blue"
+      },
+      {
+        title: "Standard Operating Procedures (SOPs)",
+        description: "Convert team workflows into actionable AI SOPs",
+        useCases: "Training manuals, operations guides",
+        color: "zakbot-teal"
+      },
+      {
+        title: "Lead Generation Messaging & Funnels",
+        description: "AI-personalized outreach campaigns for WhatsApp, LinkedIn, etc.",
+        useCases: "B2C sales, student recruitment",
+        color: "zakbot-purple"
+      }
+    ],
+    pricing: [
+      { plan: "Ignite", target: "Small ops / pilots", price: "BDT 5,000/month" },
+      { plan: "Accelerate", target: "Scaling companies", price: "BDT 10,000/month" },
+      { plan: "Transform", target: "Full automation setups", price: "BDT 15,000/month" }
+    ]
+  };
   const services = [
     {
       icon: <FaBrain className="text-4xl" />,
@@ -60,7 +144,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="min-h-screen py-20 bg-white/70 dark:bg-gray-900 section-offset backdrop-blur-sm">
+    <section id="services" className="min-h-screen py-20 bg-white/70 dark:bg-gray-900 backdrop-blur-sm">
       <div className="container mx-auto px-4 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -123,6 +207,15 @@ const Services = () => {
                         smooth={true}
                         duration={500}
                         className={`${action.primary ? colors.button + ' text-white' : 'bg-transparent border-2 ' + colors.border + ' ' + colors.text} py-2 px-6 rounded-md font-bold hover:opacity-80 transition mt-auto`}
+                        onClick={(e) => {
+                          console.log('🔍 DEBUG: Services button clicked:', action.text, 'allowAutoScroll:', allowAutoScroll);
+                          // Prevent scrolling if it's not a manual click or if auto-scroll is not allowed yet
+                          if ((!e.isTrusted || !allowAutoScroll) && e.type === 'click') {
+                            e.preventDefault();
+                            console.log('🔍 DEBUG: Prevented automatic scroll trigger in services');
+                            return false;
+                          }
+                        }}
                       >
                         {action.text}
                       </Link>
@@ -133,14 +226,143 @@ const Services = () => {
             );
           })}
         </div>
+        
+        {/* Expandable Services Section */}
         <div className="text-center mt-12">
-          <Link
-            to="/services"
-            className="inline-block bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-lg"
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-lg"
           >
-            Read More About Our Services
-          </Link>
+            {isExpanded ? (
+              <>
+                <FaChevronUp /> Show Less
+              </>
+            ) : (
+              <>
+                <FaChevronDown /> Read More About Our Services
+              </>
+            )}
+          </button>
         </div>
+
+        {/* Detailed Services Content */}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.5 }}
+              className="overflow-hidden"
+            >
+              <div className="mt-16">
+                {/* Live Now Services */}
+                <div className="mb-16">
+                  <motion.h3
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="text-3xl md:text-4xl font-bold text-center mb-10 text-green-500"
+                  >
+                    ✅ Live Now
+                  </motion.h3>
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {detailedServices.liveNow.map((service, index) => {
+                      const colors = getColorClasses(service.color);
+                      return (
+                        <Card
+                          key={index}
+                          className="p-8 flex flex-col"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: index * 0.1 }}
+                        >
+                          <div className="mb-4">
+                            <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                              {service.status}
+                            </span>
+                          </div>
+                          <h4 className={`text-2xl font-bold mb-4 ${getTextColor('default')}`}>
+                            {service.title}
+                          </h4>
+                          <p className={`mb-4 ${getTextColor('muted')}`}>
+                            {service.description}
+                          </p>
+                          {service.channels && (
+                            <p className={`mb-2 ${getTextColor('secondary')}`}>
+                              <span className="font-semibold">Channels:</span> {service.channels}
+                            </p>
+                          )}
+                          <p className={`mb-6 ${getTextColor('secondary')}`}>
+                            <span className="font-semibold">Use Cases:</span> {service.useCases}
+                          </p>
+                          <button className={`${colors.button} text-white py-2 px-6 rounded-md font-bold mt-auto`}>
+                            ✅ Live Now
+                          </button>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* On Demand Services */}
+                <div className="mb-16">
+                  <motion.h3
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="text-3xl md:text-4xl font-bold text-center mb-10 text-yellow-500"
+                  >
+                    🛠️ On Demand Services
+                  </motion.h3>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {detailedServices.onDemand.map((service, index) => {
+                      const colors = getColorClasses(service.color);
+                      return (
+                        <Card
+                          key={index}
+                          className="p-8 flex flex-col"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
+                        >
+                          <h4 className={`text-2xl font-bold mb-4 ${getTextColor('default')}`}>
+                            {service.title}
+                          </h4>
+                          <p className={`mb-4 ${getTextColor('muted')}`}>
+                            {service.description}
+                          </p>
+                          {service.formats && (
+                            <p className={`mb-2 ${getTextColor('secondary')}`}>
+                              <span className="font-semibold">Formats:</span> {service.formats}
+                            </p>
+                          )}
+                          {service.platforms && (
+                            <p className={`mb-2 ${getTextColor('secondary')}`}>
+                              <span className="font-semibold">Platforms:</span> {service.platforms}
+                            </p>
+                          )}
+                          <p className={`mb-6 ${getTextColor('secondary')}`}>
+                            <span className="font-semibold">Use Cases:</span> {service.useCases}
+                          </p>
+                          <Link
+                            to="#contact"
+                            spy={true}
+                            smooth={true}
+                            duration={500}
+                            className={`${colors.button} text-white py-2 px-6 rounded-md font-bold text-center mt-auto`}
+                          >
+                            Request Access
+                          </Link>
+                        </Card>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

@@ -5,7 +5,8 @@
 /* Custom base styles */
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* Remove global smooth scrolling to prevent conflicts with chat component */
+    /* scroll-behavior: smooth; */
   }
   
   body {

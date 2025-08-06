@@ -40,16 +40,23 @@ const ChatDemo = () => {
   ];
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    console.log('🔍 DEBUG: scrollToBottom called');
+    if (messagesEndRef.current) {
+      console.log('🔍 DEBUG: Scrolling to bottom with instant behavior');
+      // Use instant scrolling to avoid conflicts with global smooth scrolling
+      messagesEndRef.current.scrollIntoView({ behavior: 'instant' });
+    }
   };
 
-  useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+  // Use a ref to track if we should scroll, to avoid multiple rapid scrolls
+  const shouldScrollRef = useRef(true);
+  
 
   const handleSendMessage = async (messageText) => {
     if (!messageText.trim()) return;
 
+    console.log('🔍 DEBUG: handleSendMessage called with:', messageText);
+    
     const userMessage = {
       id: messages.length + 1,
       text: messageText,
@@ -57,9 +64,17 @@ const ChatDemo = () => {
       timestamp: new Date(),
     };
 
+    console.log('🔍 DEBUG: Adding user message to state');
+    // Temporarily disable auto-scroll to prevent multiple rapid scrolls
+    shouldScrollRef.current = false;
     setMessages((prev) => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
+    
+    // Re-enable scrolling after a short delay
+    setTimeout(() => {
+      shouldScrollRef.current = true;
+    }, 100);
 
     try {
       // Check if user has seen greeting to send appropriate flag
@@ -73,7 +88,15 @@ const ChatDemo = () => {
         timestamp: new Date(),
       };
 
+      console.log('🔍 DEBUG: Adding bot message to state');
+      // Temporarily disable auto-scroll to prevent multiple rapid scrolls
+      shouldScrollRef.current = false;
       setMessages((prev) => [...prev, botMessage]);
+      
+      // Re-enable scrolling after a short delay and scroll to bottom
+      setTimeout(() => {
+        shouldScrollRef.current = true;
+      }, 100);
     } catch (error) {
       console.error('Error sending message:', error);
       
@@ -84,8 +107,17 @@ const ChatDemo = () => {
         timestamp: new Date(),
       };
 
+      console.log('🔍 DEBUG: Adding error message to state');
+      // Temporarily disable auto-scroll to prevent multiple rapid scrolls
+      shouldScrollRef.current = false;
       setMessages((prev) => [...prev, errorMessage]);
+      
+      // Re-enable scrolling after a short delay and scroll to bottom
+      setTimeout(() => {
+        shouldScrollRef.current = true;
+      }, 100);
     } finally {
+      console.log('🔍 DEBUG: Setting isLoading to false');
       setIsLoading(false);
     }
   };
@@ -152,6 +184,7 @@ const ChatDemo = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
                     className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                    onAnimationStart={() => console.log('🔍 DEBUG: Animation started for message', message.id)}
                   >
                     <div className={`flex items-start space-x-3 max-w-xs md:max-w-md ${
                       message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''
@@ -188,6 +221,8 @@ const ChatDemo = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="flex justify-start"
+                    onAnimationStart={() => console.log('🔍 DEBUG: Loading indicator animation started')}
+                    onAnimationComplete={() => console.log('🔍 DEBUG: Loading indicator animation completed')}
                   >
                     <div className="flex items-start space-x-3 max-w-xs md:max-w-md">
                       <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-zakbot-teal">

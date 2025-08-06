@@ -20,7 +20,7 @@ const Home = ({ setActiveSection }) => {
       <Services />
 
       {/* Demo Section */}
-      <section id="zakbot-demo" className="py-20 bg-white/70 dark:bg-gray-900 backdrop-blur-sm">
+      <section id="zakbot-demo" className="min-h-screen bg-white/70 dark:bg-gray-900 backdrop-blur-sm">
         <ChatDemo />
       </section>
 
