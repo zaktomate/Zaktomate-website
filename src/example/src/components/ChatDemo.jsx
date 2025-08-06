@@ -1,0 +1,260 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { FaPaperPlane, FaRobot, FaUser, FaCopy, FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
+import { chatApi } from '../services/api';
+import Card from './Card';
+
+const ChatDemo = () => {
+  // Check if user has seen the greeting before
+  const getInitialMessage = () => {
+    const hasSeenGreeting = localStorage.getItem('zakbot_greeting_seen');
+    if (!hasSeenGreeting) {
+      // First time user - show greeting
+      localStorage.setItem('zakbot_greeting_seen', 'true');
+      return {
+        id: 1,
+        text: "Assalamu Alaikum",
+        sender: 'bot',
+        timestamp: new Date(),
+      };
+    } else {
+      // Returning user - show normal welcome
+      return {
+        id: 1,
+        text: "Hello! I'm Zakbot, an AI-powered assistant. How can I help you today?",
+        sender: 'bot',
+        timestamp: new Date(),
+      };
+    }
+  };
+
+  const [messages, setMessages] = useState([getInitialMessage()]);
+  const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  // const [clientId, setClientId] = useState('demo_client');
+  const messagesEndRef = useRef(null);
+
+  const suggestedPrompts = [
+    "What can you help me with?",
+  ];
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleSendMessage = async (messageText) => {
+    if (!messageText.trim()) return;
+
+    const userMessage = {
+      id: messages.length + 1,
+      text: messageText,
+      sender: 'user',
+      timestamp: new Date(),
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInputValue('');
+    setIsLoading(true);
+
+    try {
+      // Check if user has seen greeting to send appropriate flag
+      const hasSeenGreeting = localStorage.getItem('zakbot_greeting_seen') === 'true';
+      const response = await chatApi.sendMessage(messageText, "client_zaktomate", hasSeenGreeting);
+
+      const botMessage = {
+        id: messages.length + 2,
+        text: response.reply || "I'm sorry, I couldn't process your request at the moment.",
+        sender: 'bot',
+        timestamp: new Date(),
+      };
+
+      setMessages((prev) => [...prev, botMessage]);
+    } catch (error) {
+      console.error('Error sending message:', error);
+      
+      const errorMessage = {
+        id: messages.length + 2,
+        text: "I'm experiencing some technical difficulties right now. Please try again later.",
+        sender: 'bot',
+        timestamp: new Date(),
+      };
+
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleSendMessage(inputValue);
+  };
+
+  const handleSuggestedPrompt = (prompt) => {
+    handleSendMessage(prompt);
+  };
+
+  const formatTime = (date) => {
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text);
+  };
+
+  return (
+    <section className="section-padding">
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold font-heading text-zakbot-dark dark:text-white mb-4">
+            Try <span className="gradient-text">Zakbot</span> in Action
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Experience the power of AI-driven conversations. Ask questions, get answers, 
+            and see how Zakbot can transform your customer interactions.
+          </p>
+        </motion.div>
+
+        <div className="max-w-4xl mx-auto space-y-8">
+          {/* Chat Interface Card */}
+          <Card className="chat-card p-0" hover={false}>
+            {/* Chat Header */}
+            <div className="chat-header">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                  <FaRobot className="text-xl" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">Zakbot Demo</h3>
+                  <p className="text-sm opacity-90">AI Assistant • Online</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Chat Messages */}
+            <div className="chat-messages">
+              <div className="space-y-4">
+                {messages.map((message) => (
+                  <motion.div
+                    key={message.id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    <div className={`flex items-start space-x-3 max-w-xs md:max-w-md ${
+                      message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''
+                    }`}>
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                        message.sender === 'user' ? 'bg-zakbot-blue' : 'bg-zakbot-teal'
+                      }`}>
+                        {message.sender === 'user' ? (
+                          <FaUser className="text-white text-sm" />
+                        ) : (
+                          <FaRobot className="text-white text-sm" />
+                        )}
+                      </div>
+                      <div className="relative group">
+                        <div className={`chat-message ${message.sender === 'user' ? 'chat-message-user' : 'chat-message-bot'}`}>
+                          <p className="text-sm">{message.text}</p>
+                          <p className="text-xs opacity-70 mt-1">
+                            {formatTime(message.timestamp)}
+                          </p>
+                        </div>
+                        <button
+                          onClick={() => copyToClipboard(message.text)}
+                          className="absolute -top-3 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-gray-200 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500 rounded-full p-1"
+                        >
+                          <FaCopy className="text-xs text-gray-600 dark:text-gray-300" />
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+
+                {isLoading && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="flex justify-start"
+                  >
+                    <div className="flex items-start space-x-3 max-w-xs md:max-w-md">
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-zakbot-teal">
+                        <FaRobot className="text-white text-sm" />
+                      </div>
+                      <div className="chat-message chat-message-bot">
+                        <div className="loading-dots flex space-x-1">
+                          <span className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full"></span>
+                          <span className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full"></span>
+                          <span className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                <div ref={messagesEndRef} />
+              </div>
+            </div>
+
+            {/* Chat Input */}
+            <div className="chat-input-container">
+              <form onSubmit={handleSubmit} className="flex space-x-3">
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  placeholder="Type your message..."
+                  className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-zakbot-blue focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                  disabled={isLoading}
+                />
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  type="submit"
+                  disabled={isLoading || !inputValue.trim()}
+                  className="btn-primary flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <FaPaperPlane />
+                  <span>Send</span>
+                </motion.button>
+              </form>
+            </div>
+          </Card>
+
+          {/* Suggested Prompts Card */}
+          {messages.length === 1 && (
+            <Card className="prompts-card" transition={{ duration: 0.5, delay: 0.1 }}>
+              <h4 className="font-semibold text-zakbot-dark dark:text-white mb-4">Try asking:</h4>
+              <div className="flex flex-wrap gap-2">
+                {suggestedPrompts.map((prompt, index) => (
+                  <motion.button
+                    key={index}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handleSuggestedPrompt(prompt)}
+                    className="text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full transition-colors duration-200"
+                  >
+                    {prompt}
+                  </motion.button>
+                ))}
+              </div>
+            </Card>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ChatDemo;
