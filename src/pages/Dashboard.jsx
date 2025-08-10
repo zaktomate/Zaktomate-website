@@ -73,13 +73,13 @@ const Dashboard = () => {
             
             <div className="flex items-center space-x-4">
               <div className="relative">
-                <button className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                <button className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white cursor-pointer">
                   <FaSearch />
                 </button>
               </div>
               
               <div className="relative">
-                <button className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                <button className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white cursor-pointer">
                   <FaBell />
                   {unreadCount > 0 && (
                     <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -143,7 +143,7 @@ const Dashboard = () => {
                     <button
                       key={tab}
                       onClick={() => setActiveTab(tab)}
-                      className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                      className={`py-4 px-1 border-b-2 font-medium text-sm cursor-pointer ${
                         activeTab === tab
                           ? 'border-zakbot-blue text-zakbot-blue'
                           : 'border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300'
@@ -303,15 +303,15 @@ const Dashboard = () => {
                 Quick Actions
               </h3>
               <div className="space-y-3">
-                <button className="w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors flex items-center space-x-3">
+                <button className="w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors flex items-center space-x-3 cursor-pointer">
                   <FaRobot className="text-zakbot-blue" />
                   <span className="text-sm text-zakbot-dark dark:text-white">Test Chatbot</span>
                 </button>
-                <button className="w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors flex items-center space-x-3">
+                <button className="w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors flex items-center space-x-3 cursor-pointer">
                   <FaCog className="text-zakbot-blue" />
                   <span className="text-sm text-zakbot-dark dark:text-white">Configure Settings</span>
                 </button>
-                <button className="w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors flex items-center space-x-3">
+                <button className="w-full text-left p-3 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-colors flex items-center space-x-3 cursor-pointer">
                   <FaUsers className="text-zakbot-blue" />
                   <span className="text-sm text-zakbot-dark dark:text-white">Manage Users</span>
                 </button>

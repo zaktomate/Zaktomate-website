@@ -44,21 +44,29 @@ const Header = ({ activeSection, setActiveSection }) => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? darkMode
-            ? 'bg-zakbot-dark shadow-md py-2'
-            : 'bg-white shadow-md py-2'
-          : 'bg-transparent py-4'
+            ? 'bg-zakbot-dark/95 backdrop-blur-sm shadow-md py-3'
+            : 'bg-white/95 backdrop-blur-sm shadow-md py-3'
+          : darkMode
+            ? 'bg-zakbot-dark/80 backdrop-blur-sm py-4'
+            : 'bg-transparent py-4'
       }`}
     >
-      <div className="container">
+      <div className="container px-4 sm:px-6">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2 cursor-pointer"
+            className="flex items-center space-x-2 cursor-pointer pl-2"
             onClick={() => scrollToSection('home')}
           >
-            <FaRobot className="text-2xl text-zakbot-blue dark:text-white" />
-            <span className="text-xl font-bold font-heading text-zakbot-blue dark:text-white">
+            
+            <span className={`text-xl font-bold font-heading ${
+              isScrolled
+                ? darkMode
+                  ? 'text-white'
+                  : 'text-zakbot-blue'
+                : 'text-white'
+            }`}>
               Zaktomate
             </span>
           </motion.div>
@@ -74,9 +82,11 @@ const Header = ({ activeSection, setActiveSection }) => {
                 className={`font-medium transition-colors duration-300 ${
                   activeSection === item.id
                     ? 'text-zakbot-blue border-b-2 border-zakbot-blue'
-                    : darkMode
-                      ? 'text-gray-300 hover:text-zakbot-blue'
-                      : 'text-gray-600 hover:text-zakbot-blue'
+                    : isScrolled
+                      ? darkMode
+                        ? 'text-gray-300 hover:text-white'
+                        : 'text-gray-600 hover:text-zakbot-blue'
+                      : 'text-white hover:text-gray-200'
                 }`}
               >
                 {item.label}
@@ -100,7 +110,7 @@ const Header = ({ activeSection, setActiveSection }) => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center md:hidden pr-2">
             {/* Theme Toggle Button for Mobile */}
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -117,7 +127,13 @@ const Header = ({ activeSection, setActiveSection }) => {
             </motion.button>
             
             <button
-              className="text-zakbot-blue dark:text-white"
+              className={`${
+                isScrolled
+                  ? darkMode
+                    ? 'text-white'
+                    : 'text-gray-800'
+                  : 'text-white'
+              }`}
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
@@ -143,9 +159,11 @@ const Header = ({ activeSection, setActiveSection }) => {
                   className={`font-medium text-left transition-colors duration-300 ${
                     activeSection === item.id
                       ? 'text-zakbot-blue border-l-4 border-zakbot-blue pl-2'
-                      : darkMode
-                        ? 'text-gray-300 hover:text-zakbot-blue pl-2'
-                        : 'text-gray-600 hover:text-zakbot-blue pl-2'
+                      : isScrolled
+                        ? darkMode
+                          ? 'text-gray-300 hover:text-white pl-2'
+                          : 'text-gray-600 hover:text-zakbot-blue pl-2'
+                        : 'text-white hover:text-gray-200 pl-2'
                   }`}
                 >
                   {item.label}

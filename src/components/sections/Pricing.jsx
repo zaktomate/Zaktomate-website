@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-scroll';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaMoneyBillWave, FaBriefcase, FaRocket, FaGift } from 'react-icons/fa';
 import Card from '../common/Card';
 import { getTextColor, getColorClasses } from '../../utils/colorUtils';
 
@@ -87,7 +86,7 @@ const Pricing = () => {
           transition={{ duration: 0.5 }}
           className={`text-3xl font-bold mb-4 ${getTextColor('default')}`}
         >
-          💰 Transparent Pricing for Local Teams
+          <FaMoneyBillWave className="inline-block mr-2" /> Transparent Pricing for Local Teams
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -141,7 +140,7 @@ const Pricing = () => {
                     transition={{ duration: 0.5 }}
                     className="text-3xl md:text-4xl font-bold text-center mb-10 text-cyan-600"
                   >
-                    💼 Choose Your Plan
+                    <FaBriefcase className="inline-block mr-2" /> Choose Your Plan
                   </motion.h3>
                   <div className="grid md:grid-cols-3 gap-8">
                     {pricingPlans.standard.map((plan, index) => {
@@ -167,15 +166,19 @@ const Pricing = () => {
                               </li>
                             ))}
                           </ul>
-                          <Link
-                            to="#contact"
-                            spy={true}
-                            smooth={true}
-                            duration={500}
-                            className={`${planColors.button} text-white py-3 px-6 rounded-md font-bold text-center mt-auto hover:${planColors.buttonHover} transition`}
+                          <button
+                            type="button"
+                            className={`${planColors.button} text-white py-3 px-6 rounded-md font-bold text-center mt-auto hover:${planColors.buttonHover} transition cursor-pointer`}
+                            onClick={() => {
+                              const element = document.querySelector('#contact');
+                              if (element) {
+                                element.scrollIntoView({ behavior: 'smooth' });
+                              }
+                            }}
+                            aria-label="Start Free Trial"
                           >
                             Start Free Trial
-                          </Link>
+                          </button>
                         </Card>
                       );
                     })}
@@ -190,7 +193,7 @@ const Pricing = () => {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="text-3xl md:text-4xl font-bold text-center mb-10 text-purple-600"
                   >
-                    🚀 Premium Plan
+                    <FaRocket className="inline-block mr-2" /> Premium Plan
                   </motion.h3>
                   <div className="flex justify-center">
                     <div className="w-full md:w-2/3 lg:w-1/2">
@@ -217,15 +220,19 @@ const Pricing = () => {
                                 </li>
                               ))}
                             </ul>
-                            <Link
-                              to="#contact"
-                              spy={true}
-                              smooth={true}
-                              duration={500}
-                              className={`${planColors.button} text-white py-3 px-6 rounded-md font-bold text-center mt-auto hover:${planColors.buttonHover} transition`}
+                            <button
+                              type="button"
+                              className={`${planColors.button} text-white py-3 px-6 rounded-md font-bold text-center mt-auto hover:${planColors.buttonHover} transition cursor-pointer`}
+                              onClick={() => {
+                                const element = document.querySelector('#contact');
+                                if (element) {
+                                  element.scrollIntoView({ behavior: 'smooth' });
+                                }
+                              }}
+                              aria-label="Start Free Trial"
                             >
                               Start Free Trial
-                            </Link>
+                            </button>
                           </Card>
                         );
                       })}
@@ -241,7 +248,7 @@ const Pricing = () => {
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="text-3xl md:text-4xl font-bold text-center mb-10 text-green-600"
                   >
-                    🎁 Special Offers
+                    <FaGift className="inline-block mr-2" /> Special Offers
                   </motion.h3>
                   <div className="max-w-3xl mx-auto">
                     <Card

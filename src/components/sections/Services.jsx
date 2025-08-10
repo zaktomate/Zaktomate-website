@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-scroll';
-import { FaBrain, FaBolt, FaShieldAlt, FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaBrain, FaBolt, FaShieldAlt, FaChevronDown, FaChevronUp, FaCheckCircle, FaTools } from 'react-icons/fa';
 import Card from '../common/Card';
 import { getColorClasses, getTextColor } from '../../utils/colorUtils';
 
@@ -13,7 +12,6 @@ const Services = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setAllowAutoScroll(true);
-      console.log('🔍 DEBUG: Services auto-scroll now allowed');
     }, 3000);
     
     return () => clearTimeout(timer);
@@ -120,7 +118,7 @@ const Services = () => {
       color: "zakbot-teal",
       actions: [
         { text: "See Live Demo", href: "#zakbot-demo", primary: true },
-        { text: "Try Zakbot", href: "/zakbot", primary: false }
+        { text: "Try Zakbot", href: "#contact", primary: false }
       ]
     },
     {
@@ -137,8 +135,7 @@ const Services = () => {
       ],
       color: "zakbot-purple",
       actions: [
-        { text: "Book Free Audit", href: "#contact", primary: true },
-        { text: "Talk to Our Team", href: "#contact", primary: false }
+        { text: "Book Free Audit", href: "#contact", primary: true }
       ]
     }
   ];
@@ -195,30 +192,33 @@ const Services = () => {
                 </div>
                 <div className="mt-auto flex flex-wrap gap-4">
                   {service.action ? (
-                    <button className={`${colors.button} text-white py-2 px-6 rounded-md font-bold cursor-not-allowed opacity-50 mt-auto`} disabled>
+                    <button
+                      className={`${colors.button} text-white py-2 px-6 rounded-md font-bold cursor-not-allowed opacity-50 mt-auto`}
+                      disabled
+                      aria-disabled="true"
+                      aria-label={service.action}
+                    >
                       {service.action}
                     </button>
                   ) : service.actions ? (
                     service.actions.map((action, idx) => (
-                      <Link
+                      <button
                         key={idx}
-                        to={action.href}
-                        spy={true}
-                        smooth={true}
-                        duration={500}
-                        className={`${action.primary ? colors.button + ' text-white' : 'bg-transparent border-2 ' + colors.border + ' ' + colors.text} py-2 px-6 rounded-md font-bold hover:opacity-80 transition mt-auto`}
-                        onClick={(e) => {
-                          console.log('🔍 DEBUG: Services button clicked:', action.text, 'allowAutoScroll:', allowAutoScroll);
-                          // Prevent scrolling if it's not a manual click or if auto-scroll is not allowed yet
-                          if ((!e.isTrusted || !allowAutoScroll) && e.type === 'click') {
-                            e.preventDefault();
-                            console.log('🔍 DEBUG: Prevented automatic scroll trigger in services');
-                            return false;
+                        type="button"
+                        className={`${action.primary ? colors.button + ' text-white' : 'bg-transparent border-2 ' + colors.border + ' ' + colors.text} py-2 px-6 rounded-md font-bold hover:opacity-80 transition mt-auto cursor-pointer`}
+                        onClick={() => {
+                          // Only proceed if it's a manual click and auto-scroll is allowed
+                          if (allowAutoScroll) {
+                            const element = document.querySelector(action.href);
+                            if (element) {
+                              element.scrollIntoView({ behavior: 'smooth' });
+                            }
                           }
                         }}
+                        aria-label={action.text}
                       >
                         {action.text}
-                      </Link>
+                      </button>
                     ))
                   ) : null}
                 </div>
@@ -231,7 +231,10 @@ const Services = () => {
         <div className="text-center mt-12">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-lg"
+            className="inline-flex items-center gap-2 bg-cyan-600 hover:bg-cyan-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 text-lg cursor-pointer"
+            aria-expanded={isExpanded}
+            aria-controls="services-expandable-content"
+            type="button"
           >
             {isExpanded ? (
               <>
@@ -249,6 +252,7 @@ const Services = () => {
         <AnimatePresence>
           {isExpanded && (
             <motion.div
+              id="services-expandable-content"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
@@ -264,7 +268,7 @@ const Services = () => {
                     transition={{ duration: 0.5 }}
                     className="text-3xl md:text-4xl font-bold text-center mb-10 text-green-500"
                   >
-                    ✅ Live Now
+                    <FaCheckCircle className="inline-block mr-2" /> Live Now
                   </motion.h3>
                   <div className="grid md:grid-cols-2 gap-8">
                     {detailedServices.liveNow.map((service, index) => {
@@ -296,8 +300,12 @@ const Services = () => {
                           <p className={`mb-6 ${getTextColor('secondary')}`}>
                             <span className="font-semibold">Use Cases:</span> {service.useCases}
                           </p>
-                          <button className={`${colors.button} text-white py-2 px-6 rounded-md font-bold mt-auto`}>
-                            ✅ Live Now
+                          <button
+                            className={`${colors.button} text-white py-2 px-6 rounded-md font-bold mt-auto cursor-pointer`}
+                            aria-label="Live Now Service"
+                            type="button"
+                          >
+                            <FaCheckCircle className="inline-block mr-2" /> Live Now
                           </button>
                         </Card>
                       );
@@ -313,7 +321,7 @@ const Services = () => {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="text-3xl md:text-4xl font-bold text-center mb-10 text-yellow-500"
                   >
-                    🛠️ On Demand Services
+                    <FaTools className="inline-block mr-2" /> On Demand Services
                   </motion.h3>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {detailedServices.onDemand.map((service, index) => {
@@ -345,15 +353,19 @@ const Services = () => {
                           <p className={`mb-6 ${getTextColor('secondary')}`}>
                             <span className="font-semibold">Use Cases:</span> {service.useCases}
                           </p>
-                          <Link
-                            to="#contact"
-                            spy={true}
-                            smooth={true}
-                            duration={500}
-                            className={`${colors.button} text-white py-2 px-6 rounded-md font-bold text-center mt-auto`}
+                          <button
+                            type="button"
+                            className={`${colors.button} text-white py-2 px-6 rounded-md font-bold text-center mt-auto cursor-pointer`}
+                            onClick={() => {
+                              const element = document.querySelector('#contact');
+                              if (element) {
+                                element.scrollIntoView({ behavior: 'smooth' });
+                              }
+                            }}
+                            aria-label="Request Access"
                           >
                             Request Access
-                          </Link>
+                          </button>
                         </Card>
                       );
                     })}

@@ -3,8 +3,10 @@ import Hero from '../components/sections/Hero';
 import WhoIsItFor from '../components/sections/WhoIsItFor';
 import Services from '../components/sections/Services';
 import ChatDemo from '../components/specific/ChatDemo';
+import GlobalStats from '../components/specific/GlobalStats';
 import Pricing from '../components/sections/Pricing';
 import About from '../components/sections/About';
+import FAQSection from '../components/sections/FAQSection';
 import Contact from '../components/sections/Contact';
 
 const Home = ({ setActiveSection }) => {
@@ -24,11 +26,19 @@ const Home = ({ setActiveSection }) => {
         <ChatDemo />
       </section>
 
+      {/* Stats Section */}
+      <section id="stats-dashboard" className="min-h-screen bg-white dark:bg-gray-900">
+        <GlobalStats />
+      </section>
+
       {/* Pricing Section */}
       <Pricing />
 
       {/* About Section */}
       <About />
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Contact Section */}
       <Contact />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaBrain, FaUsers, FaSearch, FaBolt, FaShieldAlt, FaChartLine, FaRobot } from 'react-icons/fa';
+import { FaBrain, FaUsers, FaSearch, FaBolt, FaShieldAlt, FaChartLine, FaRobot, FaHeadphones, FaGraduationCap, FaShoppingCart, FaHospital } from 'react-icons/fa';
 import Card from '../components/common/Card';
 import ChatDemo from '../components/specific/ChatDemo';
 
@@ -52,31 +52,39 @@ const Zakbot = () => {
 
   const useCases = [
     {
+      icon: <FaHeadphones className="text-3xl" />,
       title: "Customer Support",
       description: "Handle customer queries 24/7 with intelligent responses",
-      icon: "🎧"
+      color: "text-zakbot-blue",
+      bgColor: "bg-zakbot-blue",
     },
     {
+      icon: <FaGraduationCap className="text-3xl" />,
       title: "Educational Platforms",
       description: "Assist students with instant answers to their questions",
-      icon: "🎓"
+      color: "text-zakbot-teal",
+      bgColor: "bg-zakbot-teal",
     },
     {
+      icon: <FaShoppingCart className="text-3xl" />,
       title: "E-commerce",
       description: "Help customers with product recommendations and support",
-      icon: "🛒"
+      color: "text-zakbot-purple",
+      bgColor: "bg-zakbot-purple",
     },
     {
+      icon: <FaHospital className="text-3xl" />,
       title: "Healthcare",
       description: "Provide preliminary information and appointment scheduling",
-      icon: "🏥"
+      color: "text-zakbot-blue",
+      bgColor: "bg-zakbot-blue",
     }
   ];
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-zakbot-blue to-zakbot-teal text-white">
+      <section className="min-h-screen bg-gradient-to-br from-zakbot-blue to-zakbot-teal dark:from-zakbot-blue-light dark:to-zakbot-teal-light text-white flex items-center">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -178,14 +186,18 @@ const Zakbot = () => {
             {useCases.map((useCase, index) => (
               <Card
                 key={index}
-                className="h-full text-center"
+                className="feature-card group h-full"
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="text-4xl mb-4">{useCase.icon}</div>
-                <h3 className="text-xl font-bold font-heading text-zakbot-dark dark:text-white mb-3">
+                <div className={`w-16 h-16 rounded-lg ${useCase.bgColor} bg-opacity-10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto`}>
+                  <div className={useCase.color}>
+                    {useCase.icon}
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold font-heading text-zakbot-dark dark:text-white mb-3 text-center">
                   {useCase.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300">
+                <p className="text-gray-600 dark:text-gray-300 text-center">
                   {useCase.description}
                 </p>
               </Card>
@@ -238,7 +250,7 @@ const Zakbot = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-zakbot-blue to-zakbot-teal text-white">
+      <section className="py-20 bg-gradient-to-r from-zakbot-blue to-zakbot-teal dark:from-zakbot-blue-light dark:to-zakbot-teal-light text-white">
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

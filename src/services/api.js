@@ -2,17 +2,19 @@ import axios from 'axios';
 
 // Create an axios instance with default config
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || '/api',
+  baseURL: 'https://zakbot-zaktomate.onrender.com',
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
+
+
 // Chat API - needed for the demo
 export const chatApi = {
   sendMessage: async (message, clientId = 'client_zaktomate', hasSeenGreeting = false) => {
-    const response = await api.post('/api/chat', {
+    const response = await api.post('/chat', {
       client_id: clientId,
       message,
       hasSeenGreeting,
@@ -24,10 +26,7 @@ export const chatApi = {
 // Stats API - for displaying database stats
 export const statsApi = {
   getGlobalStats: async () => {
-    console.log('🌐 DEBUG: Making API call to /api/stats/global');
-    console.log('🌐 DEBUG: API baseURL:', api.defaults.baseURL);
-    const response = await api.get('/api/stats/global');
-    console.log('🌐 DEBUG: API response received:', response.data);
+    const response = await api.get('/stats/global');
     return response.data;
   },
 };

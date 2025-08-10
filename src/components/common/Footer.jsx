@@ -81,7 +81,7 @@ const Footer = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="btn-secondary bg-zakbot-teal hover:bg-zakbot-teal-light"
+                className="btn-secondary bg-zakbot-teal hover:bg-zakbot-teal-light cursor-pointer"
               >
                 Subscribe
               </motion.button>
@@ -199,7 +199,7 @@ const Footer = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={scrollToTop}
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:text-zakbot-teal transition-colors duration-200"
+                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:text-zakbot-teal transition-colors duration-200 cursor-pointer"
                 aria-label="Scroll to top"
               >
                 <FaArrowUp />

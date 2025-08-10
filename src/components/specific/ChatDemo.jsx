@@ -40,9 +40,7 @@ const ChatDemo = () => {
   ];
 
   const scrollToBottom = () => {
-    console.log('🔍 DEBUG: scrollToBottom called');
     if (messagesEndRef.current) {
-      console.log('🔍 DEBUG: Scrolling to bottom with instant behavior');
       // Use instant scrolling to avoid conflicts with global smooth scrolling
       messagesEndRef.current.scrollIntoView({ behavior: 'instant' });
     }
@@ -54,8 +52,6 @@ const ChatDemo = () => {
 
   const handleSendMessage = async (messageText) => {
     if (!messageText.trim()) return;
-
-    console.log('🔍 DEBUG: handleSendMessage called with:', messageText);
     
     const userMessage = {
       id: messages.length + 1,
@@ -64,7 +60,6 @@ const ChatDemo = () => {
       timestamp: new Date(),
     };
 
-    console.log('🔍 DEBUG: Adding user message to state');
     // Temporarily disable auto-scroll to prevent multiple rapid scrolls
     shouldScrollRef.current = false;
     setMessages((prev) => [...prev, userMessage]);
@@ -88,7 +83,6 @@ const ChatDemo = () => {
         timestamp: new Date(),
       };
 
-      console.log('🔍 DEBUG: Adding bot message to state');
       // Temporarily disable auto-scroll to prevent multiple rapid scrolls
       shouldScrollRef.current = false;
       setMessages((prev) => [...prev, botMessage]);
@@ -107,7 +101,6 @@ const ChatDemo = () => {
         timestamp: new Date(),
       };
 
-      console.log('🔍 DEBUG: Adding error message to state');
       // Temporarily disable auto-scroll to prevent multiple rapid scrolls
       shouldScrollRef.current = false;
       setMessages((prev) => [...prev, errorMessage]);
@@ -117,7 +110,6 @@ const ChatDemo = () => {
         shouldScrollRef.current = true;
       }, 100);
     } finally {
-      console.log('🔍 DEBUG: Setting isLoading to false');
       setIsLoading(false);
     }
   };
@@ -184,7 +176,6 @@ const ChatDemo = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3 }}
                     className={`flex ${message.sender === 'user' ? 'justify-end' : 'justify-start'}`}
-                    onAnimationStart={() => console.log('🔍 DEBUG: Animation started for message', message.id)}
                   >
                     <div className={`flex items-start space-x-3 max-w-xs md:max-w-md ${
                       message.sender === 'user' ? 'flex-row-reverse space-x-reverse' : ''
@@ -221,8 +212,6 @@ const ChatDemo = () => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     className="flex justify-start"
-                    onAnimationStart={() => console.log('🔍 DEBUG: Loading indicator animation started')}
-                    onAnimationComplete={() => console.log('🔍 DEBUG: Loading indicator animation completed')}
                   >
                     <div className="flex items-start space-x-3 max-w-xs md:max-w-md">
                       <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 bg-zakbot-teal">
@@ -259,7 +248,7 @@ const ChatDemo = () => {
                   whileTap={{ scale: 0.95 }}
                   type="submit"
                   disabled={isLoading || !inputValue.trim()}
-                  className="btn-primary flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="btn-primary flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
                   <FaPaperPlane />
                   <span>Send</span>
@@ -279,7 +268,7 @@ const ChatDemo = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleSuggestedPrompt(prompt)}
-                    className="text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full transition-colors duration-200"
+                    className="text-sm bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-3 py-1 rounded-full transition-colors duration-200 cursor-pointer"
                   >
                     {prompt}
                   </motion.button>

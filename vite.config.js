@@ -16,7 +16,22 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: false, // Disable sourcemaps in production for security
+    minify: 'terser', // Use terser for better minification
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
+          charts: ['recharts'],
+          animations: ['framer-motion'],
+        },
+      },
+    },
   },
   root: 'src',
+  // Define global constants for production builds
+  define: {
+    __APP_ENV__: JSON.stringify(process.env.NODE_ENV || 'development'),
+  },
 })

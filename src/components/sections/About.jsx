@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
+import { FaBuilding } from 'react-icons/fa';
 import { getTextColor, getColorClasses } from '../../utils/colorUtils';
 
 const About = () => {
@@ -16,7 +17,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className={`text-3xl font-bold mb-4 ${getTextColor('default')}`}
         >
-          🏢 About Zaktomate
+          <FaBuilding className="inline-block mr-2" /> About Zaktomate
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}

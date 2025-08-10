@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaCalendarAlt } from 'react-icons/fa';
 import { getTextColor, getColorClasses } from '../../utils/colorUtils';
 
 const Contact = () => {
@@ -15,7 +16,7 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
           className={`text-3xl font-bold text-center mb-8 ${getTextColor('default')}`}
         >
-          📅 Book a Free Trial or Demo
+          <FaCalendarAlt className="inline-block mr-2" /> Book a Free Trial or Demo
         </motion.h2>
         <motion.p 
           initial={{ opacity: 0, y: 20 }}

@@ -37,7 +37,7 @@ const Hero = ({ setActiveSection }) => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-transparent">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16 bg-gradient-to-br from-zakbot-blue to-zakbot-teal dark:from-zakbot-blue-light dark:to-zakbot-teal-light text-white">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 left-10 w-64 h-64 bg-zakbot-blue rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse-slow"></div>
@@ -55,7 +55,7 @@ const Hero = ({ setActiveSection }) => {
           {/* Main Heading */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-6xl font-bold font-heading text-zakbot-dark dark:text-white mb-6 text-balance mt-6"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold font-heading text-white mb-6 text-balance mt-6"
           >
             Zaktomate — AI Tools That Save You Time
           </motion.h1>
@@ -63,22 +63,22 @@ const Hero = ({ setActiveSection }) => {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10 text-balance"
+            className="text-base sm:text-lg md:text-xl text-white opacity-90 max-w-3xl mx-auto mb-10 text-balance"
           >
             We help Bangladeshi businesses automate repetitive work using easy-to-use AI systems.
             No tech knowledge needed. No extra overhead. Just smart, practical tools.
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center">
+          <motion.div variants={itemVariants} className="flex flex-row gap-3 justify-center">
             <Link
               to="zakbot-demo"
               spy={true}
               smooth={true}
               duration={500}
-              className="btn-primary flex items-center justify-center gap-2"
+              className="bg-white text-zakbot-blue py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base"
             >
-              <FaPlay className="text-sm" />
+              <FaPlay className="text-xs sm:text-sm" />
               Try Zakbot Live
             </Link>
             <Link
@@ -86,10 +86,10 @@ const Hero = ({ setActiveSection }) => {
               spy={true}
               smooth={true}
               duration={500}
-              className="btn-outline flex items-center justify-center gap-2"
+              className="bg-transparent border-2 border-white text-white py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-bold hover:bg-white hover:text-zakbot-blue transition flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base"
             >
               Book a Free Demo
-              <FaArrowRight className="text-sm" />
+              <FaArrowRight className="text-xs sm:text-sm" />
             </Link>
           </motion.div>
 
@@ -99,20 +99,20 @@ const Hero = ({ setActiveSection }) => {
             className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
           >
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold gradient-text dark:gradient-text-dark mb-2">24/7</div>
-              <div className="text-gray-600 dark:text-gray-300">Availability</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">24/7</div>
+              <div className="text-white opacity-80">Availability</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold gradient-text dark:gradient-text-dark mb-2">{"<1s"}</div>
-              <div className="text-gray-600 dark:text-gray-300">Response Time</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">{"<1s"}</div>
+              <div className="text-white opacity-80">Response Time</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold gradient-text dark:gradient-text-dark mb-2">100%</div>
-              <div className="text-gray-600 dark:text-gray-300">Accuracy</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">100%</div>
+              <div className="text-white opacity-80">Accuracy</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold gradient-text dark:gradient-text-dark mb-2">∞</div>
-              <div className="text-gray-600 dark:text-gray-300">Scalability</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">∞</div>
+              <div className="text-white opacity-80">Scalability</div>
             </div>
           </motion.div>
         </motion.div>
