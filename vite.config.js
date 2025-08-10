@@ -19,6 +19,9 @@ export default defineConfig({
     sourcemap: false, // Disable sourcemaps in production for security
     minify: 'terser', // Use terser for better minification
     rollupOptions: {
+      input: {
+        main: './index.html',
+      },
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
@@ -29,7 +32,6 @@ export default defineConfig({
       },
     },
   },
-  root: 'src',
   // Define global constants for production builds
   define: {
     __APP_ENV__: JSON.stringify(process.env.NODE_ENV || 'development'),
