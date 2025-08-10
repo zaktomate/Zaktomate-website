@@ -7,7 +7,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "https://your-api-domain.com/api/$1"
+      "destination": "https://zakbot.zaktomate.com/api/$1"
     }
   ]
 }
