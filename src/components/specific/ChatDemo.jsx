@@ -13,7 +13,7 @@ const ChatDemo = () => {
       localStorage.setItem('zakbot_greeting_seen', 'true');
       return {
         id: 1,
-        text: "Assalamu Alaikum",
+        text: "Hi there! I’m Zakbot, built by the Zaktomate team. I’m here on the website to help you out. What can I do for you today?",
         sender: 'bot',
         timestamp: new Date(),
       };
@@ -21,7 +21,7 @@ const ChatDemo = () => {
       // Returning user - show normal welcome
       return {
         id: 1,
-        text: "Hello! I'm Zakbot, an AI-powered assistant. How can I help you today?",
+        text: "Welcome back! Ready to pick up where you left off, or do you need help with something new today?",
         sender: 'bot',
         timestamp: new Date(),
       };
