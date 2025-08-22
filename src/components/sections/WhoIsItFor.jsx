@@ -4,7 +4,7 @@ import { FaGraduationCap, FaStore, FaRocket, FaUsers } from 'react-icons/fa';
 import Card from '../common/Card';
 import { getTextColor } from '../../utils/colorUtils';
 
-const WhoIsItFor = () => {
+const WhoIsItFor = ({ targetMarket }) => {
   const targetAudience = [
     {
       icon: <FaGraduationCap className="text-3xl" />,
@@ -15,7 +15,7 @@ const WhoIsItFor = () => {
     },
     {
       icon: <FaStore className="text-3xl" />,
-      title: "Small businesses",
+      title: targetMarket === "SMEs" ? "SMEs" : "Small businesses",
       description: "with limited customer support teams",
       color: "text-zakbot-teal",
       bgColor: "bg-zakbot-teal",

@@ -1,10 +1,10 @@
 import React from 'react';
 
 const TeamMember = ({ name, role, description }) => (
-  <div className="team-member p-6 bg-white rounded-lg shadow-md">
+  <div className="card p-6">
     <h3 className="text-xl font-semibold mb-2">{name}</h3>
-    <p className="text-primary-600 font-medium mb-2">{role}</p>
-    <p className="text-gray-700">{description}</p>
+    <p className="text-zakbot-blue font-medium mb-2">{role}</p>
+    <p className="text-gray-700 dark:text-gray-300">{description}</p>
   </div>
 );
 
@@ -33,10 +33,10 @@ const TeamBehindZaktomate = () => {
   ];
 
   return (
-    <section className="team-section py-16 bg-gray-100">
-      <div className="container mx-auto px-4 text-center">
+    <section className="team-section section-padding bg-white dark:bg-gray-900">
+      <div className="container mx-auto px-4 text-left">
         <h2 className="text-3xl font-bold mb-10">The Team Behind Zaktomate</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {teamMembers.map((member, index) => (
             <TeamMember key={index} {...member} />
           ))}

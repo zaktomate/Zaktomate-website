@@ -2,7 +2,7 @@ import React from 'react';
 
 const LookingAheadJoinUs = () => {
   return (
-    <section className="looking-ahead-join-us py-16 bg-primary-700 text-white">
+    <section className="looking-ahead-join-us section-padding bg-zakbot-blue text-white dark:bg-gray-900">
       <div className="container mx-auto px-4 text-center">
         <div className="looking-ahead mb-12">
           <h2 className="text-3xl font-bold mb-4">Looking Ahead</h2>

@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { FaPaperPlane, FaRobot, FaUser, FaCopy, FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
 import { chatApi } from '../../services/api';
 import Card from '../common/Card';
+import { getTextColor } from '../../utils/colorUtils';
 
-const ChatDemo = () => {
+const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
   // Check if user has seen the greeting before
   const getInitialMessage = () => {
     const hasSeenGreeting = localStorage.getItem('zakbot_greeting_seen');
@@ -142,11 +143,10 @@ const ChatDemo = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold font-heading text-zakbot-dark dark:text-white mb-4">
-            Try <span className="gradient-text">Zakbot</span> in Action
+            {headline || `Try Zakbot in Action`}
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Experience the power of AI-driven conversations. Ask questions, get answers, 
-            and see how Zakbot can transform your customer interactions.
+            {microcopy || `Experience the power of AI-driven conversations. Ask questions, get answers, and see how Zakbot can transform your customer interactions.`}
           </p>
         </motion.div>
 
@@ -277,6 +277,49 @@ const ChatDemo = () => {
             </Card>
           )}
         </div>
+
+        {capabilities && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-12 text-center"
+          >
+            <h3 className={`text-2xl font-bold mb-6 ${getTextColor('default')}`}>Key Capabilities</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {capabilities.map((cap, index) => (
+                <div key={index} className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow-md text-left">
+                  <h4 className={`font-semibold mb-2 ${getTextColor('default')}`}>{cap.title}</h4>
+                  <p className={`${getTextColor('secondary')} text-sm`}>{cap.description}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {(cta1 || cta2) && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center mt-12"
+          >
+            <div className="flex justify-center space-x-4">
+              {cta1 && (
+                <button className="bg-zakbot-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-zakbot-dark-blue transition-colors duration-300">
+                  {cta1.text}
+                </button>
+              )}
+              {cta2 && (
+                <a href={cta2.link} className={`text-zakbot-blue px-8 py-3 text-lg font-semibold border border-zakbot-blue rounded-full hover:bg-zakbot-blue hover:text-white transition-colors duration-300 ${getTextColor('default')}`}>
+                  {cta2.text}
+                </a>
+              )}
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );

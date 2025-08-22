@@ -4,7 +4,7 @@ import { Link } from 'react-scroll';
 import { FaBuilding } from 'react-icons/fa';
 import { getTextColor, getColorClasses } from '../../utils/colorUtils';
 
-const About = () => {
+const About = ({ content, ctaText, ctaLink }) => {
   const colors = getColorClasses('zakbot-blue');
 
   return (
@@ -26,16 +26,18 @@ const About = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className={`max-w-3xl mx-auto ${getTextColor('secondary')}`}
         >
-          We're an AI automation agency based in Dhaka, working with local startups, ed-techs, and SMEs.
+          {content || `We're an AI automation agency based in Dhaka, working with local startups, ed-techs, and SMEs.
           Our mission: Make AI useful, simple, and affordable for growing Bangladeshi teams.
-          Whether you need to answer 1,000+ queries daily or create slides in a rush — we build tools that do the work for you.
+          Whether you need to answer 1,000+ queries daily or create slides in a rush — we build tools that do the work for you.`}
         </motion.p>
-        <Link
-          to="/about"
-          className={`inline-block ${colors.button} text-white py-3 px-8 rounded-md font-bold ${colors.buttonHover} transition mt-8`}
-        >
-          Learn More About Us
-        </Link>
+        {ctaText && ctaLink && (
+          <Link
+            to={ctaLink}
+            className={`inline-block ${colors.button} text-white py-3 px-8 rounded-md font-bold ${colors.buttonHover} transition mt-8`}
+          >
+            {ctaText}
+          </Link>
+        )}
       </div>
     </section>
   );
