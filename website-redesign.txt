@@ -1,0 +1,1324 @@
+Executive Summary: A Dual-Audience Web Strategy
+The core of this strategy is to maintain Zaktomate's primary focus on the Bangladeshi EdTech and SME market on the main zaktomate.com domain while concurrently targeting international business owners through a dedicated /en/ subfolder. This approach allows for tailored messaging, pricing, and trust signals for each distinct audience without the overhead of managing separate websites. Additionally, specialized landing pages will be created to convert traffic from freelance platforms like Upwork and Fiverr directly.
+This structure balances local brand clarity with a globally competitive, conversion-first approach for international clients.
+Part 1: Technical SEO & Site Architecture
+This foundation is critical for signaling the site structure to search engines and ensuring the correct content is served to the right audience.
+1.1. URL & Folder Structure:
+Primary (Bangladesh): zaktomate.com/
+This will house all content tailored to the Bangladeshi market.
+International (Global): zaktomate.com/en/
+This subfolder will contain all content aimed at a global business audience.
+Zakbot Page
+zaktomate.com/zakbot
+zaktomate.com/en/zakbot
+1.2. SEO Implementation (hreflang):
+Implement hreflang tags across the site to inform Google about the different language and regional versions of pages.
+On zaktomate.com/, the <head> should include:
+<link rel="alternate" hreflang="en-BD" href="https://zaktomate.com/" />
+<link rel="alternate" hreflang="en" href="https://zaktomate.com/en/" />
+<link rel="alternate" hreflang="x-default" href="https://zaktomate.com/" />
+
+
+On zaktomate.com/en/, the <head> should include:
+<link rel="alternate" hreflang="en-BD" href="https://zaktomate.com/" />
+<link rel="alternate" hreflang="en" href="https://zaktomate.com/en/" />
+<link rel="alternate" hreflang="x-default" href="https://zaktomate.com/" />
+
+
+
+
+
+
+Use canonical tags on all pages to prevent duplicate content issues.
+1.3. Analytics & Tracking:
+Set up Google Analytics 4 with separate data streams or audience segments for / and /en/ traffic.
+Implement conversion tracking for all key calls-to-action (CTAs), differentiating between local and international goals (e.g., "Request a Quote" vs. "Book a Free Consultation").
+Utilize heat mapping software (e.g., Hotjar) to analyze user behavior independently for each audience segment.
+Implement an A/B testing platform (e.g., Google Optimize, VWO) to continuously test and refine elements on both site versions.
+Part 2: zaktomate.com - Bangladeshi Audience Blueprint
+This version of the site retains the core brand identity focused on local EdTech and SMEs.
+2.1. Overall Tone & Positioning:
+Tone: Professional but practical, client-centric, and positioned as a trusted local partner.
+Positioning: The "AI Transformation Partner" for Bangladeshi EdTechs and growing SMEs.
+Pricing: Displayed in Bangladeshi Taka (BDT).
+2.2. Page-by-Page Outline(Key Changes):
+Homepage (/)
+Hero Section:
+Change Headline: "Reinvent How You Work - With AI"
+           Target Market Section(Who is it For):
+Change “Small Businesses” to “SMEs”
+[Add] Section: The Problem / Our Solution
+
+Header (Problem Framing)
+The Hidden Costs of Running a Business in 2025
+Manual tasks and outdated processes silently drain resources, slow growth, and erode competitiveness.
+Pain Points (The Problems)
+Use a three-column grid with icons to visualize.
+ Manual Customer Support
+Endless hours spent answering repetitive queries.
+Support teams stretched thin, leaving customers waiting.
+Scaling feels impossible without inflating costs.
+   Content Bottlenecks
+Marketing and educational content takes weeks, not days.
+Teams struggle to keep up with demand for slides, posts, blogs, and reports.
+Inconsistent quality undermines brand authority.
+    Lead Generation Inefficiencies
+Cold outreach feels random and ineffective.
+Teams lack actionable insights to convert leads into paying clients.
+Valuable opportunities slip through the cracks daily.
+Microcopy below grid:
+"These challenges don’t just slow you down—they quietly hold your business back from reaching its full potential."
+
+      Header (Solution Pivot)
+Zaktomate: Turning Bottlenecks Into BreakthroughsSolutions (What We Do)
+Use three mirrored columns directly under the problems.
+AI-Powered Customer Support
+Smart chatbots trained on your data.
+Available 24/7 with instant, consistent responses.
+Scales effortlessly as you grow.
+Automated Content Creation
+AI-driven slides, notes, blogs, and posts delivered in hours.
+Maintain consistent brand tone and quality.
+Free your team from repetitive creative tasks.
+ 
+Intelligent Lead Generation
+Automated outreach with tailored, AI-personalized messaging.
+Analytics-driven insights to identify and convert leads faster.
+Streamlined workflows that keep your pipeline alive.
+Microcopy below solutions:
+"We don’t just solve problems—we re-engineer the way you operate, so your business is free to focus on what truly matters: growth."
+
+CTA (Close the Section)
+Ready to eliminate the friction in your business?
+[ Get Started with OpsMate ] (primary CTA button)
+[ Explore One-Off Services ] (secondary CTA link)
+
+Core Services Section(what Zaktomate Offers):
+Zakbot Section(Rephrase):
+Zakbot – Your Always-On AI Assistant for Every Interaction
+Zakbot is an intelligent, multilingual AI assistant that works around the clock to deliver instant, accurate answers and personalized guidance — no human intervention required. Whether on your website, app, or learning platform, Zakbot adapts to your content, processes, and audience needs.
+Key Capabilities
+Customer Support Excellence – Instantly resolve common queries, reduce wait times, and free up your team for complex cases.
+Academic Q&A Service – Answer student questions based on courses, assignments, and academic topics in real time, supporting both self-paced and instructor-led learning.
+Course & Content Creation – Help design structured lessons, quizzes, and training modules tailored to your audience.
+Business & Service Teams – Offer product information, onboarding guidance, and service updates instantly.
+Multilingual Communication – Deliver custom responses in multiple languages, including Bangla and English, to reach a wider audience.
+CTAs: “Learn More”(redirect to the dedicated /zakbot landing page) & “Try Zakbot Live”
+[Add]Brand Pillars Section:
+Brand Pillars 
+Simplicity
+Headline: “AI that just works ”
+Microcopy: We strip away the jargon and give you tools that are easy to use, fast to deploy, and built to deliver results from day one.
+Proof Element: Short stat (“Our clients can launch within weeks”).
+Visual: Clean icon (gear turning → check mark).
+ Customization
+Headline: “Tailored to Your Business”
+Microcopy: No two businesses are the same. That’s why every Zakbot solution adapts to your exact processes, not the other way around.
+Proof Element: Mini-case: “Custom-trained chatbot for your business can handle thousands of queries/month.”
+Visual: Puzzle pieces fitting together.
+. Affordability
+Headline: “AI shouldn’t break the bank.”
+Microcopy: We make automation accessible. Transparent pricing ensures you get enterprise-grade capability without enterprise-grade costs.
+Proof Element: Comparison badge: “Save up to 70% vs global providers.”
+Visual: Wallet or pricing tag icon.
+
+Trust
+Headline: “Your Trusted AI Partner”
+Microcopy: From data security to long-term support, we don’t just deploy automation—we stand by it. Our team is your partner, not just your vendor.
+Proof Element: Zakbot demo snippet
+Visual: Shield icon.
+Section Layout Recommendation
+4 Sections stacked
+Each section = visual → headline → microcpy → proof.
+Add subtle animation on scroll (fade/slide).
+Wrap with headline above grid: “Why Choose Zaktomate?”.
+[Add]Trust Signals:
+Add common Zaktomate related logos: OpenAI, Openrouter, Kilocode, Google Gemini, MongoDB and others(no explanations or claims needed, just the logos)
+Example:
+
+
+
+About Zaktomate(Rephrase)
+Zaktomate is an AI automation agency based in Dhaka, dedicated to helping startups, ed‑tech companies, and SMEs work smarter. Our mission is simple: make AI useful, easy to adopt, and affordable for growing teams in Bangladesh and beyond.
+We design intelligent tools that take the weight off your daily operations—whether it’s answering thousands of customer queries in a day or creating polished presentations in minutes. Every solution we build is crafted to save time, cut costs, and unlock new possibilities for your business.
+[Learn More About Us]
+
+
+Services Page (/services)
+Add a “Coming Soon” tag to Zakdeck
+Zakbot(Rephrase):
+Zakbot – Your Always-On AI Assistant
+Launch an intelligent chatbot that’s ready to handle questions, capture new leads, and deliver instant support around the clock.
+Works seamlessly on: Websites, Messenger, WhatsApp
+Ideal for: Student helpdesks, lead generation, product support
+Now live and ready to connect
+CTA: “Learn More”(to /zakbot page)
+Move & Tag AI Exam Typing & Formatting to Live now
+Move & Tag Lecture Notes & Summaries Generator to Live Now
+FAQ 
+General
+Q1: What is Zaktomate?
+ A1: Zaktomate is a Dhaka-based AI solutions provider helping Bangladeshi EdTechs, coaching centers, and SMEs automate content creation, customer support, and business workflows. We build AI tools like Zakbot (chatbots) and Zakdeck (AI-powered slides & notes) that save time and increase efficiency.
+Q2: Who is Zaktomate for?
+ A2: We work with:
+EdTech companies & coaching centers needing automated lecture notes, quizzes, and student support.
+
+
+Small & medium businesses (SMEs) looking to automate marketing, customer queries, and operations.
+
+
+Institutions & training centers wanting to scale without adding more staff.
+
+
+Q3: Do I need coding knowledge to use Zaktomate?
+ A3: Not at all. Our tools are designed for teachers, administrators, and business owners with no technical background. Everything is set up by our team, so you can focus on running your institution or business.
+
+Chatbot Features
+Q4: What can Zakbot (the Zaktomate chatbot) do?
+ A4: Zakbot is highly flexible for Bangladeshi use cases. For example:
+EdTech: Answer admission queries, generate quizzes, support students 24/7.
+
+
+SMEs: Manage customer support, nurture leads, and track FAQs.
+
+
+General: Automate internal workflows like HR questions or document lookups.
+
+
+Q5: Can I customize the chatbot responses?
+ A5: Yes. Zakbot can be trained on your own documents, website, or policies. Responses can be bilingual (English & Bangla), and the tone can be adjusted to sound friendly, formal, or professional—based on your brand.
+
+Service & Pricing
+Q6: Is Zaktomate free to use?
+ A6: We provide free demo access so you can see Zakbot and Zakdeck in action. For regular use, we offer affordable monthly packages starting at BDT 10,000, as well as one-off services if you want to try us first.
+Q7: How do I upgrade to a premium plan?
+ A7: Just click “Request a Free Local Demo” or contact our team. We’ll recommend the right plan—whether it’s Ignite, Accelerate, Transform, or Pinnacle—based on your institution’s needs. You’ll receive onboarding support to get started smoothly.
+
+Visual & UX Guidelines for the BD FAQ
+Icons: Use education-themed visuals (book, student, classroom) alongside business visuals (handshake, chat bubble, document).
+
+
+Layout: Accordion or collapsible questions for easy browsing on mobile (since most Bangladeshi users will be mobile-first).
+
+
+Tone: Simple, practical, client-first. Avoid jargon—speak in terms EdTech owners and SME managers understand.
+
+
+CTA Integration: Add buttons under pricing answers: [ Request a Local Demo ] [ See Pricing Plans ]
+
+
+
+[Add] Zakbot Page
+
+URL: https://zaktomate.com/en/zakbot/ (international version)
+
+
+Hero Section (Above the Fold)
+Headline (EN):
+“Meet Zakbot — Your AI Assistant That Works 24/7”
+Subheadline:
+“Trained on your business data, Zakbot handles support, customer queries, and content — so your team can focus on growth.”
+Primary CTA: “Try Zakbot Live” (opens demo sandbox modal)
+Secondary CTA: “Contact Us”
+Visual: Animated demo of Zakbot answering questions (gif or embedded widget).
+The Problems (3 Columns with Icons)
+ 	Overloaded Support Teams
+Students and customers flood inboxes with repetitive queries.
+Delays in responses hurt trust and retention.
+ Content & Exam Bottlenecks
+Teachers and admins spend hours formatting quizzes, notes, and slides.
+Growing class sizes make manual work unsustainable.
+ Missed Growth Opportunities
+Coaching centers struggle to nurture leads efficiently.
+SMEs can’t keep up with customer engagement across channels.
+The Solution: Zakbot for EdTechs & SMEs
+
+Zakbot is your 24/7 assistant—trained to handle your institution’s real needs.
+
+AI-Powered Student & Customer Support
+Answers FAQs instantly (admissions, schedules, policies).
+Handles common Customer Quiries
+Escalates complex cases to staff when needed.
+             Dynamic Learning Content Generation
+Quiz Generation: Zakbot creates practice quizzes from your syllabus.
+Course Material: Summaries, lecture notes, and study guides generated on demand.
+Exam Formatting: Automates paper structuring and editing.
+             Lead Nurture & Engagement
+Zakbot qualifies prospects for coaching centers & SMEs.
+Personalized drip-messaging keeps students/customers engaged.
+Showcase Plan demo: see Zakbot generate a quiz, answer student queries, and create course content—all in one flow.
+Key Features (Visual Grid)
+Custom Knowledge Training — Train on your docs, FAQs, syllabus, policies.
+Multi-Language — English & Bangla and more.
+Omnichannel Deployment — Website widget, WhatsApp, Messenger, App.
+Analytics Dashboard — Track queries, satisfaction, fallback %.
+Handoff to Human — Escalates to live support when needed.
+Secure & Private — Data stored securely, customizable retention.
+
+      Live Demo Sandbox
+Keep as it isClosing CTA:
+"Transform how your institution operates—free up teachers, empower staff, and give students faster support."
+[ Request a Free Local Demo ] [ Try Zakbot Live ]
+
+
+Pricing Page (/pricing)
+ Hero Section (Top of Pricing Page)
+Headline: "Flexible Plans for Every Stage of AI Adoption"
+Subtext: "Whether you want a one-off project to test the waters or a long-term partner to scale AI across your business—we’ve got you covered."
+ Primary Track – OpsMate Plan (Flagship)
+Title: OpsMate – Your Dedicated AI Acquisition Partner
+Short Pitch: "Designed for businesses ready to integrate AI into their operations for sustained growth and efficiency."
+Key Value Points:
+End-to-end AI transformation support
+Tailored workflows for your business model
+Dedicated team support and scaling capacity
+CTA: "Start Your AI Journey"
+Update Tracks to:
+
+Ignite
+BDT 10,000/month
+Zakdeck: 50 decks/month
+Zakbot: 5,000 messages/month
+1 pre-built AI automation
+Basic email support
+Accelerate
+BDT 25,000/month
+Zakdeck: 500 decks/month
+Zakbot: 15,000 messages/month
+Up to 3 customized workflows & integrations
+Priority Email support
+Onboarding assistance
+
+Transform
+	BDT 40,000/month
+Zakdeck: 1000 decks/month
+Zakbot: 30,000 messages/month
+Up to 10 workflows & automations
+Priority support Email & Call 24/7
+Special Onboarding assistance
+
+Pinnacle
+From BDT 60,000/month
+Custom Enterprise Integration & Pricing
+Zakdeck & Zakbot: Unlimited usage
+Unlimited workflows & custom AI agents
+Priority support 24/7 & on-demand engineering support with SLA
+Premium integrations
+Dedicated CSM support
+Free training & workshops for staff
+Regular AI consulting support
+Secondary Track – One-Off Services (Starter Option)
+Positioned as an “entry ramp” to OpsMate.
+
+Section Title:"Not Ready for Full OpsMate? Start Off with One-Off Services”
+Microcopy:"Test our expertise with a single project. Experience our quality, reliability, and impact—then scale into a long-term OpsMate partnership when you’re ready."
+Example One-Off Services (showcase but keep pricing custom):
+Sub-text: All services are delivered and priced as one-time setup only. Any recurring costs are on the client.
+Zakbot Setup
+Zakdeck Setup
+Exam Formatter
+Q&A Service
+AI Summarization & Notes
+
+
+
+Value Framing:
+Low commitment, high impact – see immediate results without long contracts
+Proof of trust – validate our process before scaling up
+Custom-fit solutions – tailored to your specific project need
+Bridge to OpsMate – once you’re confident, transition seamlessly into a full partnership
+Pricing:
+Label: Custom Pricing
+Subtext: "Every project is unique. Get a tailored quote for your exact requirements."
+CTA:
+Button: "Request a One-Off Project"
+[Add] Comparison Table: One-Off Services vs OpsMate Plans
+
+Header: Choose What Suits You Best
+Feature / Plan
+One-Off Services
+Ignite - Tactical starter projects
+Accelerate - Growth focused plan
+Transform - Full scale automation
+Pinnacle - Purpose Enterprise grade AI
+Commitment
+One-time setup only
+Monthly
+Monthly
+Monthly
+Monthly / Enterprise contract
+Zakdeck (AI Decks)
+Custom setup only
+50 decks/mo
+500 decks/mo
+1000 decks/mo
+Unlimited
+Zakbot (AI Messages)
+Custom setup only
+5,000 msgs/mo
+15,000 msgs/mo
+30,000 msgs/mo
+Unlimited
+Workflows & Automations
+1-time workflow or tool setup
+1 pre-built automation
+Up to 3 customized workflows & integrations
+Up to 10 workflows & automations
+Unlimited workflows & custom AI agents
+Support
+Email (project-based)
+Basic Email
+Priority Email
+Priority Email + 24/7 Call Support
+24/7 Priority Support + On-demand Engineering (SLA)
+Onboarding & Training
+Limited setup guidance
+Basic onboarding
+Onboarding assistance
+Special onboarding assistance
+Dedicated CSM + Free Staff Training & Workshops
+Integration Level
+Single use-case integration
+Pre-built automation
+Semi-custom integrations
+Multi-system automation
+Premium enterprise-grade integrations
+Consulting
+Setup consulting only
+–
+–
+Regular AI consulting support
+Regular AI consulting support
+Scalability
+Not scalable beyond setup
+Limited
+Moderate
+High
+Enterprise, unlimited scale
+Best For
+Testing AI with minimal risk
+Early adopters & small teams
+SMEs scaling with AI
+Businesses running AI across core ops
+Large enterprises with advanced needs
+Pricing
+Custom (per project)
+Fixed monthly (10,000 BDT)
+Fixed monthly (25,000 BDT)
+Fixed monthly (40,000 BDT)
+Custom (enterprise) from 60,000 BDT
+CTA (Buttons)
+Request a One-Off Project
+Start Ignite
+Start Accelerate
+Start Transform
+Talk to Sales
+
+Positioning Notes (microcopy for under the table):
+One-Off Services: “Ideal for testing AI with no long-term commitment. Most clients transition to OpsMate after their first project.”
+OpsMate Plans: “Designed for scaling AI adoption over time. Each higher plan adds more workflows, integrations, and premium support to fit your business growth.”
+Highlight: Add an effect on Accelerate to draw eyes.
+[Add]About Us Page (/about)
+About Us Page
+
+Our Purpose
+
+At Zaktomate, we believe AI is more than a tool—it’s a partner for transformation. Businesses across the world are overwhelmed by operational inefficiencies and growing digital complexity. Our mission is to simplify this complexity through intelligent automation that is accessible, customizable, and built for real business impact.
+We started Zaktomate with a simple question: How can we make AI practical, reliable, and transformative for everyday businesses? That question guides everything we build.
+
+
+
+
+Our Story
+
+Zaktomate was born in Dhaka, but with a vision that goes far beyond borders. It started with a group of students who weren’t satisfied with how businesses—especially in emerging markets—struggled to adopt AI. Most tools were either too expensive, too complicated, or too disconnected from the realities of running a business.
+We asked ourselves: What if AI could be packaged as a service, designed around people—not the other way around?
+From that simple question, Zaktomate grew. Today, we are building AI systems and solutions that bridge the gap between cutting-edge technology and everyday business needs. What began as experiments in automating repetitive academic and content workflows has become a platform for long-term AI transformation—starting with ed-tech and SMEs, and now extending to global clients through platforms like Fiverr and Upwork.
+That’s when Zaktomate’s identity crystallized: an AI transformation partner that grows with you.
+
+
+Our Values
+
+Simplicity – We cut through complexity to deliver clarity and efficiency.
+Customization – Every client is unique; our solutions adapt to your workflow, not the other way around.
+Affordability – AI should drive ROI, not drain budgets.
+Trust – Long-term relationships over quick wins.
+Global Mindset – While rooted in Dhaka, our outlook is borderless.
+The Team Behind Zaktomate
+
+Abid Bin Yusuf – CEO & Co-Founder
+Abid leads Zaktomate with a clear vision: making AI practical and transformative for businesses of all sizes. With a background in entrepreneurship and a relentless drive for execution, he ensures that strategy aligns with action. Abid is passionate about bridging the gap between AI potential and real-world adoption, always emphasizing sustainable growth over quick wins.
+Focus: Strategic leadership, vision-setting, client relationships, and scaling operations.Shahriar Hossain Fahim – CTO & Co-Founder
+Shahriar is the technical brain behind Zaktomate. With deep expertise in automation workflows, full-stack development, and AI implementation, he transforms ambitious ideas into reliable systems. His focus is always on building modular, scalable, and future-proof solutions that adapt as businesses evolve.
+Focus: Product architecture, R&D, technical delivery, and platform scalability.Shoyeb Morshed – COO & Co-Founder
+Shoyeb brings structure and operational rigor to Zaktomate. From ensuring projects run smoothly to optimizing resource allocation, he makes sure the engine of Zaktomate runs efficiently. With a sharp eye for process and execution, he ensures clients experience seamless delivery every time.
+Focus: Operations, project management, and delivery excellence.Abdullah Ahsan – CFO & Co-Founder
+Abdullah ensures that Zaktomate remains financially disciplined while still investing in bold innovation. He manages budgeting, investor relations, and financial forecasting to keep the company’s growth sustainable and future-proof. His pragmatic approach helps balance ambition with financial prudence.
+Focus: Finance, sustainability, and long-term investment strategy.
+
+Looking Ahead
+We are building more than a company—we are building a future where businesses don’t fear AI but embrace it as a natural extension of how they work. From Dhaka to the world, our goal is to be a trusted AI partner that grows with you, not just for you.
+
+Join Us
+
+Headline: Partner with Bangladesh’s AI Vanguard
+Subtext:
+Whether you're a local education brand or a global business seeking reliable AI automation, partnering with Zaktomate means joining a mission to transform—and to scale with integrity.
+CTA: “Talk to Our Team”
+
+
+Part 3: zaktomate.com/en/ - International Audience Blueprint
+This version is redesigned to be a high-conversion hub for international business owners seeking a "done-for-you" AI automation partner.
+3.1. Overall Tone & Positioning:
+Tone: Professional, results-driven, and focused on ROI.
+New Positioning Statement: "Zaktomate is your dedicated AI automation partner that transforms business operations without the complexity."
+Pricing: Displayed in USD.
+3.2. Page-by-Page Outline:
+Homepage (/en/)
+Hero Section:
+Headline: "Transform Your Business with AI"
+Subheadline: "We build, deploy, and manage AI systems that save you 20+ hours per week—without you lifting a finger."
+Primary CTA: "Get Free Consultation Call"
+Secondary CTA: "Contact Us"
+           Problem / Solution Section(/en/)
+Header: Business Growth Is Stalled by Hidden Inefficiencies
+Manual processes quietly drain time, money, and morale.
+The Problems (3 Columns with Icons)
+Manual Support Costs
+Endless tickets and FAQs handled by stretched teams.
+Slow response times frustrate customers and block scale.
+    	   Content Bottlenecks
+Slides, posts, and reports take weeks.
+Scaling content creation across multiple platforms feels impossible.
+    Inefficient Lead Generation
+Cold outreach is hit-or-miss.
+Sales teams lose valuable hours chasing unqualified leads.
+The Zaktomate Solution – AI Automation That Scales With You
+Zaktomate builds intelligent automation systems that remove the friction holding businesses back — without sacrificing quality or personalization.
+   	        AI-Powered Customer & User Support
+Automates repetitive queries 24/7 across multiple channels.
+Scales effortlessly from hundreds to hundreds of thousands of interactions.
+Integrates with websites, messaging apps, and internal platforms.
+Content & Workflow Automation
+Generates decks, summaries, posts, and reports on demand.
+Uses smart prompts and templates to create consistent, on-brand content at scale.
+Streamlines repetitive workflows so teams can focus on strategy and creativity.
+Smarter Lead Generation & Nurturing
+Engages prospects with personalized AI-driven messaging.
+Built-in analytics reveal what drives conversions.
+Automated qualification ensures sales teams focus on high-value leads.
+How It Works Section (3-Step Process):
+Consultation Call: We analyze your business needs (Free).
+Custom Development: We build your AI solution in days.
+Launch & Support: Go live with ongoing optimization.
+Closing CTA:
+"Ready to scale your business without scaling your overhead?"
+[ Get Free Consultation ] [ Try Zakbot Demo ]
+
+
+
+Brand Pillars Section(same as zaktomate.com/)
+ Simplicity
+Headline: “AI that just works ”
+Microcopy: We strip away the jargon and give you tools that are easy to use, fast to deploy, and built to deliver results from day one.
+Proof Element: Short stat (“Our clients can launch within weeks”).
+Visual: Clean icon (gear turning → check mark).
+           Customization
+Headline: “Tailored to Your Business”
+Microcopy: No two businesses are the same. That’s why every Zakbot solution adapts to your exact processes, not the other way around.
+Proof Element: Mini-case: “Custom-trained chatbot for your business can handle thousands of queries/month.”
+Visual: Puzzle pieces fitting together.
+Affordability
+Headline: “AI shouldn’t break the bank.”
+Microcopy: We make automation accessible. Transparent pricing ensures you get enterprise-grade capability without enterprise-grade costs.
+Proof Element: Comparison badge: “Save up to 70% vs global providers.”
+Visual: Wallet or pricing tag icon.
+Trust
+Headline: “Your Trusted AI Partner”
+Microcopy: From data security to long-term support, we don’t just deploy automation—we stand by it. Our team is your partner, not just your vendor.
+Proof Element: Zakbot demo snippet
+Visual: Shield icon.
+Section Layout Recommendation
+4 Sections stacked
+Each section = visual → headline → microcopy → proof.
+Add subtle animation on scroll (fade/slide).
+Wrap with headline above grid: “Why Choose Zaktomate?”.
+Trust Signals:
+Add common Zaktomate related logos: OpenAI, Openrouter, Kilocode, Google Gemini, MongoDB and others(no explanations or claims needed, just the logos)
+Example
+
+
+
+
+/en/services — Zaktomate (International)
+Goal: convert mid-market/SMB & international SMEs and product buyers by combining product demos (Zakbot + Zakdeck) with enterprise-grade trust (integration, SLAs, Responsible AI).
+
+
+Page Outline (top → bottom)
+Hero / Value proposition
+
+
+Quick service overview (3–4 product tiles)
+
+
+Flagship product: Zakbot (deep module breakdown + showcase demo)
+
+
+Content automation: Zakdeck & Course Generator
+
+
+Marketing & Lead Automation (growth stack)
+
+
+Internal Ops & HR automation (employee-facing use cases)
+
+
+Integration & Technical Specs (stack, connectors, infra)
+
+
+Security, Compliance & Responsible AI (trust signals)
+
+
+Pricing & Packages (OpsMate summary + one-off CTA)
+
+
+Onboarding & SLA (time-to-deploy, support)
+
+
+Case Studies / ROI highlights
+
+
+FAQ + Footer CTA (demo, contact)
+
+
+
+1) HERO — above the fold
+Header (H1):
+ Transform Operations with Custom AI Automation
+Subhead:
+ We build, deploy and operate AI systems that cut repetitive work, accelerate growth, and integrate with your stack — delivered as managed service or productized modules.
+Primary CTA: Get Free Consultation
+ Secondary CTA: Try Zakbot Demo
+Hero microcopy (1 line):
+ Proven automations for support, content, leads and internal ops — live in weeks, ROI in months.
+Visual: short looping demo of Zakbot answering queries (video/GIF)
+Example:
+https://sigmoidal.io/ 
+
+
+
+2) Quick Services Overview (3–4 tile row)
+Tiles: Zakbot | Zakdeck| Marketing Automation | OpsMate (Managed Program)
+Each tile: title, 1-line benefit, 3 micro bullets, small CTA (“See demo” / “Request quote”).
+ Example tile copy for Zakbot:
+Title: Zakbot — Conversational AI Platform
+
+
+1-line: 24/7 contextual assistants that reduce tickets and qualify leads.
+
+
+Bullets: Multichannel (web/WhatsApp/Slack), RAG-trained on your data, CRM & LMS connectors.
+
+
+CTA: Try Live Demo
+
+
+Visual: compact icons + small animation on hover. Use productized badges (e.g., “Most popular” on OpsMate).
+
+3) Flagship: ZAKBOT — deep product block (primary conversion driver)
+Section header (H2): Zakbot — Your Multi-purpose AI Assistant
+Intro microcopy:
+ Zakbot is a modular, multi-tenant conversational platform that connects to your content, automates repetitive workflows, and scales from a single department to enterprise-wide deployments. Built to be extended: knowledge ingestion → retrieval (RAG) → generation → human handoff.
+Subsections (each with microcopy + visual/UX guidance)
+A. Live Showcase (card / interactive demo) — first element
+~CTO
+B. Core Capabilities (3-column feature grid)
+Knowledge Ingestion: PDF/HTML/LMS exports → auto-indexed. “Upload once; Zakbot learns continuously.”
+
+
+RAG + Retrieval: Fast, contextual retrieval with tenant isolation. “Answers sourced from your documents — not generic web noise.”
+
+
+Generation & Templates: Auto-generated replies, slides, quizzes from prompts/templates. “From a syllabus to a full quiz set in minutes.”
+
+
+Channels & Integrations: Web widget, WhatsApp, Messenger, Slack, CRM, LMS, email. “Plug into workflows customers already use.”
+
+
+Analytics & SLAs: Usage metrics, fallback triggers, monthly performance reports. “Measure value, not just usage.”
+
+
+C. Packaged Use-Cases (cards) — linked to deeper anchors
+ Each card: Title, Impact stat, 3 bullets, microcopy, “See example” CTA.
+Educational Knowledge Bots — reduce student support, automate syllabus Q&A.
+
+
+Course Material Generator — slides, notes, quizzes from program outlines.
+
+
+Customer Support Automation — ticket deflection and 24/7 answers.
+
+
+Lead Qualification Bots — qualify & route leads to CRM.
+
+
+Internal Ops (HR/onboarding) — searchable knowledge base for employees.
+
+
+Multi-Language Delivery — swap embedding models & translation layer for localized output.
+
+
+D. Quick technical note (short)
+~CTO
+
+
+Visuals: interactive carousel of use-case flows (e.g., student asks → Zakbot responds → escalates to human). Use small animated icons for channels.
+
+4) Content Automation — ZAKDECK & Course Generator
+H2: Zakdeck — Create Professional Learning & Marketing Content in Minutes
+Intro microcopy:
+ Generate slide decks, lecture notes, and exam papers with templates that preserve your brand and pedagogy.
+Feature bullets (microcopy):
+Slide packs: auto-generate 1–50 slide decks from curriculum or short briefs.
+
+
+Notes & Summaries: long-form lectures converted into concise study notes.
+
+
+Quiz & Exam Formatter: generate and format Q&A with difficulty tagging.
+
+
+Version control: outputs stored per client for reuse & audit.
+
+
+Visual: two-column: left — demo thumbnails of generated slide pages; right — short list with “Generate sample deck” CTA.
+Positioning: cross-sell with Zakbot (generate quizzes and push them into chat flows).
+
+5) Marketing & Lead Automation
+H2: Growth Automation — From Traffic to Qualified Pipeline
+Microcopy:
+ Automate the front-of-funnel with persona-based campaigns, chat nurtures, and CRM syncs.
+Capabilities list:
+Lead capture & qualification (live bot + forms)
+
+
+Personalized nurture flows (AI-personalized messaging)
+
+
+Campaign scheduling & analytics (email/SMS connectors)
+
+
+Persona presets (fast GTM templates) — saves setup time.
+
+
+Visual: funnel graphic with animated bot at top capturing leads → CRM → sales handoff.
+Tactical tie: provide prebuilt templates for common industries (SaaS, e-commerce, ed-tech).
+
+6) Internal Ops & HR Automation
+H2: Employee-facing Bots — Reduce interruptions, speed onboarding
+Microcopy:
+ Give your team a searchable knowledge hub and automated onboarding flows to accelerate productivity.
+Key features: policy lookup, benefits Q&A, guided onboarding sequences, auto-generated HR docs.
+Visual: workflow diagram showing onboarding steps orchestrated by Zakbot.
+
+7) Integrations & Technical Specifications
+H2: Integrations, APIs & Architecture
+Microcopy:
+ We integrate with standard enterprise tools and provide API based systems, webhooks, and managed connectors for fast integration.
+List (icons): CRM (HubSpot), LMS (Canvas), Messaging (WhatsApp, Messenger), Cloud (AWS & GCP), Data stores (S3, Postgres), Monitoring (Datadog/Prometheus).
+Visual: grid of connector logos + a small architecture diagram (ingest → index → query → generate → client).
+Technical CTA: “View full integration guide” (link to docs).
+
+8) Security, Compliance & Responsible AI (trust block)
+H2: Security & Responsible AI
+Microcopy:
+ Security is non-negotiable. We isolate client data and offer opt-in retention policies and SLA-backed support. For international clients, we provide contractual data terms and can discuss region-specific data residency.
+Subitems: tenant sharding, GDPR-friendly controls, model explainability & human-in-loop features.
+Visual: shield icon + simple checklist (encryption, isolation, SLAs).
+
+9) Pricing & Packages (international focus)
+H2: Flexible commercial models — productized or managed
+Microcopy:
+ Choose a product-first plan or a managed OpsMate partnership. Pricing is custom for enterprise; productized tiers and one-off projects available for faster onboarding.
+Structure (short):
+One-Off Projects: custom priced — ideal for pilots and fast wins. (links to Request Quote)
+
+
+Product Tiers (starter/growth/scale): productized usage bands for Zakbot / Zakdeck.
+
+
+OpsMate (managed program): monthly managed tiers (Ignite/Accelerate/Transform/Pinnacle) — custom quotes for enterprise SLA and engineering support.
+
+
+Microcopy CTA: “Contact sales for a tailored quote.” 
+
+10) Onboarding & SLA (time to value)
+H2: Deployments in 2–4 weeks — clear milestones
+Microcopy:
+ Discovery → Data ingestion → Pilot → Launch → Optimize. Standard pilot: 2–3 weeks to production for knowledge-base bots; course-generation pilots in weeks.
+Visual: 5-step timeline (Discovery, Setup, Training, Pilot, Handover).
+SLA bullets: uptime targets, response times, monthly performance report (retention hook).
+
+
+
+/en/FAQ — International Version
+General
+Q1: What is Zaktomate?
+ A1: Zaktomate is a business-focused AI automation platform that delivers tailored chatbot and content-generation solutions—like Zakbot and Zakdeck—built to streamline support, marketing, and operational workflows across industries worldwide.
+Q2: Who is Zaktomate for?
+ A2: Zaktomate serves organizations looking to automate repetitive tasks and scale smarter—ranging from e-commerce and SaaS businesses to educational institutions, SMEs, and enterprise teams seeking efficient, AI-driven solutions. Whether you require one-off automations or a full OpsMate-managed program, we adapt to your needs.
+Q3: Do I need any coding skills to use Zaktomate?
+ A3: No technical expertise is required. Our modular platform, demo-focused sandbox, and onboarding flows let non-technical users launch Zakbot and Zakdeck with minimal setup. Of course, technical teams can extend the experience via API, integration, or automation for deeper use cases.
+
+Chatbot Features
+Q4: What can the Zaktomate chatbot (Zakbot) do?
+ A4: Zakbot offers versatile use cases, including 24/7 customer support, lead qualification, internal knowledge base access, onboarding workflows, and multilingual content delivery. It’s trained on your documents, integrated into your platforms, and customizable to match your branding and voice.
+Q5: Can I customize the chatbot’s responses?
+ A5: Absolutely. You can define tone, response templates, fallback logic, and escalation paths. Zakbot also supports dynamic content such as quizzes, slides, or summaries based on your prompts and document library—making it both personal and scalable.
+
+Service & Pricing
+Q6: Is Zaktomate free to use?
+ A6: We offer limited-time demo access and one-off pilots to test the platform’s capabilities. For production use, we offer transparent product tiers (Starter, Growth, Scale), as well as managed OpsMate plans (Ignite → Pinnacle) customized to your organization's scale and support requirements.
+Q7: How do I upgrade to a premium or managed plan?
+ A7: Simply reach out via “Contact Sales” or “Get Free Consultation.” We’ll review your needs, propose the optimal product tier or OpsMate package, and guide you through onboarding, deployment timeline, and integration—all custom-tailored to ensure impact and ROI.
+Visual & UX Guidelines for the FAQ Section
+Layout: Accordion format with smooth expand/collapse transitions; FAQ categories (“General,” “Chatbot Features,” “Service & Pricing”) collapsed on load for scanability.
+
+
+Icons: Use subtle, context-appropriate icons next to each question (e.g., globe for “What is Zaktomate,” headset/chat for chatbot Qs, pricing tag for service/pricing Qs).
+
+
+Styling: Clean sans-serif headings (H3) for questions, standard paragraph text for answers; bold key terms (e.g., “modular platform,” “OpsMate plans”) to highlight learnable points.
+
+
+Connectivity: Provide inline links where relevant—for example, “demo access” linking to the sandbox, “Starter, Growth, Scale” linking to pricing section, and “Contact Sales” to a contact form.
+
+
+
+Microcopy Library — Ready to Use
+Hero microcopy:
+“We build, deploy and operate AI systems that cut repetitive work, accelerate growth, and integrate with your stack.”
+
+
+Zakbot feature lines (cards):
+Knowledge Ingestion: “Upload PDFs, LMS exports, or URLs — Zakbot ingests and indexes it for instant answers.”
+
+
+RAG Retrieval: “Contextual answers from your content—no hallucinations, only sourced responses.”
+
+
+Templates & Generation: “Generate slide decks, summaries and quizzes from a single brief.”
+
+
+Channels: “Deploy across web, WhatsApp, Messenger and Slack without engineering lift.”
+
+
+Analytics: “Monthly performance reports and actionable insights to prove ROI.”
+
+
+OpsMate blurb (pricing block):
+“OpsMate is our managed program: full-service onboarding, ongoing optimization, and a dedicated team delivering measurable operational outcomes.”
+
+
+Security microcopy:
+“Encryption at rest and in transit. Tenant isolation by design. Opt-in data retention and contractual protections available.”
+
+
+CTA microcopies:
+Primary CTA: “Book a Free Consultation”
+
+
+Demo CTA: “Try Zakbot Live”
+
+
+Pricing CTA: “Request a Custom Quote”
+
+
+
+
+
+[Add] Zakbot Dedicated Page 
+URL: https://zaktomate.com/en/zakbot/ (international version)1. Hero Section (Above the Fold)
+Headline (EN):
+“Meet Zakbot — Your AI Assistant That Works 24/7”
+Subheadline:
+“Trained on your business data, Zakbot handles support, customer queries, and content — so your team can focus on growth.”
+Primary CTA: “Try Zakbot Live” (opens demo sandbox modal)
+Secondary CTA: “Contact Us”
+Visual: Animated demo of Zakbot answering questions (gif or embedded widget).
+The Problems (3 Columns with Icons)
+Manual Support Costs
+Endless tickets and FAQs handled by stretched teams.
+Slow response times frustrate customers and block scale.
+Content Bottlenecks
+Slides, posts, and reports take weeks.
+Scaling content creation across multiple platforms feels impossible.
+Inefficient Lead Generation
+Cold outreach is hit-or-miss.
+Sales teams lose valuable hours chasing unqualified leads.
+The Solution: Zakbot, Built to Scale Globally
+Zakbot automates what holds businesses back—without sacrificing quality.
+AI-Powered Customer Support
+Zakbot answers repetitive queries 24/7.
+Scales from 100 to 100,000 messages seamlessly.
+Integrates into websites, WhatsApp, Messenger, Slack.
+Content & Workflow Automation
+Zakbot generates decks, summaries, posts, and reports on demand.
+Showcase Plan demo: use suggested prompts to instantly create usable content.
+Consistency and brand alignment at scale.
+Smarter Lead Generation
+Zakbot nurtures leads with personalized AI messaging.
+Built-in analytics reveal what drives conversions.
+Dynamic use case demos in our Showcase Plan sandbox prove the ROI.
+3. Key Features (Visual Grid)
+Custom Knowledge Training — Train on your docs, FAQs, syllabus, policies.
+Multi-Language — English & Bangla and more.
+Omnichannel Deployment — Website widget, WhatsApp, Messenger, App.
+Analytics Dashboard — Track queries, satisfaction, fallback %.
+Handoff to Human — Escalates to live support when needed.
+Secure & Private — Data stored securely, customizable retention.
+4. Live Demo Sandbox
+Keep as it is
+5. Zakbot Use Cases — Full Outline
+Section Header (Top of Block)
+Headline: “Zakbot in Action: Real AI Solutions for Real Businesses”
+
+
+Subheadline / Microcopy:
+ Zakbot is more than a chatbot—it’s a modular AI automation partner. From education to e-commerce, from content creation to HR, Zakbot adapts to your workflows and delivers measurable impact.
+
+
+Visual Guideline:
+Full-width banner image or animation showing Zakbot interacting across multiple devices (web, mobile, LMS, Slack).
+
+
+Optional looping demo video background with “Try Zakbot” CTA.
+
+
+
+Grid Layout Structure
+Use a 2x3 responsive grid with cards (desktop: 3 columns, 2 rows; mobile: stacked). Each card should have:
+Icon / Illustration (unique per use case: book, headset, funnel, etc.)
+
+
+Title (Use Case Name)
+
+
+Subheader (benefit framing)
+
+
+3–4 bullets (features / benefits)
+
+
+Microcopy (1 line emotional hook)
+
+
+
+Row 1 — Business Growth & Operations
+ Customer Support Automation 
+Subheader: “Support That Scales With You”
+
+
+Bullets:
+
+
+Handle thousands of queries across all your channels.
+
+
+Escalate complex cases to humans.
+
+
+Reduce support tickets by up to 70%.
+
+
+Microcopy: “Delight customers, reduce costs, and scale instantly.”
+
+
+Visual: support icon.
+
+
+Lead Qualification & Sales Bots
+Subheader: “AI That Fills Your Pipeline”
+
+
+Bullets:
+
+
+Capture and qualify leads in real-time.
+
+
+Integrates with CRMs.
+
+
+Routes hot leads to sales instantly.
+
+
+Microcopy: “Stop chasing cold leads—let Zakbot do the heavy lifting.”
+
+
+Visual: Funnel icon
+
+
+Internal Ops & HR Bots
+Subheader: “AI That Supports Your Team Too”
+
+
+Bullets:
+
+
+Answer employee HR / policy questions instantly.
+
+
+Automate onboarding for new hires.
+
+
+Central knowledge hub searchable in natural language.
+
+
+Microcopy: “Give your team a digital assistant that never takes a break.”
+
+
+Visual: Clipboard / team icon.
+
+
+
+Row 2 — Marketing & Outreach
+Marketing Automation (Priority #4)
+Subheader: “Campaigns That Run Themselves”
+
+
+Bullets:
+
+
+Automate FAQ bots and outreach scripts.
+
+
+Persona-based campaign presets.
+
+
+Integrates with email/SMS for delivery.
+
+
+Microcopy: “Stay visible, stay personal—without extra headcount.”
+
+
+Visual: Megaphone / campaign icon.
+
+
+Row 3 — Education & Content Automation 
+ Educational Knowledge-Base Chatbots 
+Subheader: “Your Knowledge, Always Available”
+
+
+Bullets:
+
+
+Train Zakbot on syllabi, FAQs, policy docs.
+
+
+Students get instant answers 24/7.
+
+
+Reduces support load by 60–70%.
+
+
+Microcopy: “Stop repeating yourself—Zakbot already knows the answer.”
+
+
+Visual: Open book icon + chat bubbles.
+
+
+2. Course Material Generator 
+Subheader: “Scale Teaching Content with AI”
+
+
+Bullets:
+
+
+Generate slides, notes, quizzes in minutes.
+
+
+Outputs aligned to course material.
+
+
+Store reusable versions for future classes.
+
+
+Microcopy: “Let Zakbot handle prep—so you can focus on teaching.”
+
+
+Visual: Presentation slides icon.
+
+
+3. Multi-Language Content Automation 
+Subheader: “Engage Audiences in Any Language”
+
+
+Bullets:
+
+
+Bilingual/multilingual content delivery.
+
+
+Cultural adaptation included.
+
+
+QA and accuracy checks built in.
+
+
+Microcopy: “From Dhaka to Dubai to Delhi—Zakbot speaks your audience’s language.”
+
+
+Visual: Globe icon with chat bubbles.
+
+
+
+
+Closing Call-to-Action Block
+Headline: “One Bot. Endless Possibilities.”
+
+
+Microcopy: Zakbot adapts to your workflows, industry, and growth stage. From supporting students to qualifying leads, from content creation to internal ops—Zakbot grows with you.
+
+
+CTA Buttons:
+ [ Try Zakbot Live ] [ Book a Free Consultation ]
+6. Pricing Preview (Linked to Pricing Page)
+EN Version: Ignite $197/mo, Accelarate $347/mo, Transform $497/mo.
+Visually Highlight Accelerate.
+CTA: “Compare Plans ”
+(Add anchor link directly into pricing page so it feels seamless.)8. How Zakbot Works (Step Process)
+Discovery: Talk with our team & Submit your data to train Zakbot
+Training: Zakbot learns your context & FAQs
+Deployment: Zakbot goes live in days.
+Optimization: Continuous monitoring + improvements.
+9. Trust & Compliance
+Secured & privacy-first.
+Responsible AI (human-in-loop + bias safeguards).
+Optional NDAs / SLAs for enterprise clients.
+10. Final Conversion CTA
+Headline: “Ready to Launch Your AI Assistant?”
+Primary CTA: “Try Zakbot Free” (sandbox)
+Secondary CTA: “Book Consultation”
+
+Pricing Page — International (/en/pricing)
+
+Header Section
+Headline:
+ Simple, Transparent Pricing for Scalable AI Automation
+Subheadline / Microcopy:
+ Whether you’re starting small or ready for enterprise-grade automation, our OpsMate plans give you access to tailored AI solutions, ongoing support, and growth-ready infrastructure. No hidden fees, cancel anytime.
+Visual:
+Clean tiered pricing grid illustration (Ignite → Pinnacle).
+
+
+Emphasize Accelerate as “Most Popular.”
+
+
+
+Pricing Plans Grid
+Ignite – Starter Plan
+Price: $197/month
+ Best For: Small businesses testing AI automation.
+ Features:
+Zakbot: 5,000 messages/month
+
+
+1 pre-built AI automation workflow
+
+
+Basic email support
+
+
+Quick-start onboarding
+
+
+CTA Button: [ Start with Ignite ]
+
+Accelerate – Most Popular
+Price: $347/month
+ Best For: Growing teams scaling automation across multiple workflows.
+ Features:
+Zakbot: 15,000 messages/month
+
+
+Up to 3 custom AI workflows & integrations
+
+
+Priority email support
+
+
+Hands-on onboarding assistance
+
+
+CTA Button (highlighted): [ Scale with Accelerate ]
+
+Transform – Advanced Plan
+Price: $497/month
+ Best For: Businesses ready to deeply embed AI into their operations.
+ Features:
+Zakbot: 30,000 messages/month
+
+
+Up to 10 custom workflows & automations
+
+
+Priority support (Email & Call, 24/7)
+
+
+Advanced onboarding & dedicated consultant
+
+
+CTA Button: [ Transform Your Operations ]
+
+Pinnacle – Enterprise Plan
+Price: Custom Quote (Starting from $697/month)
+ Best For: Enterprises needing full-scale AI automation and premium integrations.
+ Features:
+Zakbot: Unlimited usage
+
+
+Unlimited workflows & custom AI agents
+
+
+Premium integrations (CRM, ERP, HRMS, etc.)
+
+
+Dedicated Customer Success Manager
+
+
+On-demand engineering support (with SLA)
+
+
+Free training & staff workshops
+
+
+Regular AI consulting & optimization sessions
+
+
+CTA Button: [ Talk to Sales ]
+
+Comparison Table ( Below Grid)
+Feature
+Ignite ($197)
+Accelerate ($347)
+Transform ($497)
+Pinnacle (Custom)
+Zakbot Messages
+5,000/mo
+15,000/mo
+30,000/mo
+Unlimited
+Pre-Built Automations
+1
+Up to 3
+Up to 10
+Unlimited
+Custom Workflows & Integrations
+Basic
+Yes
+Advanced
+Enterprise-grade
+Support
+Email
+Priority Email
+24/7 Email & Call
+Dedicated CSM + SLA
+Onboarding Assistance
+Quick-start
+Guided
+Advanced
+Full Enterprise
+Training & Consulting
+–
+–
+–
+Included
+
+
+One-Off Services Section (Add Below Plans)
+Section Title:
+ “Not Ready for a Full Plan? Try Our One-Off Services.”
+Microcopy:
+ Test our capabilities with project-based setups before committing long term. Perfect for businesses validating AI automation.
+Examples:
+Zakbot Setup
+
+
+Exam Formatter
+
+
+Custom Q&A Bot
+
+
+AI Summarization & Notes
+
+
+Lead Gen Script Automation
+
+
+Pricing:
+ Custom quotes — project-based.
+CTA Button: [ Request a One-Off Project ]
+
+Closing CTA Section
+Headline:
+ Ready to Automate Your Business with AI?
+Microcopy:
+ Join growing businesses worldwide who save time, cut costs, and scale with Zaktomate OpsMate. Whether you’re starting small or going enterprise, we’ve got you covered.
+CTA Buttons (Side by Side):
+ [ Get Free Consultation ] [ Contact Us]
+Visual:
+Animated Zakbot assistant illustration
+
+
+
+
+About Us Page(Same as zaktomate.com/)
+
+Our Purpose
+
+At Zaktomate, we believe AI is more than a tool—it’s a partner for transformation. Businesses across the world are overwhelmed by operational inefficiencies and growing digital complexity. Our mission is to simplify this complexity through intelligent automation that is accessible, customizable, and built for real business impact.
+We started Zaktomate with a simple question: How can we make AI practical, reliable, and transformative for everyday businesses? That question guides everything we build.
+
+
+
+
+Our Story
+
+Zaktomate was born in Dhaka, but with a vision that goes far beyond borders. It started with a group of students who weren’t satisfied with how businesses—especially in emerging markets—struggled to adopt AI. Most tools were either too expensive, too complicated, or too disconnected from the realities of running a business.
+We asked ourselves: What if AI could be packaged as a service, designed around people—not the other way around?
+From that simple question, Zaktomate grew. Today, we are building AI systems and solutions that bridge the gap between cutting-edge technology and everyday business needs. What began as experiments in automating repetitive academic and content workflows has become a platform for long-term AI transformation—starting with ed-tech and SMEs, and now extending to global clients through platforms like Fiverr and Upwork.
+That’s when Zaktomate’s identity crystallized: an AI transformation partner that grows with you.
+
+
+Our Values
+
+Simplicity – We cut through complexity to deliver clarity and efficiency.
+Customization – Every client is unique; our solutions adapt to your workflow, not the other way around.
+Affordability – AI should drive ROI, not drain budgets.
+Trust – Long-term relationships over quick wins.
+Global Mindset – While rooted in Dhaka, our outlook is borderless.
+The Team Behind Zaktomate
+
+Abid Bin Yusuf – CEO & Co-Founder
+Abid leads Zaktomate with a clear vision: making AI practical and transformative for businesses of all sizes. With a background in entrepreneurship and a relentless drive for execution, he ensures that strategy aligns with action. Abid is passionate about bridging the gap between AI potential and real-world adoption, always emphasizing sustainable growth over quick wins.
+Focus: Strategic leadership, vision-setting, client relationships, and scaling operations.Shahriar Hossain Fahim – CTO & Co-Founder
+Shahriar is the technical brain behind Zaktomate. With deep expertise in automation workflows, full-stack development, and AI implementation, he transforms ambitious ideas into reliable systems. His focus is always on building modular, scalable, and future-proof solutions that adapt as businesses evolve.
+Focus: Product architecture, R&D, technical delivery, and platform scalability.Shoyeb Morshed – COO & Co-Founder
+Shoyeb brings structure and operational rigor to Zaktomate. From ensuring projects run smoothly to optimizing resource allocation, he makes sure the engine of Zaktomate runs efficiently. With a sharp eye for process and execution, he ensures clients experience seamless delivery every time.
+Focus: Operations, project management, and delivery excellence.Abdullah Ahsan – CFO & Co-Founder
+Abdullah ensures that Zaktomate remains financially disciplined while still investing in bold innovation. He manages budgeting, investor relations, and financial forecasting to keep the company’s growth sustainable and future-proof. His pragmatic approach helps balance ambition with financial prudence.
+Focus: Finance, sustainability, and long-term investment strategy.
+
+Looking Ahead
+We are building more than a company—we are building a future where businesses don’t fear AI but embrace it as a natural extension of how they work. From Dhaka to the world, our goal is to be a trusted AI partner that grows with you, not just for you.
+
+Join Us
+
+Headline: Partner with Bangladesh’s AI Vanguard
+Subtext:
+Whether you're a local education brand or a global business seeking reliable AI automation, partnering with Zaktomate means joining a mission to transform—and to scale with integrity.
+CTA: “Talk to Our Team”
+
+
