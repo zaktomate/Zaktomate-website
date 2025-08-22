@@ -6,6 +6,70 @@
     <title>Zaktomate - AI Tools That Save You Time</title>
     <meta name="description" content="We help Bangladeshi businesses automate repetitive work using easy-to-use AI systems. No tech knowledge needed. No extra overhead. Just smart, practical tools.">
     <link rel="icon" href="./assets/logo.png" type="image/png">
+    
+    <!-- Google Analytics 4 -->
+    <script>
+      // GA4 configuration script
+      (function() {
+        // Get GA4 IDs from environment variables
+        const ga4BdId = import.meta.env.VITE_GA4_BD_ID || 'G-XXXXXXXXXX';
+        const ga4IntlId = import.meta.env.VITE_GA4_INTL_ID || 'G-YYYYYYYYYY';
+        
+        // Create script element for GA4
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${ga4BdId}`;
+        document.head.appendChild(script);
+        
+        // Initialize GA4
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        // Determine which GA4 property to use based on the path
+        const currentPath = window.location.pathname;
+        let ga4PropertyId = ga4BdId; // Default to BD
+        let pageLanguage = 'bd';
+
+        if (currentPath.startsWith('/en/') || currentPath.startsWith('/international/')) {
+          ga4PropertyId = ga4IntlId;
+          pageLanguage = 'en';
+        }
+
+        // Configure GA4
+        gtag('config', ga4PropertyId, {
+          cookie_domain: 'zaktomate.com',
+          cookie_flags: 'SameSite=None;Secure',
+          custom_map: { 'dimension1': 'page_language' },
+          'page_language': pageLanguage
+        });
+      })();
+    </script>
+    
+    <!-- Hotjar Tracking Code -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:1234567,hjsv:6}; // Replace 1234567 with your Hotjar Site ID
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+    
+    <!-- VWO SmartCode -->
+    <script type='text/javascript'>
+        window._vwo_settings = {
+            opt_id: 123456, // Replace with your VWO Account ID
+            settings_tolerance: 2000,
+            library_tolerance: 2500,
+            use_existing_jquery: false,
+            debug: false
+        };
+    </script>
+    <script type='text/javascript' src='https://dev.visualwebsiteoptimizer.com/j.php?a=123456&w=true&c=1&v=6' async></script>
+    
     <script src="https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js" defer></script>
 </head>
 <body>

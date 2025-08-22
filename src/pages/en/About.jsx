@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaUsers, FaLightbulb, FaRocket, FaHeart } from 'react-icons/fa';
-import Card from '../components/common/Card';
-import SEO from '../components/common/SEO';
+import Card from '../../components/common/Card';
+import SEO from '../../components/common/SEO';
 
 
-const About = () => {
+const AboutEN = () => {
   const team = [
     {
       name: "AI Specialists",
@@ -52,7 +52,7 @@ const About = () => {
     {
       year: "2023",
       title: "Founded in Dhaka",
-      description: "Zaktomate was established with a vision to bring AI automation to Bangladeshi businesses."
+      description: "Zaktomate was established with a vision to bring AI automation to businesses worldwide."
     },
     {
       year: "2024",
@@ -61,8 +61,8 @@ const About = () => {
     },
     {
       year: "2025",
-      title: "Expansion",
-      description: "Growing our team and expanding our product suite to serve more industries."
+      title: "Global Expansion",
+      description: "Expanding our team and product suite to serve businesses across the globe."
     }
   ];
 
@@ -81,8 +81,8 @@ const About = () => {
             About <span className="gradient-text">Zaktomate</span>
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            We're an AI automation agency based in Dhaka, working with local startups, ed-techs, and SMEs.
-            Our mission: Make AI useful, simple, and affordable for growing Bangladeshi teams.
+            We're an AI automation agency based in Dhaka, working with businesses worldwide.
+            Our mission: Make AI useful, simple, and affordable for growing teams everywhere.
           </p>
         </motion.div>
 
@@ -110,11 +110,11 @@ const About = () => {
                 </li>
                 <li className="flex items-start">
                   <span className="text-zakbot-blue mr-2">•</span>
-                  <span>Affordable for Bangladeshi businesses</span>
+                  <span>Affordable for businesses worldwide</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-zakbot-blue mr-2">•</span>
-                  <span>Tailored to local needs and contexts</span>
+                  <span>Tailored to diverse needs and contexts</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-zakbot-blue mr-2">•</span>
@@ -137,15 +137,15 @@ const About = () => {
               <div className="space-y-3">
                 <div className="flex items-center">
                   <FaCheck className="mr-3" />
-                  <span>Local expertise with global technology</span>
+                  <span>Global expertise with cutting-edge technology</span>
                 </div>
                 <div className="flex items-center">
                   <FaCheck className="mr-3" />
-                  <span>24/7 support in Bangla and English</span>
+                  <span>24/7 support in multiple languages</span>
                 </div>
                 <div className="flex items-center">
                   <FaCheck className="mr-3" />
-                  <span>Affordable pricing for local market</span>
+                  <span>Competitive pricing for global market</span>
                 </div>
                 <div className="flex items-center">
                   <FaCheck className="mr-3" />
@@ -244,7 +244,7 @@ const About = () => {
               Our <span className="gradient-text">Journey</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Key milestones in our mission to bring AI to Bangladeshi businesses.
+              Key milestones in our mission to bring AI to businesses worldwide.
             </p>
           </motion.div>
           
@@ -290,18 +290,18 @@ const About = () => {
             Ready to Transform Your Business?
           </h2>
           <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-2xl mx-auto">
-            Join the growing number of Bangladeshi businesses using Zaktomate's AI solutions 
+            Join the growing number of businesses worldwide using Zaktomate's AI solutions 
             to automate their workflows and improve efficiency.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="/contact" 
+              href="/en/contact" 
               className="bg-zakbot-blue hover:bg-zakbot-blue-light text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105"
             >
               Get Started
             </a>
             <a 
-              href="/services" 
+              href="/en/services" 
               className="bg-transparent border-2 border-zakbot-blue text-zakbot-blue hover:bg-zakbot-blue hover:text-white font-medium py-3 px-8 rounded-lg transition-all duration-300"
             >
               View Services
@@ -313,4 +313,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutEN;

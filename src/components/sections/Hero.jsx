@@ -77,6 +77,16 @@ const Hero = ({ setActiveSection }) => {
               smooth={true}
               duration={500}
               className="bg-white text-zakbot-blue py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-bold hover:bg-gray-100 transition flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base"
+              onClick={() => {
+                if (window.gtag) {
+                  window.gtag('event', 'select_content', {
+                    content_type: 'button',
+                    item_id: 'try_zakbot_live_hero',
+                    event_category: 'CTA',
+                    event_label: 'Try Zakbot Live - Hero Section'
+                  });
+                }
+              }}
             >
               <FaPlay className="text-xs sm:text-sm" />
               Try Zakbot Live
@@ -87,6 +97,16 @@ const Hero = ({ setActiveSection }) => {
               smooth={true}
               duration={500}
               className="bg-transparent border-2 border-white text-white py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-bold hover:bg-white hover:text-zakbot-blue transition flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base"
+              onClick={() => {
+                if (window.gtag) {
+                  window.gtag('event', 'select_content', {
+                    content_type: 'button',
+                    item_id: 'book_free_demo_hero',
+                    event_category: 'CTA',
+                    event_label: 'Book a Free Demo - Hero Section'
+                  });
+                }
+              }}
             >
               Book a Free Demo
               <FaArrowRight className="text-xs sm:text-sm" />

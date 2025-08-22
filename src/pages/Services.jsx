@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Card from '../components/common/Card';
+import SEO from '../components/common/SEO';
 
 const Services = () => {
   const services = [
@@ -41,6 +42,8 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-20">
+      {/* SEO Tags */}
+      <SEO />
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

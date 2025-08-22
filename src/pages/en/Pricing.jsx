@@ -1,15 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCheck, FaStar } from 'react-icons/fa';
-import Card from '../components/common/Card';
-import SEO from '../components/common/SEO';
+import Card from '../../components/common/Card';
+import SEO from '../../components/common/SEO';
 
 
-const Pricing = () => {
+const PricingEN = () => {
   const plans = [
     {
       name: "Starter",
-      price: "BDT 5,000",
+      price: "$97",
       period: "/month",
       description: "Perfect for small businesses getting started with AI automation",
       features: [
@@ -24,7 +24,7 @@ const Pricing = () => {
     },
     {
       name: "Professional",
-      price: "BDT 15,000",
+      price: "$297",
       period: "/month",
       description: "Ideal for growing businesses with higher customer interaction",
       features: [
@@ -75,7 +75,7 @@ const Pricing = () => {
     },
     {
       question: "What payment methods do you accept?",
-      answer: "We accept all major credit cards, debit cards, and bank transfers for Bangladeshi customers."
+      answer: "We accept all major credit cards, debit cards, and bank transfers for international customers."
     }
   ];
 
@@ -196,7 +196,7 @@ const Pricing = () => {
             create a tailored solution for your organization.
           </p>
           <a 
-            href="/contact" 
+            href="/en/contact" 
             className="inline-block bg-zakbot-teal hover:bg-zakbot-teal-light text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105"
           >
             Contact Us
@@ -207,4 +207,4 @@ const Pricing = () => {
   );
 };
 
-export default Pricing;
+export default PricingEN;

@@ -28,10 +28,18 @@ const Contact = () => {
           Let's find out how AI can make your work easier.
           No commitment. No pressure. We'll walk you through it.
         </motion.p>
-        <form 
-          action="https://formspree.io/f/mvgrlkvl" 
-          method="POST" 
+        <form
+          action="https://formspree.io/f/mvgrlkvl"
+          method="POST"
           className="max-w-xl mx-auto flex flex-col gap-4 fade-in-up"
+          onSubmit={() => {
+            if (window.gtag) {
+              window.gtag('event', 'generate_lead', {
+                event_category: 'Form Submission',
+                event_label: 'Book My Free Trial - Contact Form'
+              });
+            }
+          }}
         >
           <input
             type="text"

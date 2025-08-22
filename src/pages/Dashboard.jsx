@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaChartLine, FaUsers, FaComments, FaRobot, FaCog, FaBell, FaSearch, FaUserCircle } from 'react-icons/fa';
 import Card from '../components/common/Card';
+import SEO from '../components/common/SEO';
+
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -63,6 +65,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <SEO />
       {/* Top Navigation */}
       <nav className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="container mx-auto px-4">

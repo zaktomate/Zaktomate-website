@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
-import { formApi } from '../services/api';
-import Card from '../components/common/Card';
-import SEO from '../components/common/SEO';
+import { formApi } from '../../services/api';
+import Card from '../../components/common/Card';
+import SEO from '../../components/common/SEO';
 
 
-const Contact = () => {
+const ContactEN = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,20 +28,20 @@ const Contact = () => {
     {
       icon: <FaPhone className="text-2xl" />,
       title: "Call Us",
-      details: "+880 1234-567890",
-      description: "Mon-Fri 9AM-6PM BST"
+      details: "+1 (555) 123-4567",
+      description: "Mon-Fri 9AM-6PM EST"
     },
     {
       icon: <FaMapMarkerAlt className="text-2xl" />,
-      title: "Visit Us",
-      details: "Dhaka, Bangladesh",
-      description: "By appointment only"
+      title: "Global Support",
+      details: "Online Worldwide",
+      description: "24/7 Digital Support"
     },
     {
       icon: <FaClock className="text-2xl" />,
       title: "Business Hours",
       details: "9:00 AM - 6:00 PM",
-      description: "Saturday - Thursday"
+      description: "Monday - Friday"
     }
   ];
 
@@ -103,10 +103,10 @@ const Contact = () => {
           >
             <Card transition={{ duration: 0.5 }}>
               <h2 className="text-2xl font-bold font-heading text-zakbot-dark dark:text-white mb-6">
-                Book a Free Trial or Demo
+                Book a Free Consultation
               </h2>
               <p className="text-gray-600 dark:text-gray-300 mb-6">
-                Let's find out how AI can make your work easier. No commitment. No pressure.
+                Let's find out how AI can transform your business. No commitment. No pressure.
               </p>
 
               {submitStatus === 'success' && (
@@ -163,13 +163,13 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-zakbot-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    placeholder="+880 1234-567890"
+                    placeholder="+1 (555) 123-4567"
                   />
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Company / Institution
+                    Company / Organization
                   </label>
                   <input
                     type="text"
@@ -183,7 +183,7 @@ const Contact = () => {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Preferred Date for Demo
+                    Preferred Date for Consultation
                   </label>
                   <input
                     type="date"
@@ -213,7 +213,7 @@ const Contact = () => {
                   disabled={isSubmitting}
                   className="w-full bg-zakbot-blue hover:bg-zakbot-blue-light text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Sending...' : 'Book My Free Trial'}
+                  {isSubmitting ? 'Sending...' : 'Book My Free Consultation'}
                 </button>
               </form>
             </Card>
@@ -271,7 +271,7 @@ const Contact = () => {
                     How quickly can I get started?
                   </h4>
                   <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    You can start with our free trial immediately. Setup takes less than 5 minutes.
+                    You can start with our free consultation immediately. Setup takes less than 5 minutes.
                   </p>
                 </div>
                 <div>
@@ -292,7 +292,7 @@ const Contact = () => {
                 </div>
               </div>
               <a 
-                href="/faq" 
+                href="/en/faq" 
                 className="inline-block mt-4 text-zakbot-blue hover:text-zakbot-blue-light font-medium"
               >
                 View all FAQs →
@@ -305,4 +305,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactEN;

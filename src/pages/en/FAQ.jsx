@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
-import Card from '../components/common/Card';
-import SEO from '../components/common/SEO';
+import Card from '../../components/common/Card';
+import SEO from '../../components/common/SEO';
 
 
-const FAQ = () => {
+const FAQEN = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [
@@ -18,7 +18,7 @@ const FAQ = () => {
         },
         {
           question: "Who is Zaktomate for?",
-          answer: "Zaktomate is built for students, freelancers, small businesses, and developers who want to save time by automating repetitive tasks and generating content effortlessly."
+          answer: "Zaktomate is built for businesses, entrepreneurs, and developers who want to save time by automating repetitive tasks and generating content effortlessly."
         },
         {
           question: "Do I need any coding knowledge to use Zaktomate?",
@@ -55,8 +55,8 @@ const FAQ = () => {
           answer: "Yes, all slides can be customized and downloaded in editable formats like PPTX or Google Slides."
         },
         {
-          question: "Do the slides support both English and Bangla?",
-          answer: "Absolutely. The slide generator supports both English and Bangla content."
+          question: "Do the slides support multiple languages?",
+          answer: "Absolutely. The slide generator supports multiple languages including English, Spanish, French, German, and more."
         }
       ]
     },
@@ -73,7 +73,7 @@ const FAQ = () => {
         },
         {
           question: "Is there a refund policy?",
-          answer: "Yes, we offer a 7-day refund policy for premium users if you're unsatisfied with the service."
+          answer: "Yes, we offer a 14-day refund policy for premium users if you're unsatisfied with the service."
         }
       ]
     },
@@ -205,7 +205,7 @@ const FAQ = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="/contact" 
+                href="/en/contact" 
                 className="bg-zakbot-blue hover:bg-zakbot-blue-light text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105"
               >
                 Contact Support
@@ -224,4 +224,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default FAQEN;

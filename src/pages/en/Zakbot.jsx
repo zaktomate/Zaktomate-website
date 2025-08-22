@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaBrain, FaUsers, FaSearch, FaBolt, FaShieldAlt, FaChartLine, FaRobot, FaHeadphones, FaGraduationCap, FaShoppingCart, FaHospital } from 'react-icons/fa';
-import Card from '../components/common/Card';
-import ChatDemo from '../components/specific/ChatDemo';
-import SEO from '../components/common/SEO';
+import Card from '../../components/common/Card';
+import ChatDemo from '../../components/specific/ChatDemo';
+import SEO from '../../components/common/SEO';
 
-const Zakbot = () => {
+const ZakbotEN = () => {
   const features = [
     {
       icon: <FaBrain className="text-3xl" />,
@@ -290,4 +290,4 @@ const Zakbot = () => {
   );
 };
 
-export default Zakbot;
+export default ZakbotEN;
