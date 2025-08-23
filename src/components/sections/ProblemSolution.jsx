@@ -65,7 +65,8 @@ const ProblemSolution = () => {
   ];
 
   return (
-    <section id="problem-solution" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <>
+    <section id="problem-solution" className="h-auto py-40 flex item-center justify-center bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
         {/* Problem Framing */}
         <motion.h2
