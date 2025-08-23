@@ -1,289 +1,146 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { FaBrain, FaUsers, FaSearch, FaBolt, FaShieldAlt, FaChartLine, FaRobot, FaHeadphones, FaGraduationCap, FaShoppingCart, FaHospital } from 'react-icons/fa';
-import Card from '../components/common/Card';
+import { Link } from 'react-router-dom';
+import Hero from '../components/sections/Hero';
 import ChatDemo from '../components/specific/ChatDemo';
 import SEO from '../components/common/SEO';
+import { FaLightbulb, FaBook, FaChartLine, FaBrain, FaLanguage, FaGlobe, FaChartBar, FaHandshake, FaLock } from 'react-icons/fa';
 
 const Zakbot = () => {
-  const features = [
-    {
-      icon: <FaBrain className="text-3xl" />,
-      title: "Context-Aware AI",
-      description: "Uses Fastest of the Large Language Models for fast, intelligent responses with deep understanding of context.",
-      color: "text-zakbot-blue",
-      bgColor: "bg-zakbot-blue",
-    },
-    {
-      icon: <FaSearch className="text-3xl" />,
-      title: "Smart Vector Search",
-      description: "Leverages MongoDB's vector search capabilities to find relevant information quickly.",
-      color: "text-zakbot-teal",
-      bgColor: "bg-zakbot-teal",
-    },
-    {
-      icon: <FaUsers className="text-3xl" />,
-      title: "Multi-Client Support",
-      description: "Dynamically adapts to different clients with unique configurations and knowledge bases.",
-      color: "text-zakbot-purple",
-      bgColor: "bg-zakbot-purple",
-    },
-    {
-      icon: <FaBolt className="text-3xl" />,
-      title: "Real-Time Responses",
-      description: "Delivers instant responses with minimal latency for seamless user experiences.",
-      color: "text-zakbot-blue",
-      bgColor: "bg-zakbot-blue",
-    },
-    {
-      icon: <FaShieldAlt className="text-3xl" />,
-      title: "Secure & Reliable",
-      description: "Built with enterprise-grade security and reliability for peace of mind.",
-      color: "text-zakbot-teal",
-      bgColor: "bg-zakbot-teal",
-    },
-    {
-      icon: <FaChartLine className="text-3xl" />,
-      title: "Analytics & Insights",
-      description: "Track usage patterns and gain valuable insights from customer interactions.",
-      color: "text-zakbot-purple",
-      bgColor: "bg-zakbot-purple",
-    },
-  ];
-
-  const useCases = [
-    {
-      icon: <FaHeadphones className="text-3xl" />,
-      title: "Customer Support",
-      description: "Handle customer queries 24/7 with intelligent responses",
-      color: "text-zakbot-blue",
-      bgColor: "bg-zakbot-blue",
-    },
-    {
-      icon: <FaGraduationCap className="text-3xl" />,
-      title: "Educational Platforms",
-      description: "Assist students with instant answers to their questions",
-      color: "text-zakbot-teal",
-      bgColor: "bg-zakbot-teal",
-    },
-    {
-      icon: <FaShoppingCart className="text-3xl" />,
-      title: "E-commerce",
-      description: "Help customers with product recommendations and support",
-      color: "text-zakbot-purple",
-      bgColor: "bg-zakbot-purple",
-    },
-    {
-      icon: <FaHospital className="text-3xl" />,
-      title: "Healthcare",
-      description: "Provide preliminary information and appointment scheduling",
-      color: "text-zakbot-blue",
-      bgColor: "bg-zakbot-blue",
-    }
-  ];
-
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* SEO Tags */}
-      <SEO />
-      
+    <div className="min-h-screen bg-transparent dark:bg-gray-900">
+      <SEO title="Zakbot - Your AI Assistant" description="Meet Zakbot — Your AI Assistant That Works 24/7" />
+
       {/* Hero Section */}
-      <section className="min-h-screen bg-gradient-to-br from-zakbot-blue to-zakbot-teal dark:from-zakbot-blue-light dark:to-zakbot-teal-light text-white flex items-center">
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-                <FaRobot className="text-4xl" />
-              </div>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold font-heading mb-6">
-              Zakbot by <span className="text-white">Zaktomate</span>
-            </h1>
-            <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-8 opacity-90">
-              AI-powered chatbot with context-aware responses and multi-client support
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="#demo" 
-                className="bg-white text-zakbot-blue py-3 px-8 rounded-lg font-bold hover:bg-gray-100 transition"
-              >
-                Try Live Demo
-              </a>
-              <a 
-                href="#features" 
-                className="bg-transparent border-2 border-white text-white py-3 px-8 rounded-lg font-bold hover:bg-white hover:text-zakbot-blue transition"
-              >
-                View Features
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <Hero
+        headline="Meet Zakbot — Your AI Assistant That Works 24/7"
+        subheadline="Trained on your business data, Zakbot handles support, customer queries, and content — so your team can focus on growth."
+        primaryCtaText="Try Zakbot Live"
+        primaryCtaLink="#live-demo"
+        secondaryCtaText="Contact Us"
+        secondaryCtaLink="/contact"
+        visual="animated-zakbot-demo.gif" // Placeholder for animated demo
+      />
 
-      {/* Features Section */}
-      <section id="features" className="py-20">
+      {/* The Problems Section */}
+      <section className="section-padding bg-white dark:bg-gray-800">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-zakbot-dark dark:text-white mb-4">
-              Powerful Features for <span className="gradient-text">Intelligent Conversations</span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Zakbot combines cutting-edge AI technology with practical business needs to deliver 
-              an unmatched conversational experience.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card
-                key={index}
-                className="feature-card group"
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className={`w-16 h-16 rounded-lg ${feature.bgColor} bg-opacity-10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  <div className={feature.color}>
-                    {feature.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold font-heading text-zakbot-dark dark:text-white mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {feature.description}
-                </p>
-              </Card>
-            ))}
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">The Problems We Solve</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="card text-center">
+              <FaLightbulb className="mx-auto mb-4 w-16 h-16 text-zakbot-blue" />
+              <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Overloaded Support Teams</h3>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                <li>High volume of repetitive queries</li>
+                <li>Slow response times leading to customer frustration</li>
+                <li>Staff burnout and high turnover</li>
+              </ul>
+            </div>
+            <div className="card text-center">
+              <FaBook className="mx-auto mb-4 w-16 h-16 text-zakbot-teal" />
+              <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Content & Exam Bottlenecks</h3>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                <li>Manual creation of course materials and exams</li>
+                <li>Inconsistent content quality and formatting</li>
+                <li>Time-consuming updates and revisions</li>
+              </ul>
+            </div>
+            <div className="card text-center">
+              <FaChartLine className="mx-auto mb-4 w-16 h-16 text-zakbot-purple" />
+              <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Missed Growth Opportunities</h3>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                <li>Lack of 24/7 customer engagement</li>
+                <li>Inefficient lead qualification processes</li>
+                <li>Limited ability to scale operations without increasing headcount</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Use Cases Section */}
-      <section className="py-20 bg-white dark:bg-gray-800">
+      {/* The Solution: Zakbot for EdTechs & SMEs Section */}
+      <section className="section-padding bg-gray-50 dark:bg-gray-900">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-zakbot-dark dark:text-white mb-4">
-              Perfect for <span className="gradient-text">Every Industry</span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Zakbot adapts to your specific industry needs, providing tailored solutions for various use cases.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {useCases.map((useCase, index) => (
-              <Card
-                key={index}
-                className="feature-card group h-full"
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className={`w-16 h-16 rounded-lg ${useCase.bgColor} bg-opacity-10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 mx-auto`}>
-                  <div className={useCase.color}>
-                    {useCase.icon}
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold font-heading text-zakbot-dark dark:text-white mb-3 text-center">
-                  {useCase.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-center">
-                  {useCase.description}
-                </p>
-              </Card>
-            ))}
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">The Solution: Zakbot for EdTechs & SMEs</h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300 text-center mb-12 max-w-3xl mx-auto">
+            Zakbot is your 24/7 assistant—trained to handle your institution’s real needs.
+          </p>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="card">
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">AI-Powered Student & Customer Support</h3>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                <li>Instant answers to common questions</li>
+                <li>24/7 availability, reducing wait times</li>
+                <li>Personalized support based on user history</li>
+                <li>Seamless escalation to human agents when needed</li>
+              </ul>
+            </div>
+            <div className="card">
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Dynamic Learning Content Generation</h3>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                <li>Quiz Generation: Create quizzes from any content</li>
+                <li>Course Material: Generate summaries, notes, and study guides</li>
+                <li>Exam Formatting: Automate formatting for various exam types</li>
+              </ul>
+            </div>
+            <div className="card">
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Lead Nurture & Engagement</h3>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
+                <li>Engage prospects with interactive conversations</li>
+                <li>Qualify leads efficiently with automated questions</li>
+                <li>Provide instant information on products/services</li>
+              </ul>
+            </div>
           </div>
+          <p className="text-center text-gray-600 dark:text-gray-400 mt-8">Showcase Plan demo description here.</p>
         </div>
       </section>
 
-      {/* Demo Section */}
-      <section id="demo" className="py-20">
-        <ChatDemo />
-      </section>
-
-      {/* Technology Stack */}
-      <section className="py-20 bg-white dark:bg-gray-800">
+      {/* Key Features Section */}
+      <section className="section-padding bg-white dark:bg-gray-800">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <h3 className="text-2xl font-bold font-heading text-zakbot-dark dark:text-white mb-8">
-              Built with <span className="gradient-text dark:gradient-text-dark">Modern Technology</span>
-            </h3>
-            
-            <div className="bg-gray-50 dark:bg-gray-700 rounded-2xl p-8">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-zakbot-blue dark:text-blue-400 mb-2">Node.js</div>
-                  <div className="text-gray-600 dark:text-gray-300">Backend</div>
+          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Key Features</h2>
+          <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-8">
+            {[
+              { title: "Custom Knowledge Training", icon: <FaBrain /> },
+              { title: "Multi-Language Support", icon: <FaLanguage /> },
+              { title: "Omnichannel Deployment", icon: <FaGlobe /> },
+              { title: "Analytics Dashboard", icon: <FaChartBar /> },
+              { title: "Handoff to Human", icon: <FaHandshake /> },
+              { title: "Secure & Private", icon: <FaLock /> },
+            ].map((feature, index) => (
+              <div key={index} className="feature-card text-center">
+                <div className="mx-auto mb-4 w-16 h-16 flex items-center justify-center text-zakbot-blue">
+                  {feature.icon && React.cloneElement(feature.icon, { className: 'w-16 h-16' })}
                 </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-zakbot-teal dark:text-teal-400 mb-2">MongoDB</div>
-                  <div className="text-gray-600 dark:text-gray-300">Database</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-zakbot-purple dark:text-purple-400 mb-2">Gemini</div>
-                  <div className="text-gray-600 dark:text-gray-300">AI Model</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-zakbot-blue dark:text-blue-400 mb-2">Docker</div>
-                  <div className="text-gray-600 dark:text-gray-300">Deployment</div>
-                </div>
+                <h3 className="text-xl font-semibold text-gray-800 dark:text-white">{feature.title}</h3>
               </div>
-            </div>
-          </motion.div>
+            ))}</div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-zakbot-blue to-zakbot-teal dark:from-zakbot-blue-light dark:to-zakbot-teal-light text-white">
+      {/* Live Demo Sandbox Integration */}
+      <section id="live-demo" className="section-padding bg-gray-50 dark:bg-gray-900">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
-              Ready to Transform Your Customer Experience?
-            </h2>
-            <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
-              Join hundreds of businesses already using Zakbot to automate their customer support and improve efficiency.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="/contact" 
-                className="bg-white text-zakbot-blue py-3 px-8 rounded-lg font-bold hover:bg-gray-100 transition"
-              >
-                Get Started
-              </a>
-              <a 
-                href="#demo" 
-                className="bg-transparent border-2 border-white text-white py-3 px-8 rounded-lg font-bold hover:bg-white hover:text-zakbot-blue transition"
-              >
-                Try Demo
-              </a>
-            </div>
-          </motion.div>
+          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">Try Zakbot Live</h2>
+          <p className="text-lg text-gray-700 dark:text-gray-300 text-center mb-12 max-w-3xl mx-auto">
+            Experience the power of Zakbot firsthand. Interact with our live demo to see how it can transform your operations.
+          </p>
+          <ChatDemo /> {/* Assuming ChatDemo is the existing live demo sandbox component */}
+        </div>
+      </section>
+
+      {/* Closing CTA Section */}
+      <section className="section-padding bg-zakbot-blue text-white dark:bg-zakbot-blue-dark">
+        <div className="container text-center">
+          <h2 className="text-4xl font-bold mb-6">Transform how your institution operates—free up teachers, empower staff, and give students faster support.</h2>
+          <div className="flex justify-center space-x-4">
+            <Link to="/contact" className="btn-primary">
+              Request a Free Local Demo
+            </Link>
+            <Link to="#live-demo" className="btn-outline">
+              Try Zakbot Live
+            </Link>
+          </div>
         </div>
       </section>
     </div>

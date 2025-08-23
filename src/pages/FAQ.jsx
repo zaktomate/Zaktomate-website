@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaBook, FaGraduationCap, FaChalkboardTeacher, FaHandshake, FaCommentDots, FaFileAlt, FaDollarSign, FaChartLine } from 'react-icons/fa';
 import Card from '../components/common/Card';
 import SEO from '../components/common/SEO';
 
@@ -13,16 +13,19 @@ const FAQ = () => {
       category: "General",
       questions: [
         {
+          icon: FaBook,
           question: "What is Zaktomate?",
-          answer: "Zaktomate is an AI-powered digital assistant that offers tools like chatbots, smart slide generators, and task automation to boost your productivity and simplify workflows."
+          answer: "Zaktomate is an AI-powered platform offering solutions like custom chatbots, content automation, and lead generation to help businesses and educational institutions in Bangladesh streamline operations and boost growth."
         },
         {
+          icon: FaGraduationCap,
           question: "Who is Zaktomate for?",
-          answer: "Zaktomate is built for students, freelancers, small businesses, and developers who want to save time by automating repetitive tasks and generating content effortlessly."
+          answer: "Zaktomate is designed for Bangladeshi SMEs, EdTechs, and educational institutions looking to leverage AI for improved customer support, efficient content creation, and smarter lead generation."
         },
         {
+          icon: FaChalkboardTeacher,
           question: "Do I need any coding knowledge to use Zaktomate?",
-          answer: "No, Zaktomate is designed to be beginner-friendly. Most tools are no-code or low-code and easy to use with simple instructions."
+          answer: "No, our solutions are built for ease of use. Most of our tools and services are low-code or no-code, meaning you can integrate and manage them without any technical expertise."
         }
       ]
     },
@@ -30,33 +33,14 @@ const FAQ = () => {
       category: "Chatbot Features",
       questions: [
         {
-          question: "What can the Zaktomate chatbot do?",
-          answer: "It can answer questions, provide personalized suggestions, explain topics, and even serve as a knowledge-based support assistant for your website."
+          icon: FaCommentDots,
+          question: "What can the Zaktomate chatbot (Zakbot) do?",
+          answer: "Zakbot can provide 24/7 customer support, answer FAQs, generate educational content, assist with lead qualification, and engage users in natural, multi-language conversations, all trained on your specific data."
         },
         {
-          question: "Can I customize the chatbot responses?",
-          answer: "Yes, you can train the chatbot using your own content or documents so it responds exactly how you want."
-        },
-        {
-          question: "Is the chatbot available 24/7?",
-          answer: "Yes, once deployed, the Zaktomate chatbot works round the clock without breaks."
-        }
-      ]
-    },
-    {
-      category: "Slide Generator",
-      questions: [
-        {
-          question: "How does the AI slide generator work?",
-          answer: "Just input your topic or text, and Zaktomate automatically creates a presentation with well-structured slides using AI."
-        },
-        {
-          question: "Can I edit the slides after generation?",
-          answer: "Yes, all slides can be customized and downloaded in editable formats like PPTX or Google Slides."
-        },
-        {
-          question: "Do the slides support both English and Bangla?",
-          answer: "Absolutely. The slide generator supports both English and Bangla content."
+          icon: FaHandshake,
+          question: "Can I customize Zakbot's responses and knowledge base?",
+          answer: "Yes, absolutely. Zakbot is fully customizable. You can train it using your own documents, website content, and data to ensure its responses are accurate, on-brand, and tailored to your specific needs."
         }
       ]
     },
@@ -64,16 +48,14 @@ const FAQ = () => {
       category: "Service & Pricing",
       questions: [
         {
-          question: "Is Zaktomate free to use?",
-          answer: "We offer both free and premium plans. The free plan covers basic features, while premium users unlock advanced tools and priority access."
+          icon: FaDollarSign,
+          question: "How does Zaktomate's pricing work for Bangladeshi clients?",
+          answer: "We offer flexible pricing plans tailored for the Bangladeshi market, including both comprehensive OpsMate plans for ongoing AI partnership and one-off services for specific project needs. All pricing is in BDT."
         },
         {
-          question: "How do I upgrade to a premium plan?",
-          answer: "Just click on the 'Upgrade' button in your dashboard, select your preferred plan, and proceed with payment."
-        },
-        {
-          question: "Is there a refund policy?",
-          answer: "Yes, we offer a 7-day refund policy for premium users if you're unsatisfied with the service."
+          icon: FaChartLine,
+          question: "Are there different plans for businesses and educational institutions?",
+          answer: "Our plans are designed to be adaptable for both businesses and educational institutions. While the core features remain consistent, we offer specialized configurations and support to meet the unique demands of each sector."
         }
       ]
     },
@@ -81,10 +63,12 @@ const FAQ = () => {
       category: "Data & Privacy",
       questions: [
         {
+          icon: FaFileAlt,
           question: "Is my data safe with Zaktomate?",
           answer: "Yes, your data is encrypted and never shared with third parties without consent."
         },
         {
+          icon: FaFileAlt,
           question: "Can I delete my data anytime?",
           answer: "Yes. You can permanently delete your account and all associated data through your profile settings."
         }
@@ -94,6 +78,7 @@ const FAQ = () => {
       category: "Support",
       questions: [
         {
+          icon: FaHandshake,
           question: "How can I contact support?",
           answer: "You can reach our support team via the 'Contact Us' page or email us directly at support@zaktomate.com. We usually respond within 24 hours."
         }
@@ -143,6 +128,7 @@ const FAQ = () => {
                 {category.questions.map((faq, questionIndex) => {
                   const index = `${categoryIndex}-${questionIndex}`;
                   const isOpen = openIndex === index;
+                  const Icon = faq.icon; // Get the icon component
                   
                   return (
                     <Card
@@ -154,9 +140,12 @@ const FAQ = () => {
                         onClick={() => toggleFAQ(categoryIndex, questionIndex)}
                         className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
                       >
-                        <h3 className="text-lg font-semibold text-zakbot-dark dark:text-white pr-4">
-                          {faq.question}
-                        </h3>
+                        <div className="flex items-center">
+                          {Icon && <Icon className="text-zakbot-blue text-xl mr-4 flex-shrink-0" />}
+                          <h3 className="text-lg font-semibold text-zakbot-dark dark:text-white pr-4">
+                            {faq.question}
+                          </h3>
+                        </div>
                         {isOpen ? (
                           <FaChevronUp className="text-zakbot-blue flex-shrink-0" />
                         ) : (
@@ -172,9 +161,25 @@ const FAQ = () => {
                           transition={{ duration: 0.3 }}
                           className="px-6 pb-6"
                         >
-                          <p className="text-gray-600 dark:text-gray-300">
+                          <p className="text-gray-600 dark:text-gray-300 mb-4">
                             {faq.answer}
                           </p>
+                          {category.category === "Service & Pricing" && (
+                            <div className="flex flex-col sm:flex-row gap-4 justify-start mt-4">
+                              <a
+                                href="/contact"
+                                className="bg-zakbot-blue hover:bg-zakbot-blue-light text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm"
+                              >
+                                Request a Local Demo
+                              </a>
+                              <a
+                                href="/pricing"
+                                className="bg-transparent border-2 border-zakbot-blue text-zakbot-blue hover:bg-zakbot-blue hover:text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 text-sm"
+                              >
+                                See Pricing Plans
+                              </a>
+                            </div>
+                          )}
                         </motion.div>
                       )}
                     </Card>

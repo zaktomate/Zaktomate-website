@@ -21,29 +21,42 @@ const Services = () => {
   const detailedServices = {
     liveNow: [
       {
+        title: "Zakbot – Your Always-On AI Assistant",
+        description: "Intelligent chatbot that works 24/7 to handle customer queries, generate leads, and provide support.",
+        channels: "Works seamlessly on: Website, Messenger, WhatsApp",
+        useCases: "Ideal for: Student helpdesks, lead generation, product support, and business teams.",
+        status: "Now live and ready to connect",
+        color: "zakbot-teal",
+        cta: { text: "Learn More", href: "/zakbot" }
+      },
+      {
+        title: "AI Exam Typing & Formatting",
+        description: "Convert handwritten or image-based questions into clean MCQs or exams.",
+        formats: "Formats: Google Docs, Word, PDF",
+        useCases: "Use Cases: Mock exams, past papers, daily assessments.",
+        status: "Live Now",
+        color: "zakbot-purple",
+        cta: { text: "Get Started", href: "#contact" }
+      },
+      {
+        title: "Lecture Notes & Summaries Generator",
+        description: "Convert full lectures into organized, summarized handouts.",
+        useCases: "Use Cases: Course materials, revisions.",
+        status: "Live Now",
+        color: "zakbot-blue",
+        cta: { text: "Get Started", href: "#contact" }
+      }
+    ],
+    comingSoon: [
+      {
         title: "Zakdeck – AI Slide & Content Engine",
         description: "Turn outlines, textbook photos, or lecture notes into ready-to-use presentation decks.",
         useCases: "Lesson plans, pitch decks, workshop slides",
-        status: "Live Now",
+        status: "Coming Soon",
         color: "zakbot-blue"
-      },
-      {
-        title: "Zakbot – AI Chatbot for Customer Engagement",
-        description: "Deploy your AI chatbot to answer queries, generate leads, and provide support.",
-        channels: "Website, Messenger, WhatsApp",
-        useCases: "Student helpdesk, lead generation, product support",
-        status: "Live Now",
-        color: "zakbot-teal"
       }
     ],
     onDemand: [
-      {
-        title: "AI Exam Typing & Formatting",
-        description: "Convert handwritten or image-based questions into clean MCQs or exams",
-        formats: "Google Docs, Word, PDF",
-        useCases: "Mock exams, past papers, daily assessments",
-        color: "zakbot-purple"
-      },
       {
         title: "AI Blog & Content Writing",
         description: "Generate SEO blogs, FAQs, and copy in your custom tone",
@@ -62,12 +75,6 @@ const Services = () => {
         platforms: "Facebook, Instagram, LinkedIn",
         useCases: "Daily academic engagement",
         color: "zakbot-purple"
-      },
-      {
-        title: "Lecture Notes & Summaries Generator",
-        description: "Convert full lectures into organized, summarized handouts",
-        useCases: "Course materials, revisions",
-        color: "zakbot-blue"
       },
       {
         title: "Standard Operating Procedures (SOPs)",
@@ -294,24 +301,93 @@ const Services = () => {
                           </p>
                           {service.channels && (
                             <p className={`mb-2 ${getTextColor('secondary')}`}>
-                              <span className="font-semibold">Channels:</span> {service.channels}
+                              <span className="font-semibold"></span> {service.channels}
+                            </p>
+                          )}
+                          {service.formats && (
+                            <p className={`mb-2 ${getTextColor('secondary')}`}>
+                              <span className="font-semibold"></span> {service.formats}
                             </p>
                           )}
                           <p className={`mb-6 ${getTextColor('secondary')}`}>
-                            <span className="font-semibold">Use Cases:</span> {service.useCases}
+                            <span className="font-semibold"></span> {service.useCases}
                           </p>
-                          <button
-                            className={`${colors.button} text-white py-2 px-6 rounded-md font-bold mt-auto cursor-pointer`}
-                            aria-label="Live Now Service"
-                            type="button"
-                          >
-                            <FaCheckCircle className="inline-block mr-2" /> Live Now
-                          </button>
+                          {service.cta ? (
+                            <a
+                              href={service.cta.href}
+                              className={`${colors.button} text-white py-2 px-6 rounded-md font-bold mt-auto cursor-pointer inline-block text-center`}
+                              aria-label={service.cta.text}
+                            >
+                              {service.cta.text}
+                            </a>
+                          ) : (
+                            <button
+                              className={`${colors.button} text-white py-2 px-6 rounded-md font-bold mt-auto cursor-not-allowed opacity-50`}
+                              disabled
+                              aria-label="Live Now Service"
+                              type="button"
+                            >
+                              <FaCheckCircle className="inline-block mr-2" /> Live Now
+                            </button>
+                          )}
                         </Card>
                       );
                     })}
                   </div>
                 </div>
+
+                {/* Coming Soon Services */}
+                {detailedServices.comingSoon.length > 0 && (
+                  <div className="mb-16">
+                    <motion.h3
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.1 }}
+                      className="text-3xl md:text-4xl font-bold text-center mb-10 text-yellow-500"
+                    >
+                      <FaTools className="inline-block mr-2" /> Coming Soon
+                    </motion.h3>
+                    <div className="grid md:grid-cols-2 gap-8">
+                      {detailedServices.comingSoon.map((service, index) => {
+                        const colors = getColorClasses(service.color);
+                        return (
+                          <Card
+                            key={index}
+                            className="p-8 flex flex-col"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                          >
+                            <div className="mb-4">
+                              <span className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200">
+                                {service.status}
+                              </span>
+                            </div>
+                            <h4 className={`text-2xl font-bold mb-4 ${getTextColor('default')}`}>
+                              {service.title}
+                            </h4>
+                            <p className={`mb-4 ${getTextColor('muted')}`}>
+                              {service.description}
+                            </p>
+                            {service.useCases && (
+                              <p className={`mb-6 ${getTextColor('secondary')}`}>
+                                <span className="font-semibold">Use Cases:</span> {service.useCases}
+                              </p>
+                            )}
+                            <button
+                              className={`${colors.button} text-white py-2 px-6 rounded-md font-bold mt-auto cursor-not-allowed opacity-50`}
+                              disabled
+                              aria-label="Coming Soon Service"
+                              type="button"
+                            >
+                              {service.status}
+                            </button>
+                          </Card>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
 
                 {/* On Demand Services */}
                 <div className="mb-16">
