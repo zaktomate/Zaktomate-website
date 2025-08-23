@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { FaRobot, FaArrowRight, FaPlay } from 'react-icons/fa';
-import { Link } from 'react-scroll';
+// Import the scrolling Link component with an alias
+import { Link as ScrollLink } from 'react-scroll';
+// Import the routing Link component (assuming you're using react-router-dom)
+import { Link as RouterLink } from 'react-router-dom';
 
 const Hero = ({ setActiveSection }) => {
   const containerVariants = {
@@ -71,7 +74,7 @@ const Hero = ({ setActiveSection }) => {
 
           {/* CTA Buttons */}
           <motion.div variants={itemVariants} className="flex flex-row gap-3 justify-center">
-            <Link
+            <ScrollLink
               to="zakbot-demo"
               spy={true}
               smooth={true}
@@ -90,12 +93,9 @@ const Hero = ({ setActiveSection }) => {
             >
               <FaPlay className="text-xs sm:text-sm" />
               Try Zakbot Live
-            </Link>
-            <Link
-              to="contact"
-              spy={true}
-              smooth={true}
-              duration={500}
+            </ScrollLink>
+            <RouterLink
+              to="/contact/"
               className="bg-transparent border-2 border-white text-white py-2 px-4 sm:py-3 sm:px-6 rounded-lg font-bold hover:bg-white hover:text-zakbot-blue transition flex items-center justify-center gap-2 cursor-pointer text-sm sm:text-base"
               onClick={() => {
                 if (window.gtag) {
@@ -110,7 +110,7 @@ const Hero = ({ setActiveSection }) => {
             >
               Book a Free Demo
               <FaArrowRight className="text-xs sm:text-sm" />
-            </Link>
+            </RouterLink>
           </motion.div>
 
           {/* Stats */}

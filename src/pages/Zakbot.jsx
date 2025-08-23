@@ -4,6 +4,7 @@ import Hero from '../components/sections/Hero';
 import ChatDemo from '../components/specific/ChatDemo';
 import SEO from '../components/common/SEO';
 import { FaLightbulb, FaBook, FaChartLine, FaBrain, FaLanguage, FaGlobe, FaChartBar, FaHandshake, FaLock } from 'react-icons/fa';
+import GlobalStats from '../components/specific/GlobalStats';
 
 const Zakbot = () => {
   return (
@@ -11,7 +12,20 @@ const Zakbot = () => {
       <SEO title="Zakbot - Your AI Assistant" description="Meet Zakbot — Your AI Assistant That Works 24/7" />
 
       {/* Hero Section */}
-      <Hero
+      {/* Live Demo Sandbox Integration */}
+      <section id="live-demo" className="section-padding bg-gray-50 dark:bg-gray-900">
+        <div className="container">
+          {/* <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">Try Zakbot Live</h2> */}
+          {/* <p className="text-lg text-gray-700 dark:text-gray-300 text-center mb-12 max-w-3xl mx-auto">
+            Experience the power of Zakbot firsthand. Interact with our live demo to see how it can transform your operations.
+          </p> */}
+          <ChatDemo /> {/* Assuming ChatDemo is the existing live demo sandbox component */}
+        </div>
+      </section>
+      <section id="stats-dashboard" className="section-padding h-auto flex item-center justify-center bg-white dark:bg-gray-800">
+        <GlobalStats />
+      </section>
+      {/* <Hero
         headline="Meet Zakbot — Your AI Assistant That Works 24/7"
         subheadline="Trained on your business data, Zakbot handles support, customer queries, and content — so your team can focus on growth."
         primaryCtaText="Try Zakbot Live"
@@ -19,15 +33,15 @@ const Zakbot = () => {
         secondaryCtaText="Contact Us"
         secondaryCtaLink="/contact"
         visual="animated-zakbot-demo.gif" // Placeholder for animated demo
-      />
+      /> */}
 
       {/* The Problems Section */}
-      <section className="section-padding bg-white dark:bg-gray-800">
+      <section className="section-padding bg-white dark:bg-gray-900">
         <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">The Problems We Solve</h2>
+          <h2 className="text-3xl font-bold text-left mb-12 text-gray-800 dark:text-white">The Problems We Solve</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="card text-center">
-              <FaLightbulb className="mx-auto mb-4 w-16 h-16 text-zakbot-blue" />
+            <div className="card text-left">
+              <FaLightbulb className="mx-auto mb-8 w-16 h-16 text-zakbot-blue" />
               <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Overloaded Support Teams</h3>
               <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
                 <li>High volume of repetitive queries</li>
@@ -35,8 +49,8 @@ const Zakbot = () => {
                 <li>Staff burnout and high turnover</li>
               </ul>
             </div>
-            <div className="card text-center">
-              <FaBook className="mx-auto mb-4 w-16 h-16 text-zakbot-teal" />
+            <div className="card text-left">
+              <FaBook className="mx-auto mb-8 w-16 h-16 text-zakbot-teal" />
               <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Content & Exam Bottlenecks</h3>
               <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
                 <li>Manual creation of course materials and exams</li>
@@ -44,8 +58,8 @@ const Zakbot = () => {
                 <li>Time-consuming updates and revisions</li>
               </ul>
             </div>
-            <div className="card text-center">
-              <FaChartLine className="mx-auto mb-4 w-16 h-16 text-zakbot-purple" />
+            <div className="card text-left">
+              <FaChartLine className="mx-auto mb-8 w-16 h-16 text-zakbot-purple" />
               <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Missed Growth Opportunities</h3>
               <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
                 <li>Lack of 24/7 customer engagement</li>
@@ -58,14 +72,14 @@ const Zakbot = () => {
       </section>
 
       {/* The Solution: Zakbot for EdTechs & SMEs Section */}
-      <section className="section-padding bg-gray-50 dark:bg-gray-900">
+      <section className="section-padding bg-gray-50 dark:bg-gray-800">
         <div className="container">
           <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">The Solution: Zakbot for EdTechs & SMEs</h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 text-center mb-12 max-w-3xl mx-auto">
             Zakbot is your 24/7 assistant—trained to handle your institution’s real needs.
           </p>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="card">
+            <div className="card dark:bg-gray-700">
               <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">AI-Powered Student & Customer Support</h3>
               <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
                 <li>Instant answers to common questions</li>
@@ -74,7 +88,7 @@ const Zakbot = () => {
                 <li>Seamless escalation to human agents when needed</li>
               </ul>
             </div>
-            <div className="card">
+            <div className="card dark:bg-gray-700">
               <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Dynamic Learning Content Generation</h3>
               <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
                 <li>Quiz Generation: Create quizzes from any content</li>
@@ -82,7 +96,7 @@ const Zakbot = () => {
                 <li>Exam Formatting: Automate formatting for various exam types</li>
               </ul>
             </div>
-            <div className="card">
+            <div className="card dark:bg-gray-700">
               <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Lead Nurture & Engagement</h3>
               <ul className="list-disc list-inside text-gray-700 dark:text-gray-300">
                 <li>Engage prospects with interactive conversations</li>
@@ -96,7 +110,7 @@ const Zakbot = () => {
       </section>
 
       {/* Key Features Section */}
-      <section className="section-padding bg-white dark:bg-gray-800">
+      <section className="section-padding bg-white dark:bg-gray-900">
         <div className="container">
           <h2 className="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Key Features</h2>
           <div className="grid md:grid-cols-3 lg:grid-cols-3 gap-8">
@@ -118,16 +132,7 @@ const Zakbot = () => {
         </div>
       </section>
 
-      {/* Live Demo Sandbox Integration */}
-      <section id="live-demo" className="section-padding bg-gray-50 dark:bg-gray-900">
-        <div className="container">
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-white">Try Zakbot Live</h2>
-          <p className="text-lg text-gray-700 dark:text-gray-300 text-center mb-12 max-w-3xl mx-auto">
-            Experience the power of Zakbot firsthand. Interact with our live demo to see how it can transform your operations.
-          </p>
-          <ChatDemo /> {/* Assuming ChatDemo is the existing live demo sandbox component */}
-        </div>
-      </section>
+      
 
       {/* Closing CTA Section */}
       <section className="section-padding bg-zakbot-blue text-white dark:bg-zakbot-blue-dark">
@@ -136,9 +141,6 @@ const Zakbot = () => {
           <div className="flex justify-center space-x-4">
             <Link to="/contact" className="btn-primary">
               Request a Free Local Demo
-            </Link>
-            <Link to="#live-demo" className="btn-outline">
-              Try Zakbot Live
             </Link>
           </div>
         </div>

@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaBars, FaTimes, FaRobot, FaMoon, FaSun } from 'react-icons/fa';
+import { FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa';
 import { useTheme } from '../../context/ThemeContext';
-import { Link } from 'react-scroll';
+import { Link } from 'react-router-dom'; // Using Link from react-router-dom
 
-const Header = ({ activeSection, setActiveSection }) => {
+const Header = ({ activeSection }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { darkMode, toggleTheme } = useTheme();
 
+  // Update navItems to include the correct paths
   const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'services', label: 'Services' },
-    { id: 'zakbot-demo', label: 'Zakbot' },
-    { id: 'pricing', label: 'Pricing' },
-    { id: 'about', label: 'About' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'home', label: 'Home', path: '/' },
+    { id: 'services', label: 'Services', path: '/services' },
+    { id: 'zakbot-demo', label: 'Zakbot', path: '/zakbot' },
+    { id: 'pricing', label: 'Pricing', path: '/pricing' },
+    { id: 'about', label: 'About', path: '/about' },
+    { id: 'contact', label: 'Contact', path: '/contact' },
   ];
 
   useEffect(() => {
@@ -26,15 +27,6 @@ const Header = ({ activeSection, setActiveSection }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(id);
-      setIsOpen(false);
-    }
-  };
 
   return (
     <motion.header
@@ -56,41 +48,38 @@ const Header = ({ activeSection, setActiveSection }) => {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2 cursor-pointer pl-2"
-            onClick={() => scrollToSection('home')}
+            className="flex items-center space-x-2 pl-2"
           >
-            
-            <span className={`text-xl font-bold font-heading ${
-              isScrolled
-                ? darkMode
-                  ? 'text-white'
-                  : 'text-zakbot-blue'
-                : 'text-white'
-            }`}>
-              Zaktomate
-            </span>
+            <Link to="/" className="flex items-center space-x-2">
+              <span className={`text-xl font-bold font-heading ${
+                isScrolled
+                  ? darkMode
+                    ? 'text-white'
+                    : 'text-zakbot-blue'
+                  : 'text-white'
+              }`}>
+                Zaktomate
+              </span>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => scrollToSection(item.id)}
-                className={`font-medium transition-colors duration-300 ${
-                  activeSection === item.id
-                    ? 'text-zakbot-blue border-b-2 border-zakbot-blue'
-                    : isScrolled
+              <motion.div key={item.id} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
+                  to={item.path}
+                  className={`font-medium transition-colors duration-300 ${
+                    isScrolled
                       ? darkMode
                         ? 'text-gray-300 hover:text-white'
                         : 'text-gray-600 hover:text-zakbot-blue'
                       : 'text-white hover:text-gray-200'
-                }`}
-              >
-                {item.label}
-              </motion.button>
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              </motion.div>
             ))}
             
             {/* Theme Toggle Button */}
@@ -151,23 +140,20 @@ const Header = ({ activeSection, setActiveSection }) => {
           >
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <motion.button
+                <Link
                   key={item.id}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => scrollToSection(item.id)}
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
                   className={`font-medium text-left transition-colors duration-300 ${
-                    activeSection === item.id
-                      ? 'text-zakbot-blue border-l-4 border-zakbot-blue pl-2'
-                      : isScrolled
-                        ? darkMode
-                          ? 'text-gray-300 hover:text-white pl-2'
-                          : 'text-gray-600 hover:text-zakbot-blue pl-2'
-                        : 'text-white hover:text-gray-200 pl-2'
+                    isScrolled
+                      ? darkMode
+                        ? 'text-gray-300 hover:text-white pl-2'
+                        : 'text-gray-600 hover:text-zakbot-blue pl-2'
+                      : 'text-white hover:text-gray-200 pl-2'
                   }`}
                 >
                   {item.label}
-                </motion.button>
+                </Link>
               ))}
             </nav>
           </motion.div>

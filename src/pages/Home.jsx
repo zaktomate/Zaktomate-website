@@ -39,20 +39,20 @@ const Home = ({ setActiveSection }) => {
         <ChatDemo
           headline="Zakbot – Your Always-On AI Assistant for Every Interaction"
           microcopy="Zakbot is an intelligent, multilingual AI assistant that works around the clock to deliver instant, accurate answers and personalized guidance — no human intervention required. Whether on your website, app, or learning platform, Zakbot adapts to your content, processes, and audience needs."
-          capabilities={[
-            { title: "Customer Support Excellence", description: "Instantly resolve common queries, reduce wait times, and free up your team for complex cases." },
-            { title: "Academic Q&A Service", description: "Answer student questions based on courses, assignments, and academic topics in real time, supporting both self-paced and instructor-led learning." },
-            { title: "Course & Content Creation", description: "Help design structured lessons, quizzes, and training modules tailored to your audience." },
-            { title: "Business & Service Teams", description: "Offer product information, onboarding guidance, and service updates instantly." },
-            { title: "Multilingual Communication", description: "Deliver custom responses in multiple languages, including Bangla and English, to reach a wider audience." },
-          ]}
           cta1={{ text: "Learn More", link: "/zakbot" }}
-          cta2={{ text: "Try Zakbot Live", link: "#" }}
         />
+        <div className="text-center mt-2">
+          <a
+            href="/zakbot"
+            className="bg-zakbot-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-zakbot-dark-blue transition-colors duration-300"
+          >
+            Learn More
+          </a>
+        </div>
       </section>
 
       {/* Stats Section */}
-      <section id="stats-dashboard" className="min-h-screen bg-white dark:bg-gray-900">
+      <section id="stats-dashboard" className="h-auto flex item-center justify-center bg-white dark:bg-gray-900">
         <GlobalStats />
       </section>
 
@@ -62,23 +62,8 @@ const Home = ({ setActiveSection }) => {
       {/* Trust Signals Section */}
       <TrustSignals />
 
-      {/* Pricing Section */}
-      <Pricing />
-
-      {/* About Zaktomate Section */}
-      <AboutZaktomate />
-
-      {/* Team Behind Zaktomate Section */}
-      <TeamBehindZaktomate />
-
-      {/* Looking Ahead & Join Us Section */}
-      <LookingAheadJoinUs />
-
       {/* FAQ Section */}
       <FAQSection />
-
-      {/* Contact Section */}
-      <Contact />
     </div>
   );
 };

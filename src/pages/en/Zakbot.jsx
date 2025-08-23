@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaBrain, FaUsers, FaSearch, FaBolt, FaShieldAlt, FaChartLine, FaRobot, FaHeadphones, FaGraduationCap, FaShoppingCart, FaHospital, FaCheck, FaFileAlt, FaLanguage, FaComments, FaUserFriends, FaBullhorn, FaBook, FaBalanceScale, FaFileContract } from 'react-icons/fa';
 import Card from '../../components/common/Card';
+import { getColorClasses } from '../../utils/colorUtils';
 import ChatDemo from '../../components/specific/ChatDemo';
 import SEO from '../../components/common/SEO';
 
@@ -11,43 +12,43 @@ const ZakbotEN = () => {
       icon: <FaBrain className="text-3xl" />,
       title: "Custom Knowledge Training",
       description: "Train Zakbot on your specific business data and documentation for accurate, context-aware responses.",
-      color: "text-zakbot-blue",
-      bgColor: "bg-zakbot-blue",
+      color: getColorClasses('zakbot-yellow').text,
+      bgColor: getColorClasses('zakbot-yellow').bg,
     },
     {
       icon: <FaLanguage className="text-3xl" />,
       title: "Multi-Language",
       description: "Communicate with customers in their preferred language with support for 50+ languages.",
-      color: "text-zakbot-teal",
-      bgColor: "bg-zakbot-teal",
+      color: getColorClasses('zakbot-rose').text,
+      bgColor: getColorClasses('zakbot-rose').bg,
     },
     {
       icon: <FaComments className="text-3xl" />,
       title: "Omnichannel Deployment",
       description: "Deploy Zakbot across website, social media, email, and messaging platforms seamlessly.",
-      color: "text-zakbot-purple",
-      bgColor: "bg-zakbot-purple",
+      color: getColorClasses('zakbot-indigo').text,
+      bgColor: getColorClasses('zakbot-indigo').bg,
     },
     {
       icon: <FaChartLine className="text-3xl" />,
       title: "Analytics Dashboard",
       description: "Gain insights into customer interactions, conversation trends, and performance metrics.",
-      color: "text-zakbot-blue",
-      bgColor: "bg-zakbot-blue",
+      color: getColorClasses('zakbot-yellow').text,
+      bgColor: getColorClasses('zakbot-yellow').bg,
     },
     {
       icon: <FaUserFriends className="text-3xl" />,
       title: "Handoff to Human",
       description: "Seamlessly transfer complex conversations to human agents when needed with full context.",
-      color: "text-zakbot-teal",
-      bgColor: "bg-zakbot-teal",
+      color: getColorClasses('zakbot-rose').text,
+      bgColor: getColorClasses('zakbot-rose').bg,
     },
     {
       icon: <FaShieldAlt className="text-3xl" />,
       title: "Secure & Private",
       description: "Enterprise-grade security with end-to-end encryption and compliance with global data protection regulations.",
-      color: "text-zakbot-purple",
-      bgColor: "bg-zakbot-purple",
+      color: getColorClasses('zakbot-indigo').text,
+      bgColor: getColorClasses('zakbot-indigo').bg,
     },
   ];
 
@@ -377,7 +378,7 @@ const ZakbotEN = () => {
                 className="feature-card group"
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className={`w-16 h-16 rounded-lg ${feature.bgColor} bg-opacity-10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`w-16 h-16 rounded-lg ${feature.bgColor} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   <div className={feature.color}>
                     {feature.icon}
                   </div>

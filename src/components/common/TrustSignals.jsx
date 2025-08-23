@@ -7,7 +7,7 @@ import openaiLogo from '../../assets/logos/openai.png';
 import openrouterLogo from '../../assets/logos/openrouter.png';
 import kilocodeLogo from '../../assets/logos/kilocode.png';
 import googleGeminiLogo from '../../assets/logos/google-gemini.png';
-import mongodbLogo from '../../assets/logos/mongodb.png';
+import mongodbLogo from '../../assets/logos/mongodb.svg';
 
 const TrustSignals = () => {
   const logos = [
@@ -19,7 +19,7 @@ const TrustSignals = () => {
   ];
 
   return (
-    <section id="trust-signals" className="py-12 bg-gray-100 dark:bg-gray-800">
+    <section id="trust-signals" className="section-padding py-12 bg-gray-100 dark:bg-gray-800">
       <div className="container mx-auto px-4 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

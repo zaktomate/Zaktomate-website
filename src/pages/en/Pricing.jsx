@@ -103,32 +103,32 @@ const PricingEN = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="section-padding text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold font-heading text-zakbot-dark dark:text-white mb-6">
             Simple, Transparent Pricing for Scalable <span className="gradient-text">AI Automation</span>
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Clean tiered pricing grid illustration, emphasize Accelerate as "Most Popular."
+            Choose the perfect plan to transform your business with AI automation. Our Accelerate plan is the most popular choice for growing businesses.
           </p>
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-4 gap-8 mb-20">
-          {plans.map((plan, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          {plans.slice(0, 3).map((plan, index) => (
             <div key={index} className="relative">
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-zakbot-blue text-white px-4 py-1 rounded-full text-sm font-medium flex items-center">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <span className="bg-zakbot-blue text-white px-4 py-1 rounded-full text-sm font-medium flex items-center whitespace-nowrap">
                     <FaStar className="mr-1" /> Most Popular
                   </span>
                 </div>
               )}
               <Card
-                className={`h-full ${plan.popular ? 'ring-2 ring-zakbot-blue' : ''}`}
+                className={`h-full flex flex-col ${plan.popular ? 'ring-2 ring-zakbot-blue ring-offset-4 ring-offset-gray-50 dark:ring-offset-gray-900' : ''}`}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="text-center mb-8">
+                <div className="text-center mb-8 pt-6">
                   <h3 className="text-2xl font-bold font-heading text-zakbot-dark dark:text-white mb-2">
                     {plan.name}
                   </h3>
@@ -145,7 +145,7 @@ const PricingEN = () => {
                   </p>
                 </div>
                 
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8 flex-grow">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start">
                       <FaCheck className="text-green-500 mt-1 mr-3 flex-shrink-0" />
@@ -155,7 +155,61 @@ const PricingEN = () => {
                 </ul>
                 
                 <button
-                  className={`w-full py-3 px-6 rounded-lg font-medium transition-colors ${
+                  className={`w-full py-3 px-6 rounded-lg font-medium transition-colors mt-auto ${
+                    plan.popular
+                      ? 'bg-zakbot-blue text-white hover:bg-zakbot-blue-light'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                  }`}
+                >
+                  {plan.cta}
+                </button>
+              </Card>
+            </div>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-2xl mx-auto mb-20">
+          {plans.slice(3, 4).map((plan, index) => (
+            <div key={index} className="relative lg:col-span-full">
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <span className="bg-zakbot-blue text-white px-4 py-1 rounded-full text-sm font-medium flex items-center whitespace-nowrap">
+                    <FaStar className="mr-1" /> Most Popular
+                  </span>
+                </div>
+              )}
+              <Card
+                className={`h-full flex flex-col ${plan.popular ? 'ring-2 ring-zakbot-blue ring-offset-4 ring-offset-gray-50 dark:ring-offset-gray-900' : ''}`}
+                transition={{ duration: 0.5, delay: (index + 3) * 0.1 }}
+              >
+                <div className="text-center mb-8 pt-6">
+                  <h3 className="text-2xl font-bold font-heading text-zakbot-dark dark:text-white mb-2">
+                    {plan.name}
+                  </h3>
+                  <div className="mb-4">
+                    <span className="text-4xl font-bold text-zakbot-dark dark:text-white">
+                      {plan.price}
+                    </span>
+                    <span className="text-gray-600 dark:text-gray-300">
+                      {plan.period}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {plan.description}
+                  </p>
+                </div>
+                
+                <ul className="space-y-3 mb-8 flex-grow">
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <FaCheck className="text-green-500 mt-1 mr-3 flex-shrink-0" />
+                      <span className="text-gray-600 dark:text-gray-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <button
+                  className={`w-full py-3 px-6 rounded-lg font-medium transition-colors mt-auto ${
                     plan.popular
                       ? 'bg-zakbot-blue text-white hover:bg-zakbot-blue-light'
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
@@ -179,7 +233,7 @@ const PricingEN = () => {
             Compare <span className="gradient-text">Plans</span>
           </h2>
           
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto rounded-lg shadow">
             <table className="w-full border-collapse">
               <thead>
                 <tr className="bg-gray-100 dark:bg-gray-800">
@@ -244,7 +298,7 @@ const PricingEN = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-4xl mx-auto mt-20"
+          className="section-padding max-w-4xl mx-auto mt-20"
         >
           <h2 className="text-3xl font-bold font-heading text-zakbot-dark dark:text-white mb-4 text-center">
             Not Ready for a Full Plan? Try Our <span className="gradient-text">One-Off Services</span>.
@@ -253,7 +307,8 @@ const PricingEN = () => {
             Test our expertise with a single project. Experience our quality, reliability, and impact—then scale into a long-term partnership when you're ready.
           </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* First row with three items */}
             <Card className="feature-card group">
               <h3 className="text-xl font-bold font-heading text-zakbot-dark dark:text-white mb-3">
                 Zakbot Setup
@@ -280,7 +335,10 @@ const PricingEN = () => {
                 Build a specialized chatbot for your specific knowledge base
               </p>
             </Card>
-            
+          </div>
+          
+          {/* Second row with remaining items centered */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-3xl mx-auto">
             <Card className="feature-card group">
               <h3 className="text-xl font-bold font-heading text-zakbot-dark dark:text-white mb-3">
                 AI Summarization & Notes
@@ -318,7 +376,7 @@ const PricingEN = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto mt-20"
         >
           <h2 className="text-3xl font-bold font-heading text-zakbot-dark dark:text-white mb-8 text-center">
             Frequently Asked <span className="gradient-text">Questions</span>

@@ -298,28 +298,6 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
           </motion.div>
         )}
 
-        {(cta1 || cta2) && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-center mt-12"
-          >
-            <div className="flex justify-center space-x-4">
-              {cta1 && (
-                <button className="bg-zakbot-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-zakbot-dark-blue transition-colors duration-300">
-                  {cta1.text}
-                </button>
-              )}
-              {cta2 && (
-                <a href={cta2.link} className={`text-zakbot-blue px-8 py-3 text-lg font-semibold border border-zakbot-blue rounded-full hover:bg-zakbot-blue hover:text-white transition-colors duration-300 ${getTextColor('default')}`}>
-                  {cta2.text}
-                </a>
-              )}
-            </div>
-          </motion.div>
-        )}
       </div>
     </section>
   );

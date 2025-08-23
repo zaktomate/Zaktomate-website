@@ -28,7 +28,7 @@ const Contact = () => {
     {
       icon: <FaPhone className="text-2xl" />,
       title: "Call Us",
-      details: "+880 1234-567890",
+      details: "+880 1975 169294",
       description: "Mon-Fri 9AM-6PM BST"
     },
     {
@@ -83,9 +83,9 @@ const Contact = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center my-24"
         >
-          <h1 className="text-4xl md:text-5xl font-bold font-heading text-zakbot-dark dark:text-white mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold font-heading text-zakbot-dark dark:text-white mb-6 mt-6">
             Get in <span className="gradient-text">Touch</span>
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -163,7 +163,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-zakbot-blue bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    placeholder="+880 1234-567890"
+                    placeholder="+880 1975 169294"
                   />
                 </div>
 
@@ -242,15 +242,15 @@ const Contact = () => {
                   className="text-center"
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  <div className="w-12 h-12 bg-zakbot-blue bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <div className="text-zakbot-blue">
+                  <div className="w-12 h-12 bg-zakbot-teal bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="text-zakbot-teal">
                       {info.icon}
                     </div>
                   </div>
                   <h3 className="text-lg font-semibold text-zakbot-dark dark:text-white mb-2">
                     {info.title}
                   </h3>
-                  <p className="text-zakbot-blue font-medium mb-1">
+                  <p className="text-zakbot-teal font-medium mb-1">
                     {info.details}
                   </p>
                   <p className="text-sm text-gray-600 dark:text-gray-300">
@@ -293,7 +293,7 @@ const Contact = () => {
               </div>
               <a 
                 href="/faq" 
-                className="inline-block mt-4 text-zakbot-blue hover:text-zakbot-blue-light font-medium"
+                className="inline-block mt-4 text-zakbot-teal hover:text-zakbot-teal-light font-medium"
               >
                 View all FAQs →
               </a>

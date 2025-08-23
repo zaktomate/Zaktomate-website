@@ -102,32 +102,32 @@ const Pricing = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="section-padding text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold font-heading text-zakbot-dark dark:text-white mb-6">
-            Flexible Plans for Every Stage of AI Adoption
+            Simple, Transparent Pricing for Scalable <span className="gradient-text">AI Automation</span>
           </h1>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Whether you want a one-off project to test the waters or a long-term partner to scale AI across your business—we’ve got you covered.
+            Choose the perfect plan to transform your business with AI automation. Our Accelerate plan is the most popular choice for growing businesses.
           </p>
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
-          {plans.map((plan, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+          {plans.slice(0, 3).map((plan, index) => (
             <div key={index} className="relative">
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-zakbot-blue text-white px-4 py-1 rounded-full text-sm font-medium flex items-center">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <span className="bg-zakbot-blue text-white px-4 py-1 rounded-full text-sm font-medium flex items-center whitespace-nowrap">
                     <FaStar className="mr-1" /> Most Popular
                   </span>
                 </div>
               )}
               <Card
-                className={`h-full ${plan.popular ? 'ring-2 ring-zakbot-blue' : ''}`}
+                className={`h-full flex flex-col ${plan.popular ? 'ring-2 ring-zakbot-blue ring-offset-4 ring-offset-gray-50 dark:ring-offset-gray-900' : ''}`}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="text-center mb-8">
+                <div className="text-center mb-8 pt-6">
                   <h3 className="text-2xl font-bold font-heading text-zakbot-dark dark:text-white mb-2">
                     {plan.name}
                   </h3>
@@ -144,7 +144,7 @@ const Pricing = () => {
                   </p>
                 </div>
                 
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8 flex-grow">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start">
                       <FaCheck className="text-green-500 mt-1 mr-3 flex-shrink-0" />
@@ -153,9 +153,9 @@ const Pricing = () => {
                   ))}
                 </ul>
                 
-                <button 
-                  className={`w-full py-3 px-6 rounded-lg font-medium transition-colors ${
-                    plan.popular 
+                <button
+                  className={`w-full py-3 px-6 rounded-lg font-medium transition-colors mt-auto ${
+                    plan.popular
                       ? 'bg-zakbot-blue text-white hover:bg-zakbot-blue-light'
                       : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
                   }`}
@@ -167,12 +167,215 @@ const Pricing = () => {
           ))}
         </div>
 
+        <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-2xl mx-auto mb-20">
+          {plans.slice(3, 4).map((plan, index) => (
+            <div key={index} className="relative lg:col-span-full">
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <span className="bg-zakbot-blue text-white px-4 py-1 rounded-full text-sm font-medium flex items-center whitespace-nowrap">
+                    <FaStar className="mr-1" /> Most Popular
+                  </span>
+                </div>
+              )}
+              <Card
+                className={`h-full flex flex-col ${plan.popular ? 'ring-2 ring-zakbot-blue ring-offset-4 ring-offset-gray-50 dark:ring-offset-gray-900' : ''}`}
+                transition={{ duration: 0.5, delay: (index + 3) * 0.1 }}
+              >
+                <div className="text-center mb-8 pt-6">
+                  <h3 className="text-2xl font-bold font-heading text-zakbot-dark dark:text-white mb-2">
+                    {plan.name}
+                  </h3>
+                  <div className="mb-4">
+                    <span className="text-4xl font-bold text-zakbot-dark dark:text-white">
+                      {plan.price}
+                    </span>
+                    <span className="text-gray-600 dark:text-gray-300">
+                      {plan.period}
+                    </span>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {plan.description}
+                  </p>
+                </div>
+                
+                <ul className="space-y-3 mb-8 flex-grow">
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <FaCheck className="text-green-500 mt-1 mr-3 flex-shrink-0" />
+                      <span className="text-gray-600 dark:text-gray-300">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <button
+                  className={`w-full py-3 px-6 rounded-lg font-medium transition-colors mt-auto ${
+                    plan.popular
+                      ? 'bg-zakbot-blue text-white hover:bg-zakbot-blue-light'
+                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
+                  }`}
+                >
+                  {plan.cta}
+                </button>
+              </Card>
+            </div>
+          ))}
+        </div>
+
+        {/* Comparison Table */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="max-w-6xl mx-auto mt-20"
+        >
+          <h2 className="text-3xl font-bold font-heading text-zakbot-dark dark:text-white mb-8 text-center">
+            Compare <span className="gradient-text">Plans</span>
+          </h2>
+          
+          <div className="overflow-x-auto rounded-lg shadow">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-gray-100 dark:bg-gray-800">
+                  <th className="border border-gray-200 dark:border-gray-700 p-4 text-left">Feature</th>
+                  <th className="border border-gray-200 dark:border-gray-700 p-4 text-center">Ignite</th>
+                  <th className="border border-gray-200 dark:border-gray-700 p-4 text-center">Accelerate</th>
+                  <th className="border border-gray-200 dark:border-gray-700 p-4 text-center">Transform</th>
+                  <th className="border border-gray-200 dark:border-gray-700 p-4 text-center">Pinnacle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 font-medium">Zakbot Messages</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">5,000</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">15,000</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">30,000</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Unlimited</td>
+                </tr>
+                <tr className="bg-gray-50 dark:bg-gray-800">
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 font-medium">Pre-Built Automations</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Basic</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Advanced</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Advanced</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Custom</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 font-medium">Custom Workflows & Integrations</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">-</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Limited</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Full</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Full</td>
+                </tr>
+                <tr className="bg-gray-50 dark:bg-gray-800">
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 font-medium">Support</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Email</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Priority Email & Chat</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">24/7 Dedicated</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">24/7 Dedicated + Account Manager</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 font-medium">Onboarding Assistance</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Basic</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Standard</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Premium</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">White-Glove</td>
+                </tr>
+                <tr className="bg-gray-50 dark:bg-gray-800">
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 font-medium">Training & Consulting</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Self-Service</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Guided</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Hands-On</td>
+                  <td className="border border-gray-200 dark:border-gray-700 p-4 text-center">Strategic Partnership</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
+
+        {/* One-Off Services Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="section-padding max-w-4xl mx-auto mt-20"
+        >
+          <h2 className="text-3xl font-bold font-heading text-zakbot-dark dark:text-white mb-4 text-center">
+            Not Ready for a Full Plan? Try Our <span className="gradient-text">One-Off Services</span>.
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 mb-8 text-center max-w-2xl mx-auto">
+            Test our expertise with a single project. Experience our quality, reliability, and impact—then scale into a long-term partnership when you're ready.
+          </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            {/* First row with three items */}
+            <Card className="feature-card group">
+              <h3 className="text-xl font-bold font-heading text-zakbot-dark dark:text-white mb-3">
+                Zakbot Setup
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Custom configuration and deployment of your AI assistant
+              </p>
+            </Card>
+            
+            <Card className="feature-card group">
+              <h3 className="text-xl font-bold font-heading text-zakbot-dark dark:text-white mb-3">
+                Exam Formatter
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Convert documents into structured exam formats with AI
+              </p>
+            </Card>
+            
+            <Card className="feature-card group">
+              <h3 className="text-xl font-bold font-heading text-zakbot-dark dark:text-white mb-3">
+                Custom Q&A Bot
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Build a specialized chatbot for your specific knowledge base
+              </p>
+            </Card>
+          </div>
+          
+          {/* Second row with remaining items centered */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-3xl mx-auto">
+            <Card className="feature-card group">
+              <h3 className="text-xl font-bold font-heading text-zakbot-dark dark:text-white mb-3">
+                AI Summarization & Notes
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Transform lengthy documents into concise summaries and notes
+              </p>
+            </Card>
+            
+            <Card className="feature-card group">
+              <h3 className="text-xl font-bold font-heading text-zakbot-dark dark:text-white mb-3">
+                Lead Gen Script Automation
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300">
+                Create and optimize scripts for automated lead generation
+              </p>
+            </Card>
+          </div>
+          
+          <div className="text-center">
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
+              <span className="font-semibold">Pricing:</span> Custom quotes based on project scope
+            </p>
+            <a
+              href="/contact"
+              className="inline-block bg-zakbot-blue hover:bg-zakbot-blue-light text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105"
+            >
+              Request a One-Off Project
+            </a>
+          </div>
+        </motion.div>
+
         {/* FAQ Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto mt-20"
         >
           <h2 className="text-3xl font-bold font-heading text-zakbot-dark dark:text-white mb-8 text-center">
             Frequently Asked <span className="gradient-text">Questions</span>
@@ -195,212 +398,32 @@ const Pricing = () => {
           </div>
         </motion.div>
 
-        {/* Secondary Track – One-Off Services */}
+        {/* Closing CTA Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-20 mb-16"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-center mt-20"
         >
-{/* Comparison Table: One-Off Services vs OpsMate Plans */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-20 mb-16 max-w-6xl mx-auto"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold font-heading text-zakbot-dark dark:text-white mb-10 text-center">
-            Choose What Suits You Best
+          <h2 className="text-3xl font-bold font-heading text-zakbot-dark dark:text-white mb-4">
+            Ready to Automate Your Business with <span className="gradient-text">AI</span>?
           </h2>
-          <div className="overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
-            <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-              <thead className="bg-zakbot-blue-dark text-white">
-                <tr>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Feature / Plan
-                  </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    One-Off Services
-                  </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Ignite
-                  </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider relative">
-                    Accelerate
-                    <span className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-zakbot-blue text-white px-2 py-0.5 rounded-full text-xs font-medium whitespace-nowrap">
-                      Most Popular
-                    </span>
-                  </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Transform
-                  </th>
-                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                    Pinnacle
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zakbot-dark dark:text-white">Commitment</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Low (Project-based)</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Monthly</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Monthly</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Monthly</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Annual/Custom</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zakbot-dark dark:text-white">Zakdeck</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Setup Only</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Limited Access</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Standard Access</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Full Integration</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Custom Development</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zakbot-dark dark:text-white">Zakbot</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Setup Only</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Basic Integration</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Advanced Integration</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Full Integration</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Custom Development</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zakbot-dark dark:text-white">Workflows & Automations</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Specific Project</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">1 Workflow</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">3 Workflows</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Unlimited</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Custom</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zakbot-dark dark:text-white">Support</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Project-based</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Email</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Priority Email & Chat</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">24/7 Dedicated</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Dedicated Team</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zakbot-dark dark:text-white">Onboarding & Training</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Basic Setup</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Self-Serve Guides</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Assisted Onboarding</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Full Training</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Custom Program</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zakbot-dark dark:text-white">Integration Level</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Basic API</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Standard API</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Advanced API</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Full Custom</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Bespoke</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zakbot-dark dark:text-white">Consulting</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">None</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Basic Guidance</td>
-{/* Positioning Notes */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-          className="mt-10 text-center max-w-4xl mx-auto text-gray-600 dark:text-gray-300"
-        >
-          <p className="mb-4">
-            <span className="font-bold text-zakbot-dark dark:text-white">One-Off Services:</span> Ideal for businesses looking to test AI solutions with minimal commitment or for specific project needs.
+          <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+            Transform your operations with our cutting-edge AI solutions. Schedule a free consultation to discover how we can help you save time and scale efficiently.
           </p>
-          <p>
-            <span className="font-bold text-zakbot-dark dark:text-white">OpsMate Plans:</span> Designed for long-term partnerships, offering comprehensive AI integration, dedicated support, and strategic growth.
-          </p>
-        </motion.div>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Monthly Review</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Quarterly Strategy</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Ongoing Strategic</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zakbot-dark dark:text-white">Scalability</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Limited</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Moderate</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">High</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Very High</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Unlimited</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zakbot-dark dark:text-white">Pricing</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">Custom Quote</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">BDT 10,000/month</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">BDT 25,000/month</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">BDT 40,000/month</td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">From BDT 60,000/month</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-zakbot-dark dark:text-white"></td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                    <a href="/contact" className="inline-block bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 font-medium py-2 px-4 rounded-lg transition-all duration-300">Request Project</a>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                    <button className="w-full py-2 px-4 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">Get Started</button>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                    <button className="w-full py-2 px-4 rounded-lg font-medium transition-colors bg-zakbot-blue text-white hover:bg-zakbot-blue-light">Most Popular</button>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                    <button className="w-full py-2 px-4 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">Get Started</button>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600 dark:text-gray-300">
-                    <button className="w-full py-2 px-4 rounded-lg font-medium transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600">Contact Sales</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </motion.div>
-          <h2 className="text-3xl md:text-4xl font-bold font-heading text-zakbot-dark dark:text-white mb-6">
-            Not Ready for Full OpsMate? <span className="gradient-text">Start Off with One-Off Services</span>
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-10">
-            Test our expertise with a single project. Experience our quality, reliability, and impact—then scale into a long-term OpsMate partnership when you’re ready.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-            <Card className="p-6 text-left">
-              <h3 className="text-xl font-semibold text-zakbot-dark dark:text-white mb-3">Zakbot Setup</h3>
-              <p className="text-gray-600 dark:text-gray-300">Custom AI chatbot deployment for your business.</p>
-            </Card>
-            <Card className="p-6 text-left">
-              <h3 className="text-xl font-semibold text-zakbot-dark dark:text-white mb-3">Zakdeck Setup</h3>
-              <p className="text-gray-600 dark:text-gray-300">Automated content generation and presentation tools.</p>
-            </Card>
-            <Card className="p-6 text-left">
-              <h3 className="text-xl font-semibold text-zakbot-dark dark:text-white mb-3">Exam Formatter</h3>
-              <p className="text-gray-600 dark:text-gray-300">AI-powered formatting for academic exams and quizzes.</p>
-            </Card>
-            <Card className="p-6 text-left">
-              <h3 className="text-xl font-semibold text-zakbot-dark dark:text-white mb-3">Q&A Service</h3>
-              <p className="text-gray-600 dark:text-gray-300">Develop a custom Q&A bot for your knowledge base.</p>
-            </Card>
-            <Card className="p-6 text-left">
-              <h3 className="text-xl font-semibold text-zakbot-dark dark:text-white mb-3">AI Summarization & Notes</h3>
-              <p className="text-gray-600 dark:text-gray-300">Automate meeting notes and document summarization.</p>
-            </Card>
-            <Card className="p-6 text-left">
-              <h3 className="text-xl font-semibold text-zakbot-dark dark:text-white mb-3">Lead Gen Script Automation</h3>
-              <p className="text-gray-600 dark:text-gray-300">Automate lead generation scripts and outreach.</p>
-            </Card>
-          </div>
-
-          <p className="text-md text-gray-500 dark:text-gray-400 max-w-3xl mx-auto mb-8">
-            All services are delivered and priced as one-time setup only. Any recurring costs are on the client.
-          </p>
-
-          <div className="flex justify-center items-center space-x-4">
-            <span className="text-2xl font-bold text-zakbot-dark dark:text-white">Custom Pricing</span>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/contact"
-              className="inline-block bg-zakbot-teal hover:bg-zakbot-teal-light text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105"
+              className="inline-block bg-zakbot-blue hover:bg-zakbot-blue-light text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105"
             >
-              Request a One-Off Project
+              Get Free Consultation
+            </a>
+            <a
+              href="/contact"
+              className="inline-block bg-transparent border-2 border-zakbot-blue text-zakbot-blue hover:bg-zakbot-blue hover:text-white font-medium py-3 px-8 rounded-lg transition-all duration-300"
+            >
+              Contact Us
             </a>
           </div>
         </motion.div>

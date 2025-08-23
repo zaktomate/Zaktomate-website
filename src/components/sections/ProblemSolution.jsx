@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { getTextColor } from '../../utils/colorUtils';
 import { FaHeadset, FaFileAlt, FaUserFriends, FaLightbulb, FaRobot, FaChartLine } from 'react-icons/fa';
+import Card from '../common/Card';
 
 const ProblemSolution = () => {
   const problems = [
@@ -68,6 +69,7 @@ const ProblemSolution = () => {
     <>
     <section id="problem-solution" className="h-auto py-40 flex item-center justify-center bg-gray-50 dark:bg-gray-800">
       <div className="container mx-auto px-4">
+        
         {/* Problem Framing */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -97,19 +99,22 @@ const ProblemSolution = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
             >
-              <div className="flex items-center justify-center mb-4">
-                {problem.icon}
-              </div>
-              <h3 className={`text-xl font-bold text-center mb-3 ${getTextColor('default')}`}>
-                {problem.title}
-              </h3>
-              <ul className="list-disc list-inside text-left">
-                {problem.points.map((point, i) => (
-                  <li key={i} className={`${getTextColor('secondary')} mb-1`}>{point}</li>
-                ))}
-              </ul>
+              <Card className="p-6 flex flex-col h-full group hover:shadow-xl transition-shadow duration-300">
+                              <div className="w-16 h-16 rounded-lg bg-red-500 bg-opacity-10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <div className="text-red-500">
+                                  {problem.icon}
+                                </div>
+                              </div>
+                              <h3 className={`text-xl font-bold text-left mb-3 ${getTextColor('default')}`}>
+                                {problem.title}
+                              </h3>
+                              <ul className="list-disc list-inside text-left flex-grow">
+                                {problem.points.map((point, i) => (
+                                  <li key={i} className={`${getTextColor('secondary')} mb-1`}>{point}</li>
+                                ))}
+                              </ul>
+                            </Card>
             </motion.div>
           ))}
         </div>
@@ -122,7 +127,10 @@ const ProblemSolution = () => {
         >
           These challenges don’t just slow you down—they quietly hold your business back from reaching its full potential.
         </motion.p>
-
+      </div>
+    </section>
+    <section id="problem-solution" className="h-auto py-40 flex item-center justify-center bg-white/70 dark:bg-gray-900 backdrop-blur-sm">
+      <div className="container  mx-auto px-4">
         {/* Solution Pivot */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -152,19 +160,22 @@ const ProblemSolution = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg"
             >
-              <div className="flex items-center justify-center mb-4">
-                {solution.icon}
-              </div>
-              <h3 className={`text-xl font-bold text-center mb-3 ${getTextColor('default')}`}>
-                {solution.title}
-              </h3>
-              <ul className="list-disc list-inside text-left">
-                {solution.points.map((point, i) => (
-                  <li key={i} className={`${getTextColor('secondary')} mb-1`}>{point}</li>
-                ))}
-              </ul>
+              <Card className="p-6 flex flex-col h-full group hover:shadow-xl transition-shadow duration-300">
+                              <div className="w-16 h-16 rounded-lg bg-green-500 bg-opacity-10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                                <div className="text-green-500">
+                                  {solution.icon}
+                                </div>
+                              </div>
+                              <h3 className={`text-xl font-bold text-left mb-3 ${getTextColor('default')}`}>
+                                {solution.title}
+                              </h3>
+                              <ul className="list-disc list-inside text-left flex-grow">
+                                {solution.points.map((point, i) => (
+                                  <li key={i} className={`${getTextColor('secondary')} mb-1`}>{point}</li>
+                                ))}
+                              </ul>
+                            </Card>
             </motion.div>
           ))}
         </div>
@@ -181,16 +192,14 @@ const ProblemSolution = () => {
             Ready to eliminate the friction in your business?
           </p>
           <div className="flex justify-center space-x-4">
-            <button className="bg-zakbot-blue text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-zakbot-dark-blue transition-colors duration-300">
+            <a href="/pricing" className={`text-zakbot-blue px-8 py-3 text-lg font-semibold border border-zakbot-blue rounded-full hover:bg-zakbot-blue hover:text-white transition-colors duration-300 ${getTextColor('default')}`}>
               Get Started with OpsMate
-            </button>
-            <a href="#" className={`text-zakbot-blue px-8 py-3 text-lg font-semibold border border-zakbot-blue rounded-full hover:bg-zakbot-blue hover:text-white transition-colors duration-300 ${getTextColor('default')}`}>
-              Explore One-Off Services
             </a>
           </div>
         </motion.div>
       </div>
     </section>
+    </>
   );
 };
 

@@ -37,7 +37,7 @@ const WhoIsItFor = ({ targetMarket }) => {
   ];
 
   return (
-    <section id="who-is-it-for" className="min-h-screen py-20 bg-white/70 dark:bg-gray-900 backdrop-blur-sm">
+    <section id="who-is-it-for" className="h-auto py-20 bg-white/70 dark:bg-gray-900 backdrop-blur-sm">
       <div className="container mx-auto px-4 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
