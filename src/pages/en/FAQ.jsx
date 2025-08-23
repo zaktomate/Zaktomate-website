@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaChevronDown, FaChevronUp, FaGlobe, FaHeadset, FaTags, FaQuestionCircle, FaRobot, FaCogs } from 'react-icons/fa';
 import Card from '../../components/common/Card';
 import SEO from '../../components/common/SEO';
 
 
 const FAQEN = () => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [openCategory, setOpenCategory] = useState(null);
 
   const faqs = [
     {
@@ -14,15 +15,15 @@ const FAQEN = () => {
       questions: [
         {
           question: "What is Zaktomate?",
-          answer: "Zaktomate is an AI-powered digital assistant that offers tools like chatbots, smart slide generators, and task automation to boost your productivity and simplify workflows."
+          answer: "Zaktomate is a business-focused AI automation platform that delivers tailored chatbot and content-generation solutions—like Zakbot and Zakdeck—built to streamline support, marketing, and operational workflows across industries worldwide."
         },
         {
           question: "Who is Zaktomate for?",
-          answer: "Zaktomate is built for businesses, entrepreneurs, and developers who want to save time by automating repetitive tasks and generating content effortlessly."
+          answer: "Zaktomate serves organizations looking to automate repetitive tasks and scale smarter—ranging from e-commerce and SaaS businesses to educational institutions, SMEs, and enterprise teams seeking efficient, AI-driven solutions. Whether you require one-off automations or a full OpsMate-managed program, we adapt to your needs."
         },
         {
-          question: "Do I need any coding knowledge to use Zaktomate?",
-          answer: "No, Zaktomate is designed to be beginner-friendly. Most tools are no-code or low-code and easy to use with simple instructions."
+          question: "Do I need any coding skills to use Zaktomate?",
+          answer: "No technical expertise is required. Our modular platform, demo-focused sandbox, and onboarding flows let non-technical users launch Zakbot and Zakdeck with minimal setup. Of course, technical teams can extend the experience via API, integration, or automation for deeper use cases."
         }
       ]
     },
@@ -30,33 +31,12 @@ const FAQEN = () => {
       category: "Chatbot Features",
       questions: [
         {
-          question: "What can the Zaktomate chatbot do?",
-          answer: "It can answer questions, provide personalized suggestions, explain topics, and even serve as a knowledge-based support assistant for your website."
+          question: "What can the Zaktomate chatbot (Zakbot) do?",
+          answer: "Zakbot offers versatile use cases, including 24/7 customer support, lead qualification, internal knowledge base access, onboarding workflows, and multilingual content delivery. It's trained on your documents, integrated into your platforms, and customizable to match your branding and voice."
         },
         {
-          question: "Can I customize the chatbot responses?",
-          answer: "Yes, you can train the chatbot using your own content or documents so it responds exactly how you want."
-        },
-        {
-          question: "Is the chatbot available 24/7?",
-          answer: "Yes, once deployed, the Zaktomate chatbot works round the clock without breaks."
-        }
-      ]
-    },
-    {
-      category: "Slide Generator",
-      questions: [
-        {
-          question: "How does the AI slide generator work?",
-          answer: "Just input your topic or text, and Zaktomate automatically creates a presentation with well-structured slides using AI."
-        },
-        {
-          question: "Can I edit the slides after generation?",
-          answer: "Yes, all slides can be customized and downloaded in editable formats like PPTX or Google Slides."
-        },
-        {
-          question: "Do the slides support multiple languages?",
-          answer: "Absolutely. The slide generator supports multiple languages including English, Spanish, French, German, and more."
+          question: "Can I customize the chatbot's responses?",
+          answer: "Absolutely. You can define tone, response templates, fallback logic, and escalation paths. Zakbot also supports dynamic content such as quizzes, slides, or summaries based on your prompts and document library—making it both personal and scalable."
         }
       ]
     },
@@ -65,37 +45,35 @@ const FAQEN = () => {
       questions: [
         {
           question: "Is Zaktomate free to use?",
-          answer: "We offer both free and premium plans. The free plan covers basic features, while premium users unlock advanced tools and priority access."
+          answer: (
+            <>
+              We offer limited-time{" "}
+              <a href="/en/contact" className="text-zakbot-blue hover:underline">
+                demo access
+              </a>{" "}
+              and one-off pilots to test the platform's capabilities. For production use, we offer transparent product tiers (
+              <span className="font-semibold">Starter, Growth, Scale</span>), as well as managed{" "}
+              <span className="font-semibold">OpsMate plans</span> (
+              <span className="font-semibold">Ignite → Pinnacle</span>) customized to your organization's scale and support requirements.
+            </>
+          )
         },
         {
-          question: "How do I upgrade to a premium plan?",
-          answer: "Just click on the 'Upgrade' button in your dashboard, select your preferred plan, and proceed with payment."
-        },
-        {
-          question: "Is there a refund policy?",
-          answer: "Yes, we offer a 14-day refund policy for premium users if you're unsatisfied with the service."
-        }
-      ]
-    },
-    {
-      category: "Data & Privacy",
-      questions: [
-        {
-          question: "Is my data safe with Zaktomate?",
-          answer: "Yes, your data is encrypted and never shared with third parties without consent."
-        },
-        {
-          question: "Can I delete my data anytime?",
-          answer: "Yes. You can permanently delete your account and all associated data through your profile settings."
-        }
-      ]
-    },
-    {
-      category: "Support",
-      questions: [
-        {
-          question: "How can I contact support?",
-          answer: "You can reach our support team via the 'Contact Us' page or email us directly at support@zaktomate.com. We usually respond within 24 hours."
+          question: "How do I upgrade to a premium or managed plan?",
+          answer: (
+            <>
+              Simply reach out via{" "}
+              <a href="/en/contact" className="text-zakbot-blue hover:underline">
+                Contact Sales
+              </a>{" "}
+              or{" "}
+              <a href="/en/contact" className="text-zakbot-blue hover:underline">
+                Get Free Consultation
+              </a>
+              . We'll review your needs, propose the optimal product tier or{" "}
+              <span className="font-semibold">OpsMate package</span>, and guide you through onboarding, deployment timeline, and integration—all custom-tailored to ensure impact and ROI.
+            </>
+          )
         }
       ]
     }
@@ -154,7 +132,10 @@ const FAQEN = () => {
                         onClick={() => toggleFAQ(categoryIndex, questionIndex)}
                         className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
                       >
-                        <h3 className="text-lg font-semibold text-zakbot-dark dark:text-white pr-4">
+                        <h3 className="text-lg font-semibold text-zakbot-dark dark:text-white pr-4 flex items-center">
+                          {category.category === "General" && <FaGlobe className="mr-3 text-zakbot-blue" />}
+                          {category.category === "Chatbot Features" && <FaRobot className="mr-3 text-zakbot-blue" />}
+                          {category.category === "Service & Pricing" && <FaTags className="mr-3 text-zakbot-blue" />}
                           {faq.question}
                         </h3>
                         {isOpen ? (
@@ -172,9 +153,9 @@ const FAQEN = () => {
                           transition={{ duration: 0.3 }}
                           className="px-6 pb-6"
                         >
-                          <p className="text-gray-600 dark:text-gray-300">
-                            {faq.answer}
-                          </p>
+                          <div className="text-gray-600 dark:text-gray-300">
+                            {typeof faq.answer === 'string' ? faq.answer : faq.answer}
+                          </div>
                         </motion.div>
                       )}
                     </Card>
