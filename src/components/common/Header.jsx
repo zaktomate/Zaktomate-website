@@ -54,7 +54,7 @@ const Header = ({ activeSection }) => {
           >
             <Link to={isEnglishSection ? '/en' : '/'} className="flex items-center space-x-2">
               <img
-                src="/src/assets/logos/zaktomate-transparent.png"
+                src="/assets/logos/zaktomate-transparent.png"
                 alt="Zaktomate Logo"
                 className="h-8 w-auto"
               />
