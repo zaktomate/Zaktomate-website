@@ -19,31 +19,5 @@
     },
     { "source": "/en/:path*", "destination": "/" },
     { "source": "/:path*", "destination": "/" }
-  ],
-  "redirects": [
-    {
-      "source": "/:path((?!en/).*)",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "(?!BD).*?"
-        }
-      ],
-      "destination": "/en/:path",
-      "permanent": false
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "header",
-          "key": "x-vercel-ip-country",
-          "value": "(?!BD).*?"
-        }
-      ],
-      "destination": "/en",
-      "permanent": false
-    }
   ]
 }
