@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaBook, FaQuestionCircle, FaCompass, FaFileAlt } from 'react-icons/fa';
 
 const InternalOpsAutomation = () => {
   const features = [
-    "Policy lookup",
-    "Benefits Q&A",
-    "Guided onboarding",
-    "Auto-generated HR docs"
+    { text: "Policy lookup", icon: <FaBook className="text-xl" /> },
+    { text: "Benefits Q&A", icon: <FaQuestionCircle className="text-xl" /> },
+    { text: "Guided onboarding", icon: <FaCompass className="text-xl" /> },
+    { text: "Auto-generated HR docs", icon: <FaFileAlt className="text-xl" /> }
   ];
 
   return (
@@ -54,10 +55,10 @@ const InternalOpsAutomation = () => {
             <ul className="space-y-6">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-start">
-                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-zakbot-blue flex items-center justify-center text-white font-bold mr-4">
-                    {index + 1}
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-zakbot-blue flex items-center justify-center text-white mr-4 mt-1">
+                    {feature.icon}
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-lg">{feature}</p>
+                  <p className="text-gray-700 dark:text-gray-300 text-lg flex items-center">{feature.text}</p>
                 </li>
               ))}
             </ul>

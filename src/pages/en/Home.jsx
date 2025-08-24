@@ -18,7 +18,7 @@ const HomeEN = ({ setActiveSection }) => {
         headline="Transform Your Business with AI"
         subheadline="We build, deploy, and manage AI systems that save you 20+ hours per week—without you lifting a finger."
         primaryCtaText="Get Free Consultation Call"
-        secondaryCtaText="Contact Us"
+        secondaryCtaText="Try Zakbot Live"
         setActiveSection={setActiveSection}
       />
 
@@ -96,15 +96,6 @@ const HomeEN = ({ setActiveSection }) => {
 
       {/* Trust Signals Section */}
       <TrustSignals />
-
-      {/* Closing CTA */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to scale your business without scaling your overhead?</h2>
-        <div className="flex justify-center space-x-4">
-          <button className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300">Get Free Consultation</button>
-          <button className="px-6 py-3 border border-gray-300 text-gray-800 dark:text-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300">Try Zakbot Demo</button>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <Contact />

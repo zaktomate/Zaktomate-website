@@ -49,10 +49,10 @@ const ServicesEN = () => {
       <PricingPackages />
       
       {/* Onboarding & SLA */}
-      <OnboardingSLA />
+      {/* <OnboardingSLA /> */}
       
       {/* Case Studies / ROI highlights */}
-      <CaseStudies />
+      {/* <CaseStudies /> */}
       
       {/* FAQ + Footer CTA */}
       <ServicesFAQ />

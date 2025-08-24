@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaRobot, FaGlobe, FaEnvelope, FaLinkedin, FaTwitter, FaGithub, FaArrowUp } from 'react-icons/fa';
+import { FaRobot, FaGlobe, FaEnvelope, FaLinkedin, FaTwitter, FaGithub, FaArrowUp, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 import { Link } from 'react-router-dom'; // Changed from react-scroll to react-router-dom for consistency
 
 const Footer = () => {
@@ -100,6 +100,52 @@ const Footer = () => {
                     className="text-gray-300 hover:text-zakbot-teal transition-colors duration-200"
                   >
                     Contact Form
+                  </a>
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* Follow Us Column */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="lg:col-span-1"
+            >
+              <h4 className="text-lg font-semibold font-heading mb-4">Follow Us</h4>
+              <ul className="space-y-3">
+                <li>
+                  <a
+                    href="https://www.facebook.com/Zactomate"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-zakbot-teal transition-colors duration-200 flex items-center space-x-2"
+                  >
+                    <FaFacebook />
+                    <span>Facebook</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/company/zaktomate"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-zakbot-teal transition-colors duration-200 flex items-center space-x-2"
+                  >
+                    <FaLinkedin />
+                    <span>LinkedIn</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://wa.me/message/3FE54G5CSUWSG1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-zakbot-teal transition-colors duration-200 flex items-center space-x-2"
+                  >
+                    <FaWhatsapp />
+                    <span>WhatsApp</span>
                   </a>
                 </li>
               </ul>

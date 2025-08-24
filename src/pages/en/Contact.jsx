@@ -22,14 +22,14 @@ const ContactEN = () => {
     {
       icon: <FaEnvelope className="text-2xl" />,
       title: "Email Us",
-      details: "support@zaktomate.com",
+      details: "sales@zaktomate.com",
       description: "We'll respond within 24 hours"
     },
     {
       icon: <FaPhone className="text-2xl" />,
       title: "Call Us",
-      details: "+1 (555) 123-4567",
-      description: "Mon-Fri 9AM-6PM EST"
+      details: "+880 1793 336545",
+      description: "24/7 Available"
     },
     {
       icon: <FaMapMarkerAlt className="text-2xl" />,
@@ -40,8 +40,8 @@ const ContactEN = () => {
     {
       icon: <FaClock className="text-2xl" />,
       title: "Business Hours",
-      details: "9:00 AM - 6:00 PM",
-      description: "Monday - Friday"
+      details: "8:00 am - 10:00 pm",
+      description: "Saturday - Thursday"
     }
   ];
 
@@ -83,7 +83,7 @@ const ContactEN = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="section-padding text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold font-heading text-zakbot-dark dark:text-white mb-6">
             Get in <span className="gradient-text">Touch</span>
@@ -243,14 +243,14 @@ const ContactEN = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <div className="w-12 h-12 bg-zakbot-blue bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <div className="text-zakbot-blue">
+                    <div className="text-zakbot-teal">
                       {info.icon}
                     </div>
                   </div>
                   <h3 className="text-lg font-semibold text-zakbot-dark dark:text-white mb-2">
                     {info.title}
                   </h3>
-                  <p className="text-zakbot-blue font-medium mb-1">
+                  <p className="text-zakbot-teal font-medium mb-1">
                     {info.details}
                   </p>
                   <p className="text-sm text-gray-600 dark:text-gray-300">

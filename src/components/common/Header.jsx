@@ -2,21 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa';
 import { useTheme } from '../../context/ThemeContext';
-import { Link } from 'react-router-dom'; // Using Link from react-router-dom
+import { Link, useLocation } from 'react-router-dom'; // Using Link and useLocation from react-router-dom
 
 const Header = ({ activeSection }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { darkMode, toggleTheme } = useTheme();
+  const location = useLocation();
+  const isEnglishSection = location.pathname.startsWith('/en');
 
   // Update navItems to include the correct paths
   const navItems = [
-    { id: 'home', label: 'Home', path: '/' },
-    { id: 'services', label: 'Services', path: '/services' },
-    { id: 'zakbot-demo', label: 'Zakbot', path: '/zakbot' },
-    { id: 'pricing', label: 'Pricing', path: '/pricing' },
-    { id: 'about', label: 'About', path: '/about' },
-    { id: 'contact', label: 'Contact', path: '/contact' },
+    { id: 'home', label: 'Home', path: isEnglishSection ? '/en' : '/' },
+    { id: 'services', label: 'Services', path: isEnglishSection ? '/en/services' : '/services' },
+    { id: 'zakbot-demo', label: 'Zakbot', path: isEnglishSection ? '/en/zakbot' : '/zakbot' },
+    { id: 'pricing', label: 'Pricing', path: isEnglishSection ? '/en/pricing' : '/pricing' },
+    { id: 'about', label: 'About', path: isEnglishSection ? '/en/about' : '/about' },
+    { id: 'contact', label: 'Contact', path: isEnglishSection ? '/en/contact' : '/contact' },
   ];
 
   useEffect(() => {
@@ -50,8 +52,13 @@ const Header = ({ activeSection }) => {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-2 pl-2"
           >
-            <Link to="/" className="flex items-center space-x-2">
-              <span className={`text-xl font-bold font-heading ${
+            <Link to={isEnglishSection ? '/en' : '/'} className="flex items-center space-x-2">
+              <img
+                src="/src/assets/logos/zaktomate-transparent.png"
+                alt="Zaktomate Logo"
+                className="h-8 w-auto"
+              />
+              {/* <span className={`text-xl font-bold font-heading ${
                 isScrolled
                   ? darkMode
                     ? 'text-white'
@@ -59,7 +66,7 @@ const Header = ({ activeSection }) => {
                   : 'text-white'
               }`}>
                 Zaktomate
-              </span>
+              </span> */}
             </Link>
           </motion.div>
 

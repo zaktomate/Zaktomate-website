@@ -1,0 +1,9 @@
+Homepage
+
+The Zaktomate Logo is missing. Add that.
+
+Hero Section:
+Headline: "Transform Your Business with AI"
+Subheadline: "We build, deploy, and manage AI systems that save you 20+ hours per week—without you lifting a finger."
+Primary CTA: "Get Free Consultation Call"
+Secondary CTA: "Try Zakbot Live"

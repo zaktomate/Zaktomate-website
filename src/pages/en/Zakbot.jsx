@@ -326,29 +326,6 @@ const ZakbotEN = () => {
               </ul>
             </Card>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <Card className="max-w-4xl mx-auto p-8">
-              <h3 className="text-2xl font-bold font-heading text-zakbot-dark dark:text-white mb-4">
-                Showcase Plan Demo
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-6">
-                See how Zakbot transforms business operations with our interactive demo. Experience the power of AI-driven automation firsthand.
-              </p>
-              <a
-                href="#demo"
-                className="inline-block bg-zakbot-blue hover:bg-zakbot-blue-light text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105"
-              >
-                View Live Demo
-              </a>
-            </Card>
-          </motion.div>
         </div>
       </section>
 

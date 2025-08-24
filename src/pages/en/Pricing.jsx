@@ -95,9 +95,47 @@ const PricingEN = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
         <SEO />
-      <div className="container">
+      {/* OpsMate Branding - Fullscreen with Gradient */}
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-zakbot-blue to-zakbot-teal dark:from-zakbot-blue-light dark:to-zakbot-teal-light">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center px-4 py-16"
+        >
+          <h1 className="text-4xl md:text-6xl font-bold font-heading text-white mb-6">
+            OpsMate – Your Dedicated AI Acquisition Partner
+          </h1>
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-10">
+            Designed for businesses ready to integrate AI into their operations for sustained growth and efficiency.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            <span className="bg-white bg-opacity-20 text-white text-sm font-medium px-4 py-2 rounded-full backdrop-blur-sm">
+              End-to-end AI transformation support
+            </span>
+            <span className="bg-white bg-opacity-20 text-white text-sm font-medium px-4 py-2 rounded-full backdrop-blur-sm">
+              Tailored workflows for your business model
+            </span>
+            <span className="bg-white bg-opacity-20 text-white text-sm font-medium px-4 py-2 rounded-full backdrop-blur-sm">
+              Dedicated team support and scaling capacity
+            </span>
+          </div>
+          <div className="mt-8">
+            <a
+              href="/en/contact"
+              className="inline-block bg-white text-blue-600 hover:bg-blue-50 font-bold py-4 px-10 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+            >
+              Start Your AI Journey
+            </a>
+          </div>
+        </motion.div>
+      </div>
+      
+      {/* Main Content */}
+      <div className="container py-20">
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

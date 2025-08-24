@@ -1,10 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaRobot, FaBook, FaChartLine, FaCogs } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const QuickServiceOverview = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
       title: "Zakbot",
+      icon: <FaRobot className="text-xl" />,
       benefit: "AI-powered customer support & content automation",
       bullets: ["24/7 availability", "Multi-channel support", "Custom knowledge training"],
       cta: "See demo",
@@ -12,13 +17,15 @@ const QuickServiceOverview = () => {
     },
     {
       title: "Zakdeck",
+      icon: <FaBook className="text-xl" />,
       benefit: "Professional learning & marketing content in minutes",
       bullets: ["Slide generation", "Course materials", "Version control"],
-      cta: "See demo",
+      cta: "(Demo not available right now)",
       popular: false
     },
     {
       title: "Marketing Automation",
+      icon: <FaChartLine className="text-xl" />,
       benefit: "From traffic to qualified pipeline",
       bullets: ["Lead capture", "Personalized nurture", "Campaign analytics"],
       cta: "Request quote",
@@ -26,12 +33,25 @@ const QuickServiceOverview = () => {
     },
     {
       title: "OpsMate",
+      icon: <FaCogs className="text-xl" />,
       benefit: "Managed AI program for your business",
       bullets: ["Dedicated team", "End-to-end automation", "Continuous optimization"],
-      cta: "See demo",
+      cta: "Read More",
       popular: true
     }
   ];
+
+  // Map CTA text to routes
+  const getRouteForCTA = (cta, title) => {
+    if (cta === "See demo") {
+      // For Zakbot and Zakdeck, go to /en/Zakbot, for OpsMate, go to /en/Contact
+      if (title === "Zakbot" || title === "Zakdeck") return "/en/Zakbot";
+      if (title === "OpsMate") return "/en/Pricing";
+      return "/en/Zakbot";
+    }
+    if (cta === "Request quote") return "/en/Contact";
+    return "/en/Contact";
+  };
 
   return (
     <section className="py-20 bg-gray-50 dark:bg-gray-800">
@@ -63,7 +83,7 @@ const QuickServiceOverview = () => {
               )}
               <div className="flex items-center mb-4">
                 <div className="w-10 h-10 rounded-lg bg-zakbot-blue flex items-center justify-center text-white font-bold mr-3">
-                  {service.title.charAt(0)}
+                  {service.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">{service.title}</h3>
               </div>
@@ -75,7 +95,12 @@ const QuickServiceOverview = () => {
                   </li>
                 ))}
               </ul>
-              <button className="w-full bg-zakbot-blue text-white py-2 rounded-md font-medium hover:bg-zakbot-dark-blue transition">
+              <button
+                className="w-full bg-zakbot-blue text-white py-2 rounded-md font-medium hover:bg-zakbot-dark-blue transition"
+                onClick={() => navigate(getRouteForCTA(service.cta, service.title))}
+                type="button"
+                aria-label={service.cta + " for " + service.title}
+              >
                 {service.cta}
               </button>
             </motion.div>

@@ -6,7 +6,13 @@ import { Link as ScrollLink } from 'react-scroll';
 // Import the routing Link component (assuming you're using react-router-dom)
 import { Link as RouterLink } from 'react-router-dom';
 
-const Hero = ({ setActiveSection }) => {
+const Hero = ({ headline, subheadline, primaryCtaText, secondaryCtaText, setActiveSection }) => {
+  // Default values if props are not provided
+  const heroHeadline = headline || "Zaktomate — AI Tools That Save You Time";
+  const heroSubheadline = subheadline || "We help Bangladeshi businesses automate repetitive work using easy-to-use AI systems. No tech knowledge needed. No extra overhead. Just smart, practical tools.";
+  const primaryCta = primaryCtaText || "Book a Free Demo";
+  const secondaryCta = secondaryCtaText || "Try Zakbot Live";
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -60,7 +66,7 @@ const Hero = ({ setActiveSection }) => {
             variants={itemVariants}
             className="text-3xl sm:text-4xl md:text-6xl font-bold font-heading text-white mb-6 text-balance mt-6"
           >
-            Zaktomate — AI Tools That Save You Time
+            {heroHeadline}
           </motion.h1>
 
           {/* Subtitle */}
@@ -68,8 +74,7 @@ const Hero = ({ setActiveSection }) => {
             variants={itemVariants}
             className="text-base sm:text-lg md:text-xl text-white opacity-90 max-w-3xl mx-auto mb-10 text-balance"
           >
-            We help Bangladeshi businesses automate repetitive work using easy-to-use AI systems.
-            No tech knowledge needed. No extra overhead. Just smart, practical tools.
+            {heroSubheadline}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -92,7 +97,7 @@ const Hero = ({ setActiveSection }) => {
               }}
             >
               <FaPlay className="text-xs sm:text-sm" />
-              Try Zakbot Live
+              {secondaryCta}
             </ScrollLink>
             <RouterLink
               to="/contact/"
@@ -108,7 +113,7 @@ const Hero = ({ setActiveSection }) => {
                 }
               }}
             >
-              Book a Free Demo
+              {primaryCta}
               <FaArrowRight className="text-xs sm:text-sm" />
             </RouterLink>
           </motion.div>

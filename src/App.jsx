@@ -14,23 +14,10 @@ import FAQ from './pages/FAQ';
 import Dashboard from './pages/Dashboard';
 import StatsDashboard from './components/specific/StatsDashboard';
 
-// International pages
-import HomeEN from './pages/en/Home';
-import ServicesEN from './pages/en/Services';
-import ZakbotEN from './pages/en/Zakbot';
-import PricingEN from './pages/en/Pricing';
-import AboutEN from './pages/en/About';
-import ContactEN from './pages/en/Contact';
-import FAQEN from './pages/en/FAQ';
+import EnApp from './pages/en/EnApp';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
-  const [isHomePage, setIsHomePage] = useState(false);
-
-  useEffect(() => {
-    // Check if we're on the home page
-    setIsHomePage(window.location.pathname === '/' || window.location.pathname === '/en/');
-  }, []);
 
   return (
     <Router>
@@ -55,16 +42,7 @@ function App() {
                 <Route path="/dashboard" element={<Dashboard />} />
                 
                 {/* International Routes */}
-                <Route
-                  path="/en"
-                  element={<HomeEN setActiveSection={setActiveSection} />}
-                />
-                <Route path="/en/services" element={<ServicesEN />} />
-                <Route path="/en/zakbot" element={<ZakbotEN />} />
-                <Route path="/en/pricing" element={<PricingEN />} />
-                <Route path="/en/about" element={<AboutEN />} />
-                <Route path="/en/contact" element={<ContactEN />} />
-                <Route path="/en/faq" element={<FAQEN />} />
+                <Route path="/en/*" element={<EnApp />} />
                 
                 {/* Stats Dashboard as a standalone page */}
                 <Route path="/stats" element={<StatsDashboard />} />

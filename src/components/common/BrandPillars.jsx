@@ -27,7 +27,7 @@ const BrandPillars = () => {
       icon: <FaShieldAlt className="text-4xl text-purple-500" />,
       headline: "Your Trusted AI Partner",
       microcopy: "From data security to long-term support, we don’t just deploy automation—we stand by it. Our team is your partner, not just your vendor.",
-      proof: "Zakbot demo snippet",
+      proof: "Ongoing guidance, secure systems, and a team that’s with you every step of the way.",
     },
   ];
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaUserPlus, FaRoute, FaChartLine, FaUsers } from 'react-icons/fa';
 
 const MarketingAutomation = () => {
   const capabilities = [
-    "Lead capture & qualification",
-    "Personalized nurture flows",
-    "Campaign scheduling & analytics",
-    "Persona presets for different customer segments"
+    { text: "Lead capture & qualification", icon: <FaUserPlus className="text-xl" /> },
+    { text: "Personalized nurture flows", icon: <FaRoute className="text-xl" /> },
+    { text: "Campaign scheduling & analytics", icon: <FaChartLine className="text-xl" /> },
+    { text: "Persona presets for different customer segments", icon: <FaUsers className="text-xl" /> }
   ];
 
   return (
@@ -42,10 +43,10 @@ const MarketingAutomation = () => {
             <ul className="space-y-6">
               {capabilities.map((capability, index) => (
                 <li key={index} className="flex items-start">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-zakbot-blue flex items-center justify-center text-white text-sm font-bold mr-4 mt-1">
-                    ✓
+                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-zakbot-blue flex items-center justify-center text-white mr-4 mt-1">
+                    {capability.icon}
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300">{capability}</p>
+                  <p className="text-gray-700 dark:text-gray-300 flex items-center">{capability.text}</p>
                 </li>
               ))}
             </ul>

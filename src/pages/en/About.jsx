@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaUsers, FaLightbulb, FaRocket, FaHeart } from 'react-icons/fa';
+import { FaUsers, FaLightbulb, FaRocket, FaHeart, FaCheck } from 'react-icons/fa';
 import Card from '../../components/common/Card';
 import SEO from '../../components/common/SEO';
 
@@ -75,7 +75,7 @@ const AboutEN = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="section-padding text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold font-heading text-zakbot-dark dark:text-white mb-6">
             About <span className="gradient-text">Zaktomate</span>

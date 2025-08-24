@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaFilePowerpoint, FaClipboardList, FaTasks, FaCodeBranch } from 'react-icons/fa';
 
 const ContentAutomation = () => {
   return (
@@ -12,7 +13,7 @@ const ContentAutomation = () => {
           transition={{ duration: 0.5 }}
           className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900 dark:text-white"
         >
-          Zakdeck — Create Professional Learning & Marketing Content in Minutes
+          Zakdeck — Generate Slides & Content, Fast & Easy
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -21,7 +22,7 @@ const ContentAutomation = () => {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-xl text-center max-w-3xl mx-auto mb-12 text-gray-700 dark:text-gray-300"
         >
-          Transform your ideas into polished presentations, course materials, and marketing assets with AI-powered automation.
+          Zakdeck turns course outlines and lecture notes into polished slide decks, at the click of a button. Designed for educators and training centers that need high-throughput content generation with institutional quality.
         </motion.p>
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
@@ -38,7 +39,8 @@ const ContentAutomation = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white">Slide Packs</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Generate professional presentations from outlines or notes</p>
+                  <p className="text-gray-700 dark:text-gray-300">Auto-generate clean, structured slide decks instantly from your content.</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">From raw notes to ready-to-present slides—faster than ever.</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -46,8 +48,9 @@ const ContentAutomation = () => {
                   2
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Notes & Summaries</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Create concise summaries of lengthy documents or lectures</p>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Custom Templates & Branding</h3>
+                  <p className="text-gray-700 dark:text-gray-300">Apply your institution's branding, layouts, and color schemes across every deck.</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Maintain brand consistency and professional polish effortlessly.</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -55,8 +58,9 @@ const ContentAutomation = () => {
                   3
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Quiz & Exam Formatter</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Automatically format assessments with consistent styling</p>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Version Control & Revisions</h3>
+                  <p className="text-gray-700 dark:text-gray-300">Update existing decks with new topics, questions, or case studies while retaining structure.</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Iterate on materials seamlessly—no starting from scratch.</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -64,8 +68,9 @@ const ContentAutomation = () => {
                   4
                 </div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Version Control</h3>
-                  <p className="text-gray-700 dark:text-gray-300">Track changes and maintain document history automatically</p>
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">Multilingual Support (Bangla + English)</h3>
+                  <p className="text-gray-700 dark:text-gray-300">Generate slides and notes in either or both languages for local institutions.</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Reach wider audiences with bilingual-ready decks.</p>
                 </div>
               </li>
             </ul>
@@ -89,7 +94,7 @@ const ContentAutomation = () => {
           className="text-center"
         >
           <button className="bg-zakbot-blue text-white py-3 px-8 rounded-lg font-bold hover:bg-zakbot-dark-blue transition">
-            Request Demo
+            Request Access
           </button>
           <p className="mt-4 text-gray-700 dark:text-gray-300">
             Cross-sell opportunity with Zakbot for enhanced automation capabilities
