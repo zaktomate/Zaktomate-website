@@ -193,7 +193,7 @@ const About = () => {
         </section>
 
         {/* Team Section */}
-        <section className="mb-20">
+        {/* <section className="mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -230,10 +230,10 @@ const About = () => {
               </Card>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* Timeline Section */}
-        <section className="mb-20">
+        {/* <section className="mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -278,7 +278,7 @@ const About = () => {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* Team Behind Zaktomate Section */}
         <section className="mb-20">

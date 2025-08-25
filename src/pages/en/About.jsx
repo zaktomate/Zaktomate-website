@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaUsers, FaLightbulb, FaRocket, FaHeart, FaCheck } from 'react-icons/fa';
+import { FaUsers, FaLightbulb, FaRocket, FaHeart, FaCheck, FaUserTie, FaCogs, FaChartLine, FaHandshake } from 'react-icons/fa';
 import Card from '../../components/common/Card';
 import SEO from '../../components/common/SEO';
 
@@ -192,7 +192,7 @@ const AboutEN = () => {
         </section>
 
         {/* Team Section */}
-        <section className="mb-20">
+        {/* <section className="mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -229,10 +229,10 @@ const AboutEN = () => {
               </Card>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* Timeline Section */}
-        <section className="mb-20">
+        {/* <section className="mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -277,6 +277,108 @@ const AboutEN = () => {
               ))}
             </div>
           </div>
+        </section> */}
+{/* Team Behind Zaktomate Section */}
+        <section className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold font-heading text-zakbot-dark dark:text-white mb-4">
+              The <span className="gradient-text">Team Behind Zaktomate</span>
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Meet the passionate individuals driving our mission to transform businesses with AI.
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="relative"
+          >
+            {/* Background decoration */}
+            <div className="absolute inset-0 bg-gradient-to-r from-zakbot-blue/5 to-zakbot-teal/5 rounded-3xl blur-3xl -z-10"></div>
+            
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 md:p-12 backdrop-blur-sm border border-gray-200 dark:border-gray-700">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Team members with enhanced styling */}
+                <div className="space-y-8">
+                  <div className="flex items-start space-x-4 p-6 bg-gradient-to-br from-zakbot-blue/5 to-transparent rounded-xl border border-zakbot-blue/10 hover:shadow-md transition-all duration-300">
+                    <div className="flex-shrink-0 w-12 h-12 bg-zakbot-blue rounded-full flex items-center justify-center">
+                      <FaUserTie className="text-white text-xl" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-zakbot-dark dark:text-white">Abid Bin Yusuf</h3>
+                      <p className="text-zakbot-blue font-medium mb-2">CEO & Co-Founder</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        Leads Zaktomate with a clear vision: making AI practical and transformative for businesses of all sizes. Focus: Strategic leadership, vision-setting, client relationships, and scaling operations.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-4 p-6 bg-gradient-to-br from-zakbot-teal/5 to-transparent rounded-xl border border-zakbot-teal/10 hover:shadow-md transition-all duration-300">
+                    <div className="flex-shrink-0 w-12 h-12 bg-zakbot-teal rounded-full flex items-center justify-center">
+                      <FaCogs className="text-white text-xl" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-zakbot-dark dark:text-white">Shahriar Hossain Fahim</h3>
+                      <p className="text-zakbot-teal font-medium mb-2">CTO & Co-Founder</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        The technical brain behind Zaktomate with deep expertise in automation workflows, full-stack development, and AI implementation. Focus: Product architecture, R&D, technical delivery, and platform scalability.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-8">
+                  <div className="flex items-start space-x-4 p-6 bg-gradient-to-br from-purple-500/5 to-transparent rounded-xl border border-purple-500/10 hover:shadow-md transition-all duration-300">
+                    <div className="flex-shrink-0 w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center">
+                      <FaChartLine className="text-white text-xl" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-zakbot-dark dark:text-white">Shoyeb Morshed</h3>
+                      <p className="text-purple-500 font-medium mb-2">COO & Co-Founder</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        Brings structure and operational rigor to Zaktomate. Ensures projects run smoothly and optimizes resource allocation. Focus: Operations, project management, and delivery excellence.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-4 p-6 bg-gradient-to-br from-green-500/5 to-transparent rounded-xl border border-green-500/10 hover:shadow-md transition-all duration-300">
+                    <div className="flex-shrink-0 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
+                      <FaHandshake className="text-white text-xl" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-zakbot-dark dark:text-white">Abdullah Ahsan</h3>
+                      <p className="text-green-500 font-medium mb-2">CFO & Co-Founder</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm">
+                        Ensures Zaktomate remains financially disciplined while investing in bold innovation. Manages budgeting, investor relations, and financial forecasting. Focus: Finance, sustainability, and long-term investment strategy.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Team motto */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="mt-12 text-center p-6 bg-gradient-to-r from-zakbot-blue/10 to-zakbot-teal/10 rounded-xl border border-zakbot-blue/20"
+              >
+                <p className="text-lg font-medium text-zakbot-dark dark:text-white italic">
+                  "Together, we're building AI solutions that transform businesses and empower people."
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
         </section>
 
         {/* CTA Section */}
