@@ -6,11 +6,9 @@ import Card from '../common/Card';
 import { getTextColor } from '../../utils/colorUtils';
 
 const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
-  // Check if user has seen the greeting before
   const getInitialMessage = () => {
     const hasSeenGreeting = localStorage.getItem('zakbot_greeting_seen');
     if (!hasSeenGreeting) {
-      // First time user - show greeting
       localStorage.setItem('zakbot_greeting_seen', 'true');
       return {
         id: 1,
@@ -19,7 +17,6 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
         timestamp: new Date(),
       };
     } else {
-      // Returning user - show normal welcome
       return {
         id: 1,
         text: "Welcome back! Ready to pick up where you left off, or do you need help with something new today?",
@@ -33,6 +30,7 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
+  const chatContainerRef = useRef(null); // Add a ref for the chat container
 
   const suggestedPrompts = [
     "What can you help me with?",
@@ -41,19 +39,24 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
   ];
 
   const scrollToBottom = () => {
-    if (messagesEndRef.current) {
-      // Use instant scrolling to avoid conflicts with global smooth scrolling
-      messagesEndRef.current.scrollIntoView({ behavior: 'instant' });
+    if (messagesEndRef.current && chatContainerRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' }); // Changed to 'smooth' for better UX
     }
   };
 
-  // Use a ref to track if we should scroll, to avoid multiple rapid scrolls
-  const shouldScrollRef = useRef(true);
-  
+  // UseEffect to scroll to bottom when messages change
+  useEffect(() => {
+    // Use a slight delay to ensure DOM updates and animations complete
+    const timer = setTimeout(() => {
+      scrollToBottom();
+    }, 100);
+
+    return () => clearTimeout(timer); // Cleanup timer
+  }, [messages]); // Trigger when messages array changes
 
   const handleSendMessage = async (messageText) => {
     if (!messageText.trim()) return;
-    
+
     const userMessage = {
       id: messages.length + 1,
       text: messageText,
@@ -61,19 +64,11 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
       timestamp: new Date(),
     };
 
-    // Temporarily disable auto-scroll to prevent multiple rapid scrolls
-    shouldScrollRef.current = false;
     setMessages((prev) => [...prev, userMessage]);
     setInputValue('');
     setIsLoading(true);
-    
-    // Re-enable scrolling after a short delay
-    setTimeout(() => {
-      shouldScrollRef.current = true;
-    }, 100);
 
     try {
-      // Check if user has seen greeting to send appropriate flag
       const hasSeenGreeting = localStorage.getItem('zakbot_greeting_seen') === 'true';
       const response = await chatApi.sendMessage(messageText, "client_zaktomate", hasSeenGreeting);
 
@@ -84,32 +79,16 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
         timestamp: new Date(),
       };
 
-      // Temporarily disable auto-scroll to prevent multiple rapid scrolls
-      shouldScrollRef.current = false;
       setMessages((prev) => [...prev, botMessage]);
-      
-      // Re-enable scrolling after a short delay and scroll to bottom
-      setTimeout(() => {
-        shouldScrollRef.current = true;
-      }, 100);
     } catch (error) {
       console.error('Error sending message:', error);
-      
       const errorMessage = {
         id: messages.length + 2,
         text: "I'm experiencing some technical difficulties right now. Please try again later.",
         sender: 'bot',
         timestamp: new Date(),
       };
-
-      // Temporarily disable auto-scroll to prevent multiple rapid scrolls
-      shouldScrollRef.current = false;
       setMessages((prev) => [...prev, errorMessage]);
-      
-      // Re-enable scrolling after a short delay and scroll to bottom
-      setTimeout(() => {
-        shouldScrollRef.current = true;
-      }, 100);
     } finally {
       setIsLoading(false);
     }
@@ -151,9 +130,7 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
         </motion.div>
 
         <div className="max-w-4xl mx-auto space-y-8">
-          {/* Chat Interface Card */}
           <Card className="chat-card p-0" hover={false}>
-            {/* Chat Header */}
             <div className="chat-header">
               <div className="flex items-center space-x-3">
                 <div className="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
@@ -167,7 +144,7 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
             </div>
 
             {/* Chat Messages */}
-            <div className="chat-messages">
+            <div className="chat-messages" ref={chatContainerRef}>
               <div className="space-y-4">
                 {messages.map((message) => (
                   <motion.div
@@ -297,7 +274,6 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
             </div>
           </motion.div>
         )}
-
       </div>
     </section>
   );
