@@ -1,9 +1,157 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaPaperPlane, FaRobot, FaUser, FaCopy, FaThumbsUp, FaThumbsDown } from 'react-icons/fa';
-import { chatApi } from '../../services/api';
 import Card from '../common/Card';
 import { getTextColor } from '../../utils/colorUtils';
+
+// Enhanced markdown parser for comprehensive formatting
+const parseMarkdown = (text) => {
+  if (!text) return text;
+  
+  // Convert markdown to HTML
+  let html = text
+    // Headers
+    .replace(/^### (.*$)/gim, '<h3 class="text-lg font-semibold mt-4 mb-2">$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2 class="text-xl font-bold mt-6 mb-3">$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-bold mt-8 mb-4">$1</h1>')
+    // Horizontal rules
+    .replace(/^---$/gim, '<hr class="border-gray-300 dark:border-gray-600 my-4" />')
+    // Bold text **text** or __text__ (but not conflicting with bullet points)
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
+    .replace(/__(.*?)__/g, '<strong class="font-semibold">$1</strong>')
+    // Code blocks ```code```
+    .replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm overflow-x-auto my-2 border"><code>$1</code></pre>')
+    // Inline code `code`
+    .replace(/`([^`]+)`/g, '<code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono">$1</code>')
+    // Links [text](url)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-zakbot-blue hover:underline font-medium">$1</a>')
+    // Italic text *text* or _text_ (after bold to avoid conflicts)
+    .replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, '<em>$1</em>')
+    .replace(/(?<!_)_([^_\n]+)_(?!_)/g, '<em>$1</em>');
+
+  // Handle bullet points more carefully
+  const lines = html.split('<br />');
+  let inList = false;
+  let listItems = [];
+  let processedLines = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    const bulletMatch = line.match(/^[-*+]\s+(.+)$/);
+    
+    if (bulletMatch) {
+      if (!inList) {
+        inList = true;
+        listItems = [];
+      }
+      listItems.push(`<li class="ml-4 mb-1">${bulletMatch[1]}</li>`);
+    } else {
+      if (inList) {
+        processedLines.push(`<ul class="list-disc list-inside space-y-1 my-2 ml-2">${listItems.join('')}</ul>`);
+        listItems = [];
+        inList = false;
+      }
+      if (line) {
+        processedLines.push(line);
+      }
+    }
+  }
+  
+  // Handle any remaining list items
+  if (inList && listItems.length > 0) {
+    processedLines.push(`<ul class="list-disc list-inside space-y-1 my-2 ml-2">${listItems.join('')}</ul>`);
+  }
+
+  // Handle numbered lists
+  let html2 = processedLines.join('<br />');
+  const lines2 = html2.split('<br />');
+  let inNumberedList = false;
+  let numberedItems = [];
+  let finalLines = [];
+
+  for (let i = 0; i < lines2.length; i++) {
+    const line = lines2[i].trim();
+    const numberMatch = line.match(/^(\d+)\.\s+(.+)$/);
+    
+    if (numberMatch) {
+      if (!inNumberedList) {
+        inNumberedList = true;
+        numberedItems = [];
+      }
+      numberedItems.push(`<li class="ml-4 mb-1">${numberMatch[2]}</li>`);
+    } else {
+      if (inNumberedList) {
+        finalLines.push(`<ol class="list-decimal list-inside space-y-1 my-2 ml-2">${numberedItems.join('')}</ol>`);
+        numberedItems = [];
+        inNumberedList = false;
+      }
+      if (line) {
+        finalLines.push(line);
+      }
+    }
+  }
+
+  // Handle any remaining numbered items
+  if (inNumberedList && numberedItems.length > 0) {
+    finalLines.push(`<ol class="list-decimal list-inside space-y-1 my-2 ml-2">${numberedItems.join('')}</ol>`);
+  }
+
+  return finalLines.join('<br />').replace(/(<br \/>){2,}/g, '<br /><br />');
+};
+
+// Markdown component to safely render HTML
+const MarkdownText = ({ text }) => {
+  const htmlContent = parseMarkdown(text);
+  
+  return (
+    <div 
+      className="markdown-content text-sm"
+      dangerouslySetInnerHTML={{ __html: htmlContent }}
+    />
+  );
+};
+
+// Helper function to manage session IDs
+const getOrCreateSessionId = () => {
+  let sessionId = localStorage.getItem('zakbot_session_id');
+  if (!sessionId) {
+    sessionId = `zakbot_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    localStorage.setItem('zakbot_session_id', sessionId);
+  }
+  return sessionId;
+};
+
+// N8N Chat API function
+const sendMessageToN8N = async (message, clientId, hasSeenGreeting) => {
+  try {
+    const response = await fetch('https://fahimhsh.app.n8n.cloud/webhook/fe7b302d-7708-46e6-b4f3-15468a215394/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        chatInput: message, // n8n Chat Trigger expects 'chatInput'
+        sessionId: getOrCreateSessionId(),
+        clientId: clientId,
+        hasSeenGreeting: hasSeenGreeting,
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    // Return in the format the component expects
+    return {
+      reply: data.output || data.response || data.text || data.reply || "I'm sorry, I couldn't process your request.",
+    };
+  } catch (error) {
+    console.error('N8N Chat API Error:', error);
+    throw error;
+  }
+};
 
 const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
   // Check if user has seen the greeting before
@@ -14,7 +162,7 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
       localStorage.setItem('zakbot_greeting_seen', 'true');
       return {
         id: 1,
-        text: "Hi there! I’m Zakbot, built by the Zaktomate team. I’m here on the website to help you out. What can I do for you today?",
+        text: "Hi there! I'm Zakbot, built by the Zaktomate team. I'm here on the website to help you out. What can I do for you today?",
         sender: 'bot',
         timestamp: new Date(),
       };
@@ -74,7 +222,7 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
     try {
       // Check if user has seen greeting to send appropriate flag
       const hasSeenGreeting = localStorage.getItem('zakbot_greeting_seen') === 'true';
-      const response = await chatApi.sendMessage(messageText, "client_zaktomate", hasSeenGreeting);
+      const response = await sendMessageToN8N(messageText, "client_zaktomate", hasSeenGreeting);
 
       const botMessage = {
         id: messages.length + 2,
@@ -190,7 +338,11 @@ const ChatDemo = ({ headline, microcopy, capabilities, cta1, cta2 }) => {
                       </div>
                       <div className="relative group">
                         <div className={`chat-message ${message.sender === 'user' ? 'chat-message-user' : 'chat-message-bot'}`}>
-                          <p className="text-sm">{message.text}</p>
+                          {message.sender === 'bot' ? (
+                            <MarkdownText text={message.text} />
+                          ) : (
+                            <p className="text-sm">{message.text}</p>
+                          )}
                           <p className="text-xs opacity-70 mt-1">
                             {formatTime(message.timestamp)}
                           </p>
