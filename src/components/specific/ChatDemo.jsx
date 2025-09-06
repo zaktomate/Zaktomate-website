@@ -4,12 +4,61 @@ import { FaPaperPlane, FaRobot, FaUser, FaCopy, FaThumbsUp, FaThumbsDown } from 
 import Card from '../common/Card';
 import { getTextColor } from '../../utils/colorUtils';
 
-// Enhanced markdown parser for comprehensive formatting
+// Enhanced markdown parser with table support
 const parseMarkdown = (text) => {
   if (!text) return text;
   
-  // Convert markdown to HTML
-  let html = text
+  // First handle tables before other processing
+  let html = text;
+  
+  // Handle tables
+  const tableRegex = /(\|[^|\r\n]*\|[^|\r\n]*\|[^\r\n]*\r?\n\|[-:\s|]*\|[-:\s|]*\|[^\r\n]*\r?\n(?:\|[^|\r\n]*\|[^|\r\n]*\|[^\r\n]*\r?\n?)*)/gm;
+  html = html.replace(tableRegex, (match) => {
+    const lines = match.trim().split('\n');
+    if (lines.length < 3) return match; // Need at least header, separator, and one row
+    
+    const headerLine = lines[0];
+    const separatorLine = lines[1];
+    const dataLines = lines.slice(2);
+    
+    // Parse header
+    const headers = headerLine.split('|').map(h => h.trim()).filter(h => h);
+    
+    // Parse data rows
+    const rows = dataLines.map(line => 
+      line.split('|').map(cell => cell.trim()).filter(cell => cell)
+    ).filter(row => row.length > 0);
+    
+    // Generate HTML table
+    let tableHTML = '<div class="overflow-x-auto my-4"><table class="min-w-full border border-gray-300 dark:border-gray-600 rounded-lg">';
+    
+    // Header
+    tableHTML += '<thead class="bg-gray-50 dark:bg-gray-800">';
+    tableHTML += '<tr>';
+    headers.forEach(header => {
+      tableHTML += `<th class="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-600">${header}</th>`;
+    });
+    tableHTML += '</tr>';
+    tableHTML += '</thead>';
+    
+    // Body
+    tableHTML += '<tbody class="divide-y divide-gray-200 dark:divide-gray-700">';
+    rows.forEach((row, index) => {
+      const bgColor = index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800';
+      tableHTML += `<tr class="${bgColor}">`;
+      row.forEach(cell => {
+        tableHTML += `<td class="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">${cell}</td>`;
+      });
+      tableHTML += '</tr>';
+    });
+    tableHTML += '</tbody>';
+    tableHTML += '</table></div>';
+    
+    return tableHTML;
+  });
+
+  // Convert remaining markdown to HTML
+  html = html
     // Headers
     .replace(/^### (.*$)/gim, '<h3 class="text-lg font-semibold mt-4 mb-2">$1</h3>')
     .replace(/^## (.*$)/gim, '<h2 class="text-xl font-bold mt-6 mb-3">$1</h2>')
