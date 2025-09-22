@@ -173,7 +173,7 @@ const getOrCreateSessionId = () => {
 // N8N Chat API function
 const sendMessageToN8N = async (message, clientId, hasSeenGreeting) => {
   try {
-    const response = await fetch('https://fahimhsh.app.n8n.cloud/webhook/fe7b302d-7708-46e6-b4f3-15468a215394/chat', {
+    const response = await fetch('https://zakbot.zaktomate.com//chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
