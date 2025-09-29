@@ -171,7 +171,7 @@ const getOrCreateSessionId = () => {
 };
 
 // N8N Chat API function
-const sendMessageToN8N = async (message, clientId, hasSeenGreeting) => {
+const sendMessageToN8N = async (message, client_id, hasSeenGreeting) => {
   try {
     const response = await fetch('https://zakbot.zaktomate.com/api/chat', {
       method: 'POST',
@@ -181,7 +181,7 @@ const sendMessageToN8N = async (message, clientId, hasSeenGreeting) => {
       body: JSON.stringify({
         chatInput: message, // n8n Chat Trigger expects 'chatInput'
         sessionId: getOrCreateSessionId(),
-        clientId: clientId,
+        client_id: client_id,
         hasSeenGreeting: hasSeenGreeting,
       })
     });
