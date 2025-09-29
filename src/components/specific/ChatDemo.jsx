@@ -4,148 +4,246 @@ import { FaPaperPlane, FaRobot, FaUser, FaCopy, FaThumbsUp, FaThumbsDown } from 
 import Card from '../common/Card';
 import { getTextColor } from '../../utils/colorUtils';
 
-// Enhanced markdown parser with table support
+// Enhanced markdown parser with improved text handling
 const parseMarkdown = (text) => {
   if (!text) return text;
   
-  // First handle tables before other processing
-  let html = text;
-  
-  // Handle tables
-  const tableRegex = /(\|[^|\r\n]*\|[^|\r\n]*\|[^\r\n]*\r?\n\|[-:\s|]*\|[-:\s|]*\|[^\r\n]*\r?\n(?:\|[^|\r\n]*\|[^|\r\n]*\|[^\r\n]*\r?\n?)*)/gm;
-  html = html.replace(tableRegex, (match) => {
-    const lines = match.trim().split('\n');
-    if (lines.length < 3) return match; // Need at least header, separator, and one row
-    
-    const headerLine = lines[0];
-    const separatorLine = lines[1];
-    const dataLines = lines.slice(2);
-    
-    // Parse header
-    const headers = headerLine.split('|').map(h => h.trim()).filter(h => h);
-    
-    // Parse data rows
-    const rows = dataLines.map(line => 
-      line.split('|').map(cell => cell.trim()).filter(cell => cell)
-    ).filter(row => row.length > 0);
-    
-    // Generate HTML table
-    let tableHTML = '<div class="overflow-x-auto my-4"><table class="min-w-full border border-gray-300 dark:border-gray-600 rounded-lg">';
-    
-    // Header
-    tableHTML += '<thead class="bg-gray-50 dark:bg-gray-800">';
-    tableHTML += '<tr>';
-    headers.forEach(header => {
-      tableHTML += `<th class="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-600">${header}</th>`;
-    });
-    tableHTML += '</tr>';
-    tableHTML += '</thead>';
-    
-    // Body
-    tableHTML += '<tbody class="divide-y divide-gray-200 dark:divide-gray-700">';
-    rows.forEach((row, index) => {
-      const bgColor = index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800';
-      tableHTML += `<tr class="${bgColor}">`;
-      row.forEach(cell => {
-        tableHTML += `<td class="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">${cell}</td>`;
-      });
-      tableHTML += '</tr>';
-    });
-    tableHTML += '</tbody>';
-    tableHTML += '</table></div>';
-    
-    return tableHTML;
-  });
+  // First, normalize line breaks and clean up the text
+  let html = text
+    .replace(/\r\n/g, '\n')  // Normalize line endings
+    .replace(/\r/g, '\n')    // Handle old Mac line endings
+    .trim();
 
-  // Convert remaining markdown to HTML
+  // Split into lines for processing
+  const lines = html.split('\n');
+  const processedLines = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i].trim();
+    
+    // Skip empty lines but preserve spacing
+    if (!line) {
+      processedLines.push('');
+      i++;
+      continue;
+    }
+
+    // Handle headers (must be at start of line)
+    if (line.startsWith('### ')) {
+      processedLines.push(`<h3 class="text-lg font-semibold mt-4 mb-2">${line.substring(4)}</h3>`);
+      i++;
+      continue;
+    }
+    if (line.startsWith('## ')) {
+      processedLines.push(`<h2 class="text-xl font-bold mt-6 mb-3">${line.substring(3)}</h2>`);
+      i++;
+      continue;
+    }
+    if (line.startsWith('# ')) {
+      processedLines.push(`<h1 class="text-2xl font-bold mt-8 mb-4">${line.substring(2)}</h1>`);
+      i++;
+      continue;
+    }
+
+    // Handle horizontal rules
+    if (line === '---' || line === '***' || line === '___') {
+      processedLines.push('<hr class="border-gray-300 dark:border-gray-600 my-4" />');
+      i++;
+      continue;
+    }
+
+    // Handle bullet points (*, -, +) - including nested
+    const bulletMatch = line.match(/^(\s*)[*\-+]\s+(.+)$/);
+    if (bulletMatch) {
+      const [, indent, content] = bulletMatch;
+      const listItems = [`<li class="mb-1">${content}</li>`];
+      i++;
+
+      // Collect consecutive bullet points
+      while (i < lines.length) {
+        const nextLine = lines[i].trim();
+        if (!nextLine) {
+          i++;
+          continue;
+        }
+        
+        const nextBulletMatch = nextLine.match(/^(\s*)[*\-+]\s+(.+)$/);
+        if (nextBulletMatch) {
+          const [, nextIndent, nextContent] = nextBulletMatch;
+          listItems.push(`<li class="mb-1">${nextContent}</li>`);
+          i++;
+        } else {
+          break;
+        }
+      }
+
+      processedLines.push(`<ul class="list-disc ml-6 space-y-1 my-3">${listItems.join('')}</ul>`);
+      continue;
+    }
+
+    // Handle numbered lists
+    const numberMatch = line.match(/^(\s*)(\d+)\.\s+(.+)$/);
+    if (numberMatch) {
+      const [, indent, num, content] = numberMatch;
+      const listItems = [`<li class="mb-1">${content}</li>`];
+      i++;
+
+      // Collect consecutive numbered items
+      while (i < lines.length) {
+        const nextLine = lines[i].trim();
+        if (!nextLine) {
+          i++;
+          continue;
+        }
+        
+        const nextNumberMatch = nextLine.match(/^(\s*)(\d+)\.\s+(.+)$/);
+        if (nextNumberMatch) {
+          const [, nextIndent, nextNum, nextContent] = nextNumberMatch;
+          listItems.push(`<li class="mb-1">${nextContent}</li>`);
+          i++;
+        } else {
+          break;
+        }
+      }
+
+      processedLines.push(`<ol class="list-decimal ml-6 space-y-1 my-3">${listItems.join('')}</ol>`);
+      continue;
+    }
+
+    // Handle tables
+    if (line.includes('|') && lines[i + 1] && lines[i + 1].includes('|') && lines[i + 1].includes('-')) {
+      const tableLines = [line];
+      i++;
+
+      // Collect all table lines
+      while (i < lines.length) {
+        const tableLine = lines[i].trim();
+        if (tableLine.includes('|')) {
+          tableLines.push(tableLine);
+          i++;
+        } else {
+          break;
+        }
+      }
+
+      if (tableLines.length >= 3) {
+        const processedTable = processTable(tableLines);
+        processedLines.push(processedTable);
+        continue;
+      }
+    }
+
+    // Handle code blocks
+    if (line.startsWith('```')) {
+      const codeLines = [];
+      i++; // Skip opening ```
+      
+      while (i < lines.length && !lines[i].trim().startsWith('```')) {
+        codeLines.push(lines[i]);
+        i++;
+      }
+      
+      if (i < lines.length) i++; // Skip closing ```
+      
+      const codeContent = codeLines.join('\n');
+      processedLines.push(`<pre class="bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm overflow-x-auto my-3 border"><code>${escapeHtml(codeContent)}</code></pre>`);
+      continue;
+    }
+
+    // Regular paragraph
+    processedLines.push(line);
+    i++;
+  }
+
+  // Join processed lines and apply inline formatting
+  html = processedLines.join('\n');
+
+  // Apply inline formatting
   html = html
-    // Headers
-    .replace(/^### (.*$)/gim, '<h3 class="text-lg font-semibold mt-4 mb-2">$1</h3>')
-    .replace(/^## (.*$)/gim, '<h2 class="text-xl font-bold mt-6 mb-3">$1</h2>')
-    .replace(/^# (.*$)/gim, '<h1 class="text-2xl font-bold mt-8 mb-4">$1</h1>')
-    // Horizontal rules
-    .replace(/^---$/gim, '<hr class="border-gray-300 dark:border-gray-600 my-4" />')
-    // Bold text **text** or __text__ (but not conflicting with bullet points)
+    // Bold text **text** or __text__
     .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
     .replace(/__(.*?)__/g, '<strong class="font-semibold">$1</strong>')
-    // Code blocks ```code```
-    .replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 dark:bg-gray-800 p-3 rounded text-sm overflow-x-auto my-2 border"><code>$1</code></pre>')
+    // Italic text *text* or _text_ (after bold to avoid conflicts)
+    .replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, '<em>$1</em>')
+    .replace(/(?<!_)_([^_\n]+)_(?!_)/g, '<em>$1</em>')
     // Inline code `code`
     .replace(/`([^`]+)`/g, '<code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded text-sm font-mono">$1</code>')
     // Links [text](url)
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-zakbot-blue hover:underline font-medium">$1</a>')
-    // Italic text *text* or _text_ (after bold to avoid conflicts)
-    .replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g, '<em>$1</em>')
-    .replace(/(?<!_)_([^_\n]+)_(?!_)/g, '<em>$1</em>');
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-zakbot-blue hover:underline font-medium">$1</a>');
 
-  // Handle bullet points more carefully
-  const lines = html.split('<br />');
-  let inList = false;
-  let listItems = [];
-  let processedLines = [];
+  // Convert single newlines to <br /> and double newlines to paragraph breaks
+  html = html
+    .replace(/\n\n+/g, '</p><p class="mb-3">')  // Double+ newlines = paragraph break
+    .replace(/\n/g, '<br />')  // Single newlines = line break
+    .replace(/^/, '<p class="mb-3">')  // Wrap start
+    .replace(/$/, '</p>');  // Wrap end
 
-  for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
-    const bulletMatch = line.match(/^[-*+]\s+(.+)$/);
-    
-    if (bulletMatch) {
-      if (!inList) {
-        inList = true;
-        listItems = [];
-      }
-      listItems.push(`<li class="ml-4 mb-1">${bulletMatch[1]}</li>`);
-    } else {
-      if (inList) {
-        processedLines.push(`<ul class="list-disc list-inside space-y-1 my-2 ml-2">${listItems.join('')}</ul>`);
-        listItems = [];
-        inList = false;
-      }
-      if (line) {
-        processedLines.push(line);
-      }
-    }
-  }
+  // Clean up empty paragraphs and fix spacing
+  html = html
+    .replace(/<p class="mb-3"><\/p>/g, '')
+    .replace(/<p class="mb-3">(<[hou][1-6r]|<ul|<ol|<pre|<hr)/g, '$1')  // Remove p tags before block elements
+    .replace(/(<\/[hou][1-6r]>|<\/ul>|<\/ol>|<\/pre>|<\/hr>)<\/p>/g, '$1')  // Remove p tags after block elements
+    .replace(/(<br \/>){3,}/g, '<br /><br />');  // Limit consecutive breaks
+
+  return html;
+};
+
+// Helper function to process tables
+const processTable = (tableLines) => {
+  if (tableLines.length < 3) return tableLines.join('\n');
   
-  // Handle any remaining list items
-  if (inList && listItems.length > 0) {
-    processedLines.push(`<ul class="list-disc list-inside space-y-1 my-2 ml-2">${listItems.join('')}</ul>`);
-  }
+  const headerLine = tableLines[0];
+  const separatorLine = tableLines[1];
+  const dataLines = tableLines.slice(2);
+  
+  // Parse header
+  const headers = headerLine.split('|')
+    .map(h => h.trim())
+    .filter(h => h);
+  
+  // Parse data rows
+  const rows = dataLines
+    .map(line => 
+      line.split('|')
+        .map(cell => cell.trim())
+        .filter(cell => cell)
+    )
+    .filter(row => row.length > 0);
+  
+  // Generate HTML table
+  let tableHTML = '<div class="overflow-x-auto my-4"><table class="min-w-full border border-gray-300 dark:border-gray-600 rounded-lg">';
+  
+  // Header
+  tableHTML += '<thead class="bg-gray-50 dark:bg-gray-800">';
+  tableHTML += '<tr>';
+  headers.forEach(header => {
+    tableHTML += `<th class="px-4 py-3 text-left text-sm font-semibold text-gray-900 dark:text-gray-100 border-b border-gray-300 dark:border-gray-600">${header}</th>`;
+  });
+  tableHTML += '</tr>';
+  tableHTML += '</thead>';
+  
+  // Body
+  tableHTML += '<tbody class="divide-y divide-gray-200 dark:divide-gray-700">';
+  rows.forEach((row, index) => {
+    const bgColor = index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800';
+    tableHTML += `<tr class="${bgColor}">`;
+    row.forEach(cell => {
+      tableHTML += `<td class="px-4 py-3 text-sm text-gray-700 dark:text-gray-300">${cell}</td>`;
+    });
+    tableHTML += '</tr>';
+  });
+  tableHTML += '</tbody>';
+  tableHTML += '</table></div>';
+  
+  return tableHTML;
+};
 
-  // Handle numbered lists
-  let html2 = processedLines.join('<br />');
-  const lines2 = html2.split('<br />');
-  let inNumberedList = false;
-  let numberedItems = [];
-  let finalLines = [];
-
-  for (let i = 0; i < lines2.length; i++) {
-    const line = lines2[i].trim();
-    const numberMatch = line.match(/^(\d+)\.\s+(.+)$/);
-    
-    if (numberMatch) {
-      if (!inNumberedList) {
-        inNumberedList = true;
-        numberedItems = [];
-      }
-      numberedItems.push(`<li class="ml-4 mb-1">${numberMatch[2]}</li>`);
-    } else {
-      if (inNumberedList) {
-        finalLines.push(`<ol class="list-decimal list-inside space-y-1 my-2 ml-2">${numberedItems.join('')}</ol>`);
-        numberedItems = [];
-        inNumberedList = false;
-      }
-      if (line) {
-        finalLines.push(line);
-      }
-    }
-  }
-
-  // Handle any remaining numbered items
-  if (inNumberedList && numberedItems.length > 0) {
-    finalLines.push(`<ol class="list-decimal list-inside space-y-1 my-2 ml-2">${numberedItems.join('')}</ol>`);
-  }
-
-  return finalLines.join('<br />').replace(/(<br \/>){2,}/g, '<br /><br />');
+// Helper function to escape HTML
+const escapeHtml = (text) => {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
 };
 
 // Markdown component to safely render HTML
@@ -154,7 +252,7 @@ const MarkdownText = ({ text }) => {
   
   return (
     <div 
-      className="markdown-content text-sm"
+      className="markdown-content text-sm leading-relaxed"
       dangerouslySetInnerHTML={{ __html: htmlContent }}
     />
   );
