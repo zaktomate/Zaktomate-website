@@ -277,7 +277,7 @@ const sendMessageToN8N = async (message, client_id, hasSeenGreeting) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        chatInput: message, // n8n Chat Trigger expects 'chatInput'
+        message: message, // n8n Chat Trigger expects 'message'
         sessionId: getOrCreateSessionId(),
         client_id: client_id,
         hasSeenGreeting: hasSeenGreeting,
