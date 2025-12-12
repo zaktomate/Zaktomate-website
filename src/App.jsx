@@ -12,7 +12,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Dashboard from "./pages/Dashboard";
-import Zaknote from "./pages/Zaknote";
+//import Zaknote from "./pages/Zaknote";
 import StatsDashboard from "./components/specific/StatsDashboard";
 
 import EnApp from "./pages/en/EnApp";
@@ -49,7 +49,7 @@ function App() {
                                 <Route path="/pricing" element={<Pricing />} />
                                 <Route path="/about" element={<About />} />
                                 <Route path="/contact" element={<Contact />} />
-                                <Route path="/zaknote" element={<Zaknote />} />
+                                {/* <Route path="/zaknote" element={<Zaknote />} /> */}
                                 <Route path="/faq" element={<FAQ />} />
                                 <Route
                                     path="/dashboard"
