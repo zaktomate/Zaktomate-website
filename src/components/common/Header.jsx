@@ -24,11 +24,11 @@ const Header = ({ activeSection }) => {
             label: "Zakbot",
             path: isEnglishSection ? "/en/zakbot" : "/zakbot",
         },
-        {
-            id: "zaknote-demo",
-            label: "Zaknotes",
-            path: "/zaknote",
-        },
+        // {
+        //     id: "zaknote-demo",
+        //     label: "Zaknotes",
+        //     path: "/zaknote",
+        // },
         {
             id: "pricing",
             label: "Pricing",
