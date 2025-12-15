@@ -155,76 +155,133 @@ import React from "react";
 
 const Zakbot = () => {
   return (
-    <div style={{ padding: "2rem", maxWidth: "800px", margin: "auto" }}>
-      <h1>ZakBot Messenger Assistant Compliance</h1>
+    <div className="min-h-screen bg-transparent dark:bg-gray-900">
+      <div className="section-padding bg-white dark:bg-gray-900">
+        <div className="container max-w-4xl mx-auto px-4">
+          <h1 className="text-4xl font-bold text-center mb-12 text-gray-800 dark:text-white">
+            ZakBot Messenger Assistant Compliance
+          </h1>
 
-      <section>
-        <h2>Privacy Policy</h2>
-        <p>
-          ZakBot responds to messages that users voluntarily send to our Facebook Page.
-          It is developed and maintained by a single developer and is not used for advertising or promotions.
-        </p>
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
+              Privacy Policy
+            </h2>
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+              ZakBot responds to messages that users voluntarily send to our Facebook Page.
+              It is developed and maintained by a single developer and is not used for advertising or promotions.
+            </p>
 
-        <h3>Data We Collect</h3>
-        <ul>
-          <li>Facebook Messenger ID (sender ID)</li>
-          <li>Message content</li>
-          <li>User name (first and last name via Graph API)</li>
-          <li>Chat history for session context</li>
-        </ul>
+            <div className="card mb-6 dark:bg-gray-800">
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
+                Data We Collect
+              </h3>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
+                <li>Facebook Messenger ID (sender ID)</li>
+                <li>Message content</li>
+                <li>User name (first and last name via Graph API)</li>
+                <li>Chat history for session context</li>
+              </ul>
+            </div>
 
-        <h3>How We Use Your Data</h3>
-        <ul>
-          <li>To generate replies to your messages</li>
-          <li>To detect order requests and confirm them</li>
-          <li>To notify the Page owner via Telegram when an order is placed</li>
-        </ul>
+            <div className="card mb-6 dark:bg-gray-800">
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
+                How We Use Your Data
+              </h3>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
+                <li>To generate replies to your messages</li>
+                <li>To detect order requests and confirm them</li>
+                <li>To notify the Page owner via Telegram when an order is placed</li>
+              </ul>
+            </div>
 
-        <h3>Data Retention</h3>
-        <p>
-          Messages and chat history are stored temporarily for processing and for the last 10 message exchanges per user.
-          Data is automatically deleted when no longer needed.
-        </p>
+            <div className="card mb-6 dark:bg-gray-800">
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
+                Data Retention
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Messages and chat history are stored temporarily for processing and for the last 10 message exchanges per user.
+                Data is automatically deleted when no longer needed.
+              </p>
+            </div>
 
-        <h3>Data Sharing</h3>
-        <p>
-          We do not sell, share, or distribute your message data. Telegram notifications only include order details
-          (product name, quantity, and your name) for the purpose of fulfilling orders.
-        </p>
+            <div className="card mb-6 dark:bg-gray-800">
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
+                Data Sharing
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                We do not sell, share, or distribute your message data. Telegram notifications only include order details
+                (product name, quantity, and your name) for the purpose of fulfilling orders.
+              </p>
+            </div>
 
-        <h3>User Rights</h3>
-        <p>
-          You have the right to request deletion of any message data collected by ZakBot.
-        </p>
-      </section>
+            <div className="card dark:bg-gray-800">
+              <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-white">
+                User Rights
+              </h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                You have the right to request deletion of any message data collected by ZakBot.
+              </p>
+            </div>
+          </section>
 
-      <section>
-        <h2>Data Deletion</h2>
-        <p>You can delete your Messenger data collected by ZakBot by following these:</p>
-        <ul>
-          <li>Message us to delete your data in Facebook Page.</li>
-        </ul>
-        <p>That's it... All data will be permanently deleted within 24 hours.</p>
-        <p><em>Note: Messages are only stored temporarily for processing and session context.</em></p>
-      </section>
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
+              Data Deletion
+            </h2>
+            <div className="card dark:bg-gray-800">
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                You can delete your Messenger data collected by ZakBot by following these:
+              </p>
+              <ul className="list-disc list-inside text-gray-700 dark:text-gray-300 mb-4">
+                <li>Message us to delete your data in Facebook Page.</li>
+              </ul>
+              <p className="text-gray-700 dark:text-gray-300 mb-2">
+                That's it... All data will be permanently deleted within 24 hours.
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 italic">
+                Note: Messages are only stored temporarily for processing and session context.
+              </p>
+            </div>
+          </section>
 
-      <section>
-        <h2>Transparency / Source Code</h2>
-        <p>
-          For transparency, the ZakBot source code is publicly available at:{" "}
-          <a href="https://github.com/shfahimdev/FAQ_Manager" target="_blank" rel="noopener noreferrer">
-            GitHub Repository
-          </a>
-        </p>
-        <p><em>The source code is provided for transparency purposes only; reviewers are not required to audit or run the code.</em></p>
-      </section>
+          <section className="mb-12">
+            <h2 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">
+              Transparency / Source Code
+            </h2>
+            <div className="card dark:bg-gray-800">
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                For transparency, the ZakBot source code is publicly available at:{" "}
+                <a 
+                  href="https://github.com/shfahimdev/FAQ_Manager" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-zakbot-blue hover:underline dark:text-zakbot-teal"
+                >
+                  GitHub Repository
+                </a>
+              </p>
+              <p className="text-gray-600 dark:text-gray-400 italic">
+                The source code is provided for transparency purposes only; reviewers are not required to audit or run the code.
+              </p>
+            </div>
+          </section>
 
-      <section>
-        <h2>Contact</h2>
-        <p>
-          If you have any questions regarding this policy or your data, please contact: <a href="mailto:cto@zaktomate.com">youremail@example.com</a>
-        </p>
-      </section>
+          <section className="section-padding bg-zakbot-blue text-white dark:bg-zakbot-blue-dark rounded-lg">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold mb-6">Contact</h2>
+              <p className="text-lg">
+                If you have any questions regarding this policy or your data, please contact:{" "}
+                <a 
+                  href="mailto:cto@zaktomate.com" 
+                  className="underline hover:text-gray-200"
+                >
+                  cto@zaktomate.com
+                </a>
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
     </div>
   );
 };
